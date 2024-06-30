@@ -43,14 +43,13 @@ public class CustomArmorTextureCreator implements IResourceManagerReloadListener
 
     public static final CustomArmorTextureCreator INSTANCE = new CustomArmorTextureCreator();
     public static final Material guiMaterial;
+    private static final Logger log = Util.getLogger("ArmorTextureGen");
+    //private static Map<ResourceLocation, Set<IToolPart>> texturePartMapping = Maps.newHashMap();
+    private static final Set<ResourceLocation> baseTextures = Sets.newHashSet();
     /**
      * Holds all sprites built from the base-texture used as the key.
      */
     public static Map<String, Map<String, TextureAtlasSprite>> sprites = Maps.newHashMap();
-    private static final Logger log = Util.getLogger("ArmorTextureGen");
-
-    //private static Map<ResourceLocation, Set<IToolPart>> texturePartMapping = Maps.newHashMap();
-    private static final Set<ResourceLocation> baseTextures = Sets.newHashSet();
 
     static {
         guiMaterial = new MaterialGUI("_internal_gui");

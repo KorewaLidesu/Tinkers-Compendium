@@ -18,8 +18,8 @@ import java.util.List;
 
 public class TinkersTabard extends BaubleTool {
 
-    private String name;
     private final EnumDyeColor baseColor = EnumDyeColor.BLACK;
+    private String name;
     /**
      * A list of all the banner patterns.
      */

@@ -6,13 +6,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import slimeknights.mantle.client.CreativeTab;
 
 public abstract class ModuleBase {
-	CreativeTab tab;
+    CreativeTab tab;
 
-	public abstract void preInit(FMLPreInitializationEvent e);
+    public abstract void preInit(FMLPreInitializationEvent e);
 
-	public abstract void init(FMLInitializationEvent e);
+    public abstract void init(FMLInitializationEvent e);
 
-	public abstract void postInit(FMLPostInitializationEvent e);
+    public abstract void postInit(FMLPostInitializationEvent e);
 
 //	public abstract void registerItems(final RegistryEvent.Register<Item> event);
 //	

@@ -13,9 +13,9 @@ import static crafttweaker.api.minecraft.CraftTweakerMC.getIItemStack;
 
 public class ActionRemoveHammeringRecipe implements IAction {
 
-    Map<ItemStack, ItemStack> smeltingMap = new HashMap<>();
     private final IIngredient output;
     private final IIngredient input;
+    Map<ItemStack, ItemStack> smeltingMap = new HashMap<>();
 
     public ActionRemoveHammeringRecipe(IIngredient output, IIngredient input) {
         this.output = output;

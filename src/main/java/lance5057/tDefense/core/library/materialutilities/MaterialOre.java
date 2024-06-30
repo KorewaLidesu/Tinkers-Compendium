@@ -28,9 +28,9 @@ public class MaterialOre implements MaterialBase {
 //	public Item netherItemBlock;
 
     public Item oreClump;
-//	public Item oreGravel;
+    //	public Item oreGravel;
 //	public Item oreSand;
-public String prefix;
+    public String prefix;
     public String style;
     public int oreColor;
     public float hardness;

@@ -17,13 +17,14 @@ import slimeknights.tconstruct.tools.TinkerTraits;
 
 public class CompendiumTraits {
 
+    private final AbstractTrait mythical1 = new TraitMythical(1);
+    private final AbstractTrait mythical2 = new TraitMythical(2);
     // Wood
     public TraitPhotosynthetic photosynth = new TraitPhotosynthetic(1);
     public TraitPhotosynthetic photosynth2 = new TraitPhotosynthetic(2);
     public TraitReduceKnockback rooted = new TraitReduceKnockback("rooted", 0x875e21, 0.5f,
             Blocks.DIRT.getDefaultState(), Blocks.GRASS.getDefaultState());
     public TraitAxeLover axelover = new TraitAxeLover();
-
     // Stone
     public TraitDamageSourceAlteration blockhead = new TraitDamageSourceAlteration("blockhead", 0x875e21,
             new TraitDamageSourceAlteration.DamagePercent(DamageSource.GENERIC, -0.5f),
@@ -31,17 +32,14 @@ public class CompendiumTraits {
     public TraitStoned stoned = new TraitStoned();
     public TraitEarthbound earthbound = new TraitEarthbound();
     public TraitDulling dulling = new TraitDulling();
-
     // Flint
     public TraitGlassine glassine = new TraitGlassine();
     public TraitFirestarter firestarter = new TraitFirestarter();
-
     // Cactus
     public TraitPeyote peyote = new TraitPeyote();
     public TraitSpiny spiny = new TraitSpiny();
     public TraitPricked pricked = new TraitPricked();
     public TraitBarbed barbed = new TraitBarbed();
-
     public TraitPotionRemoval thickheaded = new TraitPotionRemoval("thickheaded", TextFormatting.WHITE,
             MobEffects.BLINDNESS, MobEffects.NAUSEA);
     public TraitDamageNegation calcium = new TraitDamageNegation("calcium", TextFormatting.WHITE, 1f);
@@ -49,7 +47,6 @@ public class CompendiumTraits {
             DamageSource.FALL);
     public TraitBoneSpurs bonespurs = new TraitBoneSpurs();
     public TraitDogToy dogtoy = new TraitDogToy();
-
     public TraitApplyPotion peleshair = new TraitApplyPotion("peleshair", TextFormatting.DARK_PURPLE, true,
             new PotionEffect(MobEffects.LUCK, 1, 10), new PotionEffect(MobEffects.UNLUCK, 1, 10));
     public TraitReduceKnockback pillarsoftitans = new TraitReduceKnockback("pillarsoftitans",
@@ -58,27 +55,21 @@ public class CompendiumTraits {
             TextFormatting.DARK_PURPLE, new TraitDamageSourceAlteration.DamagePercent(DamageSource.IN_FIRE, -0.5f),
             new TraitDamageSourceAlteration.DamagePercent(DamageSource.ON_FIRE, -0.5f),
             new TraitDamageSourceAlteration.DamagePercent(DamageSource.HOT_FLOOR, -1.0f));
-
     public TraitGills gills = new TraitGills();
     public TraitBuoyant buoyant = new TraitBuoyant();
     public TraitCurrentRider currentrider = new TraitCurrentRider();
     public TraitFins fins = new TraitFins();
-
     public TraitWarpedMind warpedmind = new TraitWarpedMind();
     public TraitWarp warp = new TraitWarp();
     public TraitHydrophobic hydrophobic = new TraitHydrophobic();
     public TraitVoidCall voidcall = new TraitVoidCall();
-
     public TraitArrowCatcher arrowcatcher = new TraitArrowCatcher();
     public TraitNovel novel = new TraitNovel();
-
     public TraitSoggy soggy = new TraitSoggy();
-
     public TraitHotHead hothead = new TraitHotHead();
     public TraitToasty toasty = new TraitToasty();
     public TraitIncinerate incinerate = new TraitIncinerate();
     public TraitHotFoot hotfoot = new TraitHotFoot();
-
     public TraitMagnetism magnetism = new TraitMagnetism();
     public TraitDamageNegation hardhat = new TraitDamageNegation("hardhat", TextFormatting.GRAY, 1000,
             DamageSource.ANVIL, DamageSource.FALLING_BLOCK);
@@ -86,65 +77,49 @@ public class CompendiumTraits {
     public TraitReduceKnockback maglock = new TraitReduceKnockback("maglock", TextFormatting.GRAY, 0.25f,
             Blocks.IRON_BARS.getDefaultState(), Blocks.IRON_BLOCK.getDefaultState(), Blocks.IRON_DOOR.getDefaultState(),
             Blocks.IRON_ORE.getDefaultState(), Blocks.IRON_TRAPDOOR.getDefaultState());
-
     public TraitPiggy piggy = new TraitPiggy();
     public TraitHog hog = new TraitHog();
     public TraitSounder sounder = new TraitSounder();
     public TraitTrotters trotters = new TraitTrotters();
-
     public TraitShifting shifting = new TraitShifting(blockhead, glassine, hothead, incinerate, magnetism, novel, warp);
     public TraitReduceKnockback gumshoe2 = new TraitReduceKnockback("gumshoe2", TextFormatting.LIGHT_PURPLE, 0.5f);
-
     public TraitDamageReductionDimension hellbound = new TraitDamageReductionDimension("hellbound",
             TextFormatting.DARK_RED, DimensionType.NETHER, 0.75f);
     public TraitPyrosynthesis pyrosynthetic = new TraitPyrosynthesis(1);
     public TraitPyrosynthesis pyrosynthetic2 = new TraitPyrosynthesis(2);
     public TraitFirewalker firewalker = new TraitFirewalker(3);
-
     public TraitForestMask forestmask = new TraitForestMask();
     public TraitPotionRemoval slick = new TraitPotionRemoval("slick", TextFormatting.GREEN, MobEffects.SLOWNESS,
             MobEffects.MINING_FATIGUE);
     public TraitGreenthumb greenthumb = new TraitGreenthumb();
-
     public TraitGoggles goggles = new TraitGoggles();
     public TraitAqualung aqualung = new TraitAqualung();
-
     public TraitDemonic demonic = new TraitDemonic();
     public TraitDamnation damnation = new TraitDamnation();
     public TraitIgnite ignite = new TraitIgnite();
-
     public TraitWindy windy = new TraitWindy();
     public TraitPotionRemoval aerodynamic = new TraitPotionRemoval("aerodynamic", TextFormatting.BLUE,
             MobEffects.SLOWNESS);
     public TraitSuperSonic supersonic = new TraitSuperSonic();
     public TraitFlexible flexible = new TraitFlexible();
-
     public TraitStatuesque statuesque = new TraitStatuesque();
     public TraitStonekin stonekin = new TraitStonekin();
     public TraitHeavyweight heavyweight = new TraitHeavyweight();
-
     public TraitCombatAdvantage combatadvantage = new TraitCombatAdvantage();
     public TraitBattleHardened battlehardened = new TraitBattleHardened("battlehardened", TextFormatting.DARK_PURPLE,
             1);
     public TraitReflex reflex = new TraitReflex();
     public TraitStableStance stablestance = new TraitStableStance();
-
     public TraitAcknowledged acknowledged = new TraitAcknowledged();
     public TraitBattleHardened workhardened = new TraitBattleHardened("workhardened", TextFormatting.RED, 5);
-
     public TraitHeroic heroic = new TraitHeroic();
-
     public TraitApplyPotion slowing = new TraitApplyPotion("slowing", TextFormatting.LIGHT_PURPLE, false,
             new PotionEffect(MobEffects.SLOWNESS, 5, 1));
-
     public TraitRetribution retribution_1 = new TraitRetribution(1);
-
     public TraitRigid rigid = new TraitRigid();
     public TraitTempered tempered = new TraitTempered();
-
     public TraitDamageSourceAlteration ohm = new TraitDamageSourceAlteration("ohm", TextFormatting.YELLOW,
             new TraitDamageSourceAlteration.DamagePercent(DamageSource.LIGHTNING_BOLT, -0.5f));
-
     public TraitTickTock ticktock = new TraitTickTock();
     public TraitEthereal ethereal = new TraitEthereal();
     public TraitClockstopper clockstopper = new TraitClockstopper();
@@ -152,7 +127,6 @@ public class CompendiumTraits {
     public TraitIntangible intangible = new TraitIntangible();
     public TraitUndo undo = new TraitUndo();
     public TraitTimewarp timewarp = new TraitTimewarp();
-
     public TraitToothy toothy = new TraitToothy();
     public TraitCornered cornered = new TraitCornered();
     public TraitPoundofFlesh poundofflesh = new TraitPoundofFlesh();
@@ -161,8 +135,6 @@ public class CompendiumTraits {
     public TraitAlpha alpha = new TraitAlpha();
     public TraitHunt hunt = new TraitHunt();
     public TraitRegal regal = new TraitRegal();
-    private final AbstractTrait mythical1 = new TraitMythical(1);
-    private final AbstractTrait mythical2 = new TraitMythical(2);
 
     //Froststeel
 

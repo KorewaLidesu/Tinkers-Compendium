@@ -32,134 +32,134 @@ import java.util.List;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class TDParts extends ModuleBase {
-	private static final List<ToolPart> toolParts = new ArrayList<>();
-	private static final List<ArmorPart> armorParts = new ArrayList<>();
-	public static ToolPart armorPlate;
-	public static ArmorPart chainmail;
-	// public static PartMaterialType ShieldMat;
+    private static final List<ToolPart> toolParts = new ArrayList<>();
+    private static final List<ArmorPart> armorParts = new ArrayList<>();
+    public static ToolPart armorPlate;
+    public static ArmorPart chainmail;
+    // public static PartMaterialType ShieldMat;
 
-	// public static PartMaterialType ArmorplateMat;
-	// public static PartMaterialType ChainmailMat;
-	// public static PartMaterialType RivetMat;
-	// public static PartMaterialType ClaspMat;
-	// public static PartMaterialType ClothMat;
-	public static ArmorPart fabric;
-	public static ToolPart rivets;
-	public static ToolPart clasp;
-	public static ToolPart ringShank;
-	public static ToolPart setting;
-	public static ToolPart wire;
-	public static ToolPart filigree;
-	protected static ArrayList<Item> itemList = new ArrayList<Item>();
-	static List<Pair<Item, ToolPart>> toolPartPatterns = Lists.newLinkedList();
+    // public static PartMaterialType ArmorplateMat;
+    // public static PartMaterialType ChainmailMat;
+    // public static PartMaterialType RivetMat;
+    // public static PartMaterialType ClaspMat;
+    // public static PartMaterialType ClothMat;
+    public static ArmorPart fabric;
+    public static ToolPart rivets;
+    public static ToolPart clasp;
+    public static ToolPart ringShank;
+    public static ToolPart setting;
+    public static ToolPart wire;
+    public static ToolPart filigree;
+    protected static ArrayList<Item> itemList = new ArrayList<Item>();
+    static List<Pair<Item, ToolPart>> toolPartPatterns = Lists.newLinkedList();
 
-	// public static ToolPart armor_hoodCloth;
-	static List<Pair<Item, ArmorPart>> armorPartPatterns = Lists.newLinkedList();
+    // public static ToolPart armor_hoodCloth;
+    static List<Pair<Item, ArmorPart>> armorPartPatterns = Lists.newLinkedList();
 
-	private static ToolPart regToolPart(int castVolume, String name, RegistryEvent.Register<Item> event) {
-		ToolPart part = new ToolPart(castVolume);
-		part.setTranslationKey(name).setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
-		event.getRegistry().register(part);
+    private static ToolPart regToolPart(int castVolume, String name, RegistryEvent.Register<Item> event) {
+        ToolPart part = new ToolPart(castVolume);
+        part.setTranslationKey(name).setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
+        event.getRegistry().register(part);
 
-		if (TinkerTools.pattern != null) {
-			toolPartPatterns.add(Pair.of(TinkerTools.pattern, part));
-		}
+        if (TinkerTools.pattern != null) {
+            toolPartPatterns.add(Pair.of(TinkerTools.pattern, part));
+        }
 
-		TinkerRegistry.registerToolPart(part);
+        TinkerRegistry.registerToolPart(part);
 
-		TinkerRegistry.registerStencilTableCrafting(Pattern.setTagForPart(new ItemStack(TinkerTools.pattern), part));
+        TinkerRegistry.registerStencilTableCrafting(Pattern.setTagForPart(new ItemStack(TinkerTools.pattern), part));
 
-		// TinkerRegistry.registerTableCasting(output, cast, fluid, amount);
-		toolParts.add(part);
-		itemList.add(part);
+        // TinkerRegistry.registerTableCasting(output, cast, fluid, amount);
+        toolParts.add(part);
+        itemList.add(part);
 
-		return part;
-	}
+        return part;
+    }
 
-	private static ArmorPart regArmorPart(int castVolume, String name, RegistryEvent.Register<Item> event) {
-		ArmorPart part = new ArmorPart(castVolume);
-		part.setTranslationKey(name).setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
-		event.getRegistry().register(part);
+    private static ArmorPart regArmorPart(int castVolume, String name, RegistryEvent.Register<Item> event) {
+        ArmorPart part = new ArmorPart(castVolume);
+        part.setTranslationKey(name).setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
+        event.getRegistry().register(part);
 
-		if (TinkerTools.pattern != null) {
-			armorPartPatterns.add(Pair.of(TinkerTools.pattern, part));
-		}
+        if (TinkerTools.pattern != null) {
+            armorPartPatterns.add(Pair.of(TinkerTools.pattern, part));
+        }
 
-		TinkerRegistry.registerToolPart(part);
-		//.proxy.registerArmorPartModel(part);
-		TinkerRegistry.registerStencilTableCrafting(Pattern.setTagForPart(new ItemStack(TinkerTools.pattern), part));
+        TinkerRegistry.registerToolPart(part);
+        //.proxy.registerArmorPartModel(part);
+        TinkerRegistry.registerStencilTableCrafting(Pattern.setTagForPart(new ItemStack(TinkerTools.pattern), part));
 
-		// TinkerRegistry.registerTableCasting(output, cast, fluid, amount);
-		armorParts.add(part);
-		itemList.add(part);
+        // TinkerRegistry.registerTableCasting(output, cast, fluid, amount);
+        armorParts.add(part);
+        itemList.add(part);
 
-		return part;
-	}
+        return part;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public static void registerModels(ModelRegistryEvent event) {
-		for (ToolPart p : toolParts) {
-			ModelRegisterUtil.registerPartModel(p);
-		}
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void registerModels(ModelRegistryEvent event) {
+        for (ToolPart p : toolParts) {
+            ModelRegisterUtil.registerPartModel(p);
+        }
 
-		for (ArmorPart a : armorParts) {
-			ModelRegisterUtil.registerPartModel(a);
-		}
-	}
+        for (ArmorPart a : armorParts) {
+            ModelRegisterUtil.registerPartModel(a);
+        }
+    }
 
-	@Override
-	public void preInit(FMLPreInitializationEvent e) {
+    @Override
+    public void preInit(FMLPreInitializationEvent e) {
 
-	}
+    }
 
-	@Override
-	public void init(FMLInitializationEvent e) {
+    @Override
+    public void init(FMLInitializationEvent e) {
 
-	}
+    }
 
-	@Override
-	public void postInit(FMLPostInitializationEvent e) {
-		// TODO Auto-generated method stub
+    @Override
+    public void postInit(FMLPostInitializationEvent e) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	public void registerItems(final RegistryEvent.Register<Item> event) {
-		final IForgeRegistry registry = event.getRegistry();
+    public void registerItems(final RegistryEvent.Register<Item> event) {
+        final IForgeRegistry registry = event.getRegistry();
 
-		armorPlate = regToolPart(Material.VALUE_Ingot * 4, "td_armor_plate", event);
-		chainmail = regArmorPart(Material.VALUE_Ingot * 3, "td_chainmail", event);
+        armorPlate = regToolPart(Material.VALUE_Ingot * 4, "td_armor_plate", event);
+        chainmail = regArmorPart(Material.VALUE_Ingot * 3, "td_chainmail", event);
 
-		fabric = regArmorPart(Material.VALUE_Ingot * 3, "td_fabric", event);
+        fabric = regArmorPart(Material.VALUE_Ingot * 3, "td_fabric", event);
 
-		rivets = regToolPart(Material.VALUE_Ingot, "td_rivets", event);
-		clasp = regToolPart(Material.VALUE_Ingot, "td_clasp", event);
+        rivets = regToolPart(Material.VALUE_Ingot, "td_rivets", event);
+        clasp = regToolPart(Material.VALUE_Ingot, "td_clasp", event);
 //
-		ringShank = regToolPart(Material.VALUE_Ingot * 2, "td_ringShank", event);
-		setting = regToolPart(Material.VALUE_Ingot, "td_setting", event);
+        ringShank = regToolPart(Material.VALUE_Ingot * 2, "td_ringShank", event);
+        setting = regToolPart(Material.VALUE_Ingot, "td_setting", event);
 //		wire = regToolPart(Material.VALUE_Ingot * 1, "wire", event);
-		filigree = regToolPart(Material.VALUE_Ingot, "td_filigree", event);
+        filigree = regToolPart(Material.VALUE_Ingot, "td_filigree", event);
 
-		// ShieldMat = new PartMaterialType(TDParts.armorPlate,
-		// ShieldMaterialStats.TYPE);
+        // ShieldMat = new PartMaterialType(TDParts.armorPlate,
+        // ShieldMaterialStats.TYPE);
 
-		// ArmorplateMat = new PartMaterialType(armorPlate, MaterialArmor.TYPE);
-		// ChainmailMat = new PartMaterialType(chainmail, MaterialArmor.TYPE);
-		// RivetMat = new PartMaterialType(rivets, MaterialTypes.EXTRA);
-		// ClaspMat = new PartMaterialType(clasp, MaterialTypes.EXTRA);
-		// ClothMat = new PartMaterialType(cloth, MaterialCloth.TYPE);
+        // ArmorplateMat = new PartMaterialType(armorPlate, MaterialArmor.TYPE);
+        // ChainmailMat = new PartMaterialType(chainmail, MaterialArmor.TYPE);
+        // RivetMat = new PartMaterialType(rivets, MaterialTypes.EXTRA);
+        // ClaspMat = new PartMaterialType(clasp, MaterialTypes.EXTRA);
+        // ClothMat = new PartMaterialType(cloth, MaterialCloth.TYPE);
 
-		// registry.registerAll((Item[]) itemList.toArray());
+        // registry.registerAll((Item[]) itemList.toArray());
 
-		// armor_hoodCloth = regToolPart(Material.VALUE_Ingot * 1,
-		// "armor_hood_cloth", event);
-		for (Pair<Item, ToolPart> toolPartPattern : toolPartPatterns) {
-			registerStencil(toolPartPattern.getLeft(), toolPartPattern.getRight());
-		}
+        // armor_hoodCloth = regToolPart(Material.VALUE_Ingot * 1,
+        // "armor_hood_cloth", event);
+        for (Pair<Item, ToolPart> toolPartPattern : toolPartPatterns) {
+            registerStencil(toolPartPattern.getLeft(), toolPartPattern.getRight());
+        }
 
-		for (Pair<Item, ArmorPart> toolPartPattern : armorPartPatterns) {
-			registerStencil(toolPartPattern.getLeft(), toolPartPattern.getRight());
-		}
+        for (Pair<Item, ArmorPart> toolPartPattern : armorPartPatterns) {
+            registerStencil(toolPartPattern.getLeft(), toolPartPattern.getRight());
+        }
 
 //		for (final IToolPart part : toolParts)
 //		{
@@ -185,31 +185,31 @@ public class TDParts extends ModuleBase {
 //				}
 //			}
 //		}
-	}
+    }
 
-	private void registerStencil(Item pattern, ToolPart toolPart) {
-		for (ToolCore toolCore : TinkerRegistry.getTools()) {
-			for (PartMaterialType partMaterialType : toolCore.getRequiredComponents()) {
-				if (partMaterialType.getPossibleParts().contains(toolPart)) {
-					ItemStack stencil = new ItemStack(pattern);
-					Pattern.setTagForPart(stencil, toolPart);
-					TinkerRegistry.registerStencilTableCrafting(stencil);
-					return;
-				}
-			}
-		}
-	}
+    private void registerStencil(Item pattern, ToolPart toolPart) {
+        for (ToolCore toolCore : TinkerRegistry.getTools()) {
+            for (PartMaterialType partMaterialType : toolCore.getRequiredComponents()) {
+                if (partMaterialType.getPossibleParts().contains(toolPart)) {
+                    ItemStack stencil = new ItemStack(pattern);
+                    Pattern.setTagForPart(stencil, toolPart);
+                    TinkerRegistry.registerStencilTableCrafting(stencil);
+                    return;
+                }
+            }
+        }
+    }
 
-	private void registerStencil(Item pattern, ArmorPart toolPart) {
-		for (ToolCore toolCore : TinkerRegistry.getTools()) {
-			for (PartMaterialType partMaterialType : toolCore.getRequiredComponents()) {
-				if (partMaterialType.getPossibleParts().contains(toolPart)) {
-					ItemStack stencil = new ItemStack(pattern);
-					Pattern.setTagForPart(stencil, toolPart);
-					TinkerRegistry.registerStencilTableCrafting(stencil);
-					return;
-				}
-			}
-		}
-	}
+    private void registerStencil(Item pattern, ArmorPart toolPart) {
+        for (ToolCore toolCore : TinkerRegistry.getTools()) {
+            for (PartMaterialType partMaterialType : toolCore.getRequiredComponents()) {
+                if (partMaterialType.getPossibleParts().contains(toolPart)) {
+                    ItemStack stencil = new ItemStack(pattern);
+                    Pattern.setTagForPart(stencil, toolPart);
+                    TinkerRegistry.registerStencilTableCrafting(stencil);
+                    return;
+                }
+            }
+        }
+    }
 }

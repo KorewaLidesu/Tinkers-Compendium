@@ -17,63 +17,63 @@ import java.util.List;
 
 public class TCItems {
 
-	public static Item book;
+    public static Item book;
 
-	public static List<Item> items = new ArrayList<Item>();
+    public static List<Item> items = new ArrayList<Item>();
 
-	public static Item registerItem(String name, CreativeTabs tab) {
-		Item item = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setTranslationKey(name);
-		item.setCreativeTab(tab);
-		items.add(item);
-		return item;
-	}
+    public static Item registerItem(String name, CreativeTabs tab) {
+        Item item = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setTranslationKey(name);
+        item.setCreativeTab(tab);
+        items.add(item);
+        return item;
+    }
 
-	public static Item registerItem(String name, Item item, CreativeTabs tab) {
-		item.setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setTranslationKey(name);
-		item.setCreativeTab(tab);
-		items.add(item);
-		return item;
-	}
+    public static Item registerItem(String name, Item item, CreativeTabs tab) {
+        item.setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setTranslationKey(name);
+        item.setCreativeTab(tab);
+        items.add(item);
+        return item;
+    }
 
-	public static Item registerItemBlock(String name, Block b, CreativeTabs tab) {
-		Item item = new ItemBlock(b).setRegistryName(new ResourceLocation(Reference.MOD_ID, name))
-				.setTranslationKey(name);
-		item.setCreativeTab(tab);
-		items.add(item);
-		return item;
-	}
+    public static Item registerItemBlock(String name, Block b, CreativeTabs tab) {
+        Item item = new ItemBlock(b).setRegistryName(new ResourceLocation(Reference.MOD_ID, name))
+                .setTranslationKey(name);
+        item.setCreativeTab(tab);
+        items.add(item);
+        return item;
+    }
 
-	public static Item registerItemBlock(String name, Item item, Block b, CreativeTabs tab) {
-		item.setRegistryName(new ResourceLocation(Reference.MOD_ID, name))
-				.setTranslationKey(name);
-		item.setCreativeTab(tab);
-		items.add(item);
-		return item;
-	}
+    public static Item registerItemBlock(String name, Item item, Block b, CreativeTabs tab) {
+        item.setRegistryName(new ResourceLocation(Reference.MOD_ID, name))
+                .setTranslationKey(name);
+        item.setCreativeTab(tab);
+        items.add(item);
+        return item;
+    }
 
-	public void preInit(FMLPreInitializationEvent e) {
-		book = registerItem("book", new ItemCompendiumBook(), TinkersCompendium.tab);
+    public void preInit(FMLPreInitializationEvent e) {
+        book = registerItem("book", new ItemCompendiumBook(), TinkersCompendium.tab);
 
-	}
+    }
 
-	public void init(FMLInitializationEvent e) {
-		// TODO Auto-generated method stub
+    public void init(FMLInitializationEvent e) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	public void postInit(FMLPostInitializationEvent e) {
-		// TODO Auto-generated method stub
+    public void postInit(FMLPostInitializationEvent e) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
-	public void registerItems(final RegistryEvent.Register<Item> event) {
-		final IForgeRegistry registry = event.getRegistry();
+    public void registerItems(final RegistryEvent.Register<Item> event) {
+        final IForgeRegistry registry = event.getRegistry();
 
-		for (Item i : items) {
-			registry.register(i);
-		}
+        for (Item i : items) {
+            registry.register(i);
+        }
 
-		TinkersCompendium.proxy.registerItemRenderer(book, 0, "book");
-	}
+        TinkersCompendium.proxy.registerItemRenderer(book, 0, "book");
+    }
 
 }

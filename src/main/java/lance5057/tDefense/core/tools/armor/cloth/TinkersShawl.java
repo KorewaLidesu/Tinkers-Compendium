@@ -30,104 +30,104 @@ import javax.annotation.Nonnull;
 import java.util.List;
 
 public class TinkersShawl extends ArmorCore {
-	int induceDamage = 0;
+    int induceDamage = 0;
 
-	public TinkersShawl() {
-		super(EntityEquipmentSlot.CHEST, new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
-				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
-				PartMaterialType.extra(TDParts.armorPlate));
-		setTranslationKey("tinkershawl");
-	}
+    public TinkersShawl() {
+        super(EntityEquipmentSlot.CHEST, new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
+                new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
+                PartMaterialType.extra(TDParts.armorPlate));
+        setTranslationKey("tinkershawl");
+    }
 
-	@Override
-	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> subItems) {
-		if (this.isInCreativeTab(tab)) {
-			addDefaultSubItems(subItems, CompendiumMaterials.white.mat, CompendiumMaterials.white.mat, null);
-		}
-	}
+    @Override
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> subItems) {
+        if (this.isInCreativeTab(tab)) {
+            addDefaultSubItems(subItems, CompendiumMaterials.white.mat, CompendiumMaterials.white.mat, null);
+        }
+    }
 
-	@Override
-	public void onUpdate(@Nonnull ItemStack stack, @Nonnull World world, @Nonnull Entity entity, int par4, boolean par5) {
-		super.onUpdate(stack, world, entity, par4, par5);
+    @Override
+    public void onUpdate(@Nonnull ItemStack stack, @Nonnull World world, @Nonnull Entity entity, int par4, boolean par5) {
+        super.onUpdate(stack, world, entity, par4, par5);
 
-	}
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public NBTTagCompound setupTexture(List<Material> materials) {
-		NBTTagCompound base = new NBTTagCompound();
+    @Override
+    @SideOnly(Side.CLIENT)
+    public NBTTagCompound setupTexture(List<Material> materials) {
+        NBTTagCompound base = new NBTTagCompound();
 
-		ResourceLocation rc = ArmorTextureBuilder.createArmorTexture("shawl", new String[]{"cloth", "trim", "metal"},
-				materials, 96, 96);
+        ResourceLocation rc = ArmorTextureBuilder.createArmorTexture("shawl", new String[]{"cloth", "trim", "metal"},
+                materials, 96, 96);
 
-		if (rc != null) {
-			base.setString(ArmorTags.TexLoc, rc.toString());
-			return base;
-		}
-		return null;
-	}
+        if (rc != null) {
+            base.setString(ArmorTags.TexLoc, rc.toString());
+            return base;
+        }
+        return null;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public ModelBiped getArmorModel(
-			@Nonnull EntityLivingBase entityLiving,
-			@Nonnull ItemStack itemStack,
-			@Nonnull EntityEquipmentSlot armorSlot,
-			@Nonnull ModelBiped _default) {
-		return new ModelTinkersShawl(itemStack);
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public ModelBiped getArmorModel(
+            @Nonnull EntityLivingBase entityLiving,
+            @Nonnull ItemStack itemStack,
+            @Nonnull EntityEquipmentSlot armorSlot,
+            @Nonnull ModelBiped _default) {
+        return new ModelTinkersShawl(itemStack);
+    }
 
-	@Override
-	public NBTTagCompound buildTag(List<Material> materials) {
-		ArmorNBT data = buildDefaultTag(materials);
-		return data.get();
-	}
+    @Override
+    public NBTTagCompound buildTag(List<Material> materials) {
+        ArmorNBT data = buildDefaultTag(materials);
+        return data.get();
+    }
 
-	@Override
-	public EntityEquipmentSlot getArmorSlot(ItemStack stack, EntityEquipmentSlot armorType) {
-		return EntityEquipmentSlot.CHEST;
-	}
+    @Override
+    public EntityEquipmentSlot getArmorSlot(ItemStack stack, EntityEquipmentSlot armorType) {
+        return EntityEquipmentSlot.CHEST;
+    }
 
-	@Override
-	public float armorMultiplier() {
-		// TODO Auto-generated method stub
-		return 0.1f;
-	}
+    @Override
+    public float armorMultiplier() {
+        // TODO Auto-generated method stub
+        return 0.1f;
+    }
 
-	@Override
-	public float potencyMultiplier() {
-		// TODO Auto-generated method stub
-		return 1f;
-	}
+    @Override
+    public float potencyMultiplier() {
+        // TODO Auto-generated method stub
+        return 1f;
+    }
 
-	@Override
-	protected ArmorNBT buildDefaultTag(List<Material> materials) {
-		ArmorNBT data = new ArmorNBT();
+    @Override
+    protected ArmorNBT buildDefaultTag(List<Material> materials) {
+        ArmorNBT data = new ArmorNBT();
 
-		if (materials.size() >= 2) {
-			ArmorMaterialStats handle = materials.get(0).getStatsOrUnknown(FabricMaterialStats.TYPE);
-			ArmorMaterialStats head = materials.get(1).getStatsOrUnknown(FabricMaterialStats.TYPE);
-			// start with head
-			data.head(this, head, handle);
+        if (materials.size() >= 2) {
+            ArmorMaterialStats handle = materials.get(0).getStatsOrUnknown(FabricMaterialStats.TYPE);
+            ArmorMaterialStats head = materials.get(1).getStatsOrUnknown(FabricMaterialStats.TYPE);
+            // start with head
+            data.head(this, head, handle);
 
-			// add in accessoires if present
-			if (materials.size() >= 3) {
-				ExtraMaterialStats binding = materials.get(2).getStatsOrUnknown(MaterialTypes.EXTRA);
-				data.extra(binding);
-			}
+            // add in accessoires if present
+            if (materials.size() >= 3) {
+                ExtraMaterialStats binding = materials.get(2).getStatsOrUnknown(MaterialTypes.EXTRA);
+                data.extra(binding);
+            }
 
-			// calculate handle impact
-			// data.head(handle);
-		}
+            // calculate handle impact
+            // data.head(handle);
+        }
 
-		// 3 free modifiers
-		data.modifiers = DEFAULT_MODIFIERS;
+        // 3 free modifiers
+        data.modifiers = DEFAULT_MODIFIERS;
 
-		return data;
-	}
+        return data;
+    }
 
-	@Override
-	public String getArmorType() {
-		return "shawl";
-	}
+    @Override
+    public String getArmorType() {
+        return "shawl";
+    }
 }

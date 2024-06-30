@@ -17,47 +17,47 @@ import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
 
 public class VileFluid extends BlockFluidClassic {
-	public VileFluid(Fluid fluid) {
-		super(fluid, Material.WATER);
-		// TODO Auto-generated constructor stub
-	}
+    public VileFluid(Fluid fluid) {
+        super(fluid, Material.WATER);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
-		if (entity instanceof EntitySkeleton) {
-			EntityWitherSkeleton wither = new EntityWitherSkeleton(world);
-			wither.setPosition(entity.posX, entity.posY, entity.posZ);
-			world.spawnEntity(wither);
-			entity.setDead();
-		}
-		if (entity instanceof EntityZombie) {
-			EntityHusk husk = new EntityHusk(world);
-			husk.setPosition(entity.posX, entity.posY, entity.posZ);
-			world.spawnEntity(husk);
-			entity.setDead();
-		}
-		if (entity instanceof EntityHorse) {
-			if (world.rand.nextInt(2) == 0) {
-				EntitySkeletonHorse horse = new EntitySkeletonHorse(world);
-				horse.setPosition(entity.posX, entity.posY, entity.posZ);
-				world.spawnEntity(horse);
-				entity.setDead();
-			} else {
-				EntityZombieHorse horse = new EntityZombieHorse(world);
-				horse.setPosition(entity.posX, entity.posY, entity.posZ);
-				world.spawnEntity(horse);
-				entity.setDead();
-			}
-		}
-		if (entity instanceof EntityPig) {
-			EntityPigZombie pig = new EntityPigZombie(world);
-			pig.setPosition(entity.posX, entity.posY, entity.posZ);
-			world.spawnEntity(pig);
-			entity.setDead();
-		}
-		if (entity instanceof EntityPlayer) {
-			EntityPlayer p = (EntityPlayer) entity;
-			p.addPotionEffect(new PotionEffect(MobEffects.WITHER, 1));
-		}
-	}
+    @Override
+    public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
+        if (entity instanceof EntitySkeleton) {
+            EntityWitherSkeleton wither = new EntityWitherSkeleton(world);
+            wither.setPosition(entity.posX, entity.posY, entity.posZ);
+            world.spawnEntity(wither);
+            entity.setDead();
+        }
+        if (entity instanceof EntityZombie) {
+            EntityHusk husk = new EntityHusk(world);
+            husk.setPosition(entity.posX, entity.posY, entity.posZ);
+            world.spawnEntity(husk);
+            entity.setDead();
+        }
+        if (entity instanceof EntityHorse) {
+            if (world.rand.nextInt(2) == 0) {
+                EntitySkeletonHorse horse = new EntitySkeletonHorse(world);
+                horse.setPosition(entity.posX, entity.posY, entity.posZ);
+                world.spawnEntity(horse);
+                entity.setDead();
+            } else {
+                EntityZombieHorse horse = new EntityZombieHorse(world);
+                horse.setPosition(entity.posX, entity.posY, entity.posZ);
+                world.spawnEntity(horse);
+                entity.setDead();
+            }
+        }
+        if (entity instanceof EntityPig) {
+            EntityPigZombie pig = new EntityPigZombie(world);
+            pig.setPosition(entity.posX, entity.posY, entity.posZ);
+            world.spawnEntity(pig);
+            entity.setDead();
+        }
+        if (entity instanceof EntityPlayer) {
+            EntityPlayer p = (EntityPlayer) entity;
+            p.addPotionEffect(new PotionEffect(MobEffects.WITHER, 1));
+        }
+    }
 }
