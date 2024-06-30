@@ -1,14 +1,5 @@
 package lance5057.tDefense;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.logging.log4j.Logger;
-
 import lance5057.tDefense.core.addons.actuallyadditions.AddonActuallyAdditions;
 import lance5057.tDefense.core.addons.bloodmagic.AddonBloodMagic;
 import lance5057.tDefense.core.addons.botania.AddonBotania;
@@ -44,8 +35,16 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.fml.relauncher.Side;
+import org.apache.logging.log4j.Logger;
 import scala.reflect.internal.Trees.Modifiers;
 import slimeknights.mantle.client.CreativeTab;
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 @Mod(modid = Reference.MOD_ID, version = Reference.VERSION, name = Reference.MOD_NAME, dependencies = "required-after:tconstruct@[1.12-2.7.2.15,);")
 public class TinkersCompendium {
@@ -56,21 +55,14 @@ public class TinkersCompendium {
 	// public static final int GUI_GUIDEBOOK = modGuiIndex++;
 	// public static final int GUI_STRAPS_INV = modGuiIndex++;
 
-	@Mod.Instance(Reference.MOD_ID)
-	public static TinkersCompendium instance = new TinkersCompendium();
-
-	public static Logger logger;
-
-	PacketHandler phandler = new PacketHandler();
-
-	public static CreativeTab tab = new CreativeTab("tinkerscompendium", new ItemStack(Items.SHIELD));
-	public static TCConfig config;
-
 	public static final SimpleNetworkWrapper networkInstance = NetworkRegistry.INSTANCE
 			.newSimpleChannel(Reference.MOD_ID);
-
+	@Mod.Instance(Reference.MOD_ID)
+	public static TinkersCompendium instance = new TinkersCompendium();
+	public static Logger logger;
+	public static CreativeTab tab = new CreativeTab("tinkerscompendium", new ItemStack(Items.SHIELD));
+	public static TCConfig config;
 	public static Modifiers mods;
-
 	public static TCItems items;
 	public static TCBlocks blocks;
 	public static TDParts parts;
@@ -81,23 +73,18 @@ public class TinkersCompendium {
 	public static CompendiumModifiers modifiers;
 	public static TDEvents events;
 	public static CompendiumEntities entities;
-
-	SpawnArmorOnMobs mobs = new SpawnArmorOnMobs();
-
 	public static CompendiumTextiles textiles;
-
 	public static List<ModuleBase> addons = new ArrayList<ModuleBase>();
-
 	public static AddonBloodMagic bloodmagic;
 	public static AddonBotania botania;
 	public static AddonToolLeveling leveling;
 	public static AddonEBWizardry wizardry;
 	public static AddonActuallyAdditions actadd;
-
 	@SidedProxy(clientSide = "lance5057.tDefense.proxy.ClientProxy", serverSide = "lance5057.tDefense.proxy.CommonProxy")
 	public static CommonProxy proxy;
-
 	public static Item book;
+	PacketHandler phandler = new PacketHandler();
+	SpawnArmorOnMobs mobs = new SpawnArmorOnMobs();
 
 	@Mod.EventHandler
 	public void preInit(FMLPreInitializationEvent e) {
@@ -193,7 +180,7 @@ public class TinkersCompendium {
 
 		proxy.init();
 
-		phandler.init();
+		PacketHandler.init();
 
 	}
 
@@ -232,8 +219,8 @@ public class TinkersCompendium {
 			dumpBiomeInfo();
 		}
 
-		if (TinkersCompendium.config.developerFeatures) {
-			OutputWikiPages.outputWikiSidebar(mats.materials);
+		if (TCConfig.developerFeatures) {
+			OutputWikiPages.outputWikiSidebar(CompendiumMaterials.materials);
 		}
 	}
 
@@ -249,13 +236,13 @@ public class TinkersCompendium {
 				output.write(b.getBiomeName());
 				output.newLine();
 
-				output.write("Elevation:" + Float.toString(b.getBaseHeight()));
+				output.write("Elevation:" + b.getBaseHeight());
 				output.newLine();
 
-				output.write("Temperature:" + Float.toString(b.getDefaultTemperature()));
+				output.write("Temperature:" + b.getDefaultTemperature());
 				output.newLine();
 
-				output.write("Humidity:" + Float.toString(b.getRainfall()));
+				output.write("Humidity:" + b.getRainfall());
 				output.newLine();
 				output.newLine();
 

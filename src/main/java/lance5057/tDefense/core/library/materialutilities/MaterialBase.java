@@ -1,30 +1,22 @@
 package lance5057.tDefense.core.library.materialutilities;
 
+import slimeknights.tconstruct.library.MaterialIntegration;
+
 import java.io.PrintWriter;
 
-import lance5057.tDefense.Reference;
-import lance5057.tDefense.core.materials.CompendiumMaterials;
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraft.util.ResourceLocation;
-import slimeknights.tconstruct.library.MaterialIntegration;
-import slimeknights.tconstruct.library.materials.Material;
+public interface MaterialBase {
 
-public abstract interface MaterialBase {
+    void setupPre(MaterialHelper mat);
 
-	public abstract void setupPre(MaterialHelper mat);
+    void setupInit(MaterialHelper mat);
 
-	public abstract void setupInit(MaterialHelper mat);
+    void setupIntegration(MaterialIntegration mi);
 
-	public abstract void setupIntegration(MaterialIntegration mi);
+    void setupPost(MaterialHelper mat);
 
-	public abstract void setupPost(MaterialHelper mat);
+    void setupClient(MaterialHelper mat);
 
-	public abstract void setupClient(MaterialHelper mat);
+    void setupModels(MaterialHelper mat);
 
-	public abstract void setupModels(MaterialHelper mat);
-
-	public abstract void setupWiki(MaterialHelper mat, PrintWriter out);
+    void setupWiki(MaterialHelper mat, PrintWriter out);
 }

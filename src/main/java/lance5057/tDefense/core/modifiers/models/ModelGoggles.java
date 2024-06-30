@@ -2,7 +2,6 @@ package lance5057.tDefense.core.modifiers.models;
 
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
-import net.minecraft.entity.Entity;
 
 /**
  * ModelPlayer - Either Mojang or a mod author
@@ -21,7 +20,7 @@ public class ModelGoggles extends ModelBiped {
         this.Goggles = new ModelRenderer(this, 0, 0);
         this.Goggles.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.Goggles.addBox(-6.0F, -8.5F, -6.5F, 12, 7, 4, -1.4F);
-        
+
         this.bipedHeadwear.addChild(Band);
         this.bipedHeadwear.addChild(Goggles);
     }

@@ -1,94 +1,91 @@
 package lance5057.tDefense.core.library.materialutilities;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
-
+import lance5057.tDefense.TCConfig;
 import lance5057.tDefense.TinkersCompendium;
 import lance5057.tDefense.core.library.OutputWikiPages;
+import org.apache.commons.lang3.StringUtils;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.materials.Material;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MaterialHelper {
-	String name;
-	int color;
+    public Material mat;
+    public List<MaterialBase> addons;
+    String name;
+    int color;
+    MaterialIntegration matint;
+    boolean preset = false;
 
-	public Material mat;
-	MaterialIntegration matint;
-	public List<MaterialBase> addons;
+    public MaterialHelper(String name, int color) {
+        this.name = "td_" + name;
+        this.color = color;
 
-	boolean preset = false;
+        mat = new Material(name, color);
+        addons = new ArrayList<MaterialBase>();
+    }
 
-	public MaterialHelper(String name, int color) {
-		this.name = "td_" + name;
-		this.color = color;
+    public MaterialHelper(Material mat) {
+        this.name = mat.identifier;
+        this.color = mat.materialTextColor;
 
-		mat = new Material(name, color);
-		addons = new ArrayList<MaterialBase>();
-	}
+        this.mat = mat;
+        addons = new ArrayList<MaterialBase>();
 
-	public MaterialHelper(Material mat) {
-		this.name = mat.identifier;
-		this.color = mat.materialTextColor;
+        preset = true;
+    }
 
-		this.mat = mat;
-		addons = new ArrayList<MaterialBase>();
+    public void pre() {
+        for (MaterialBase mb : addons) {
+            mb.setupPre(this);
+        }
+    }
 
-		preset = true;
-	}
+    public void init() {
+        for (MaterialBase mb : addons) {
+            mb.setupInit(this);
+        }
+    }
 
-	public void pre() {
-		for (MaterialBase mb : addons) {
-			mb.setupPre(this);
-		}
-	}
+    public void integrate() {
+        if (!preset) {
+            matint = new MaterialIntegration(mat, null, StringUtils.capitalize(mat.identifier));
 
-	public void init() {
-		for (MaterialBase mb : addons) {
-			mb.setupInit(this);
-		}
-	}
+            for (MaterialBase mb : addons) {
+                mb.setupIntegration(matint);
+            }
+            matint.toolforge().preInit();
 
-	public void integrate() {
-		if (!preset) {
-			matint = new MaterialIntegration(mat, null, StringUtils.capitalize(mat.identifier));
+            TinkersCompendium.proxy.registerMatColor(mat, color);
 
-			for (MaterialBase mb : addons) {
-				mb.setupIntegration(matint);
-			}
-			matint.toolforge().preInit();
+            TinkerRegistry.integrate(matint);
+        }
+    }
 
-			TinkersCompendium.proxy.registerMatColor(mat, color);
+    public void post() {
+        for (MaterialBase mb : addons) {
+            mb.setupPost(this);
+        }
 
-			TinkerRegistry.integrate(matint);
-		}
-	}
+        if (!preset)
+            matint.integrate();
 
-	public void post() {
-		for (MaterialBase mb : addons) {
-			mb.setupPost(this);
-		}
+        if (TCConfig.developerFeatures) {
+            OutputWikiPages.outputWikiMaterial(this);
+        }
+    }
 
-		if (!preset)
-			matint.integrate();
-		
-		if(TinkersCompendium.config.developerFeatures)
-		{
-			OutputWikiPages.outputWikiMaterial(this);
-		}
-	}
+    public void client() {
+        for (MaterialBase mb : addons) {
+            mb.setupClient(this);
+        }
+    }
 
-	public void client() {
-		for (MaterialBase mb : addons) {
-			mb.setupClient(this);
-		}
-	}
-
-	public void models() {
-		for (MaterialBase mb : addons) {
-			mb.setupModels(this);
-		}
-	}
+    public void models() {
+        for (MaterialBase mb : addons) {
+            mb.setupModels(this);
+        }
+    }
 }

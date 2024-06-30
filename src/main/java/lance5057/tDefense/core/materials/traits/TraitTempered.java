@@ -4,7 +4,7 @@ import net.minecraft.util.text.TextFormatting;
 
 public class TraitTempered extends AbstractTDTrait {
 
-	public TraitTempered() {
-		super("tempered", TextFormatting.DARK_GRAY);
-	}
+    public TraitTempered() {
+        super("tempered", TextFormatting.DARK_GRAY);
+    }
 }

@@ -3,33 +3,29 @@ package lance5057.tDefense.core.addons.botania;
 import lance5057.tDefense.TinkersCompendium;
 import lance5057.tDefense.core.addons.botania.modifiers.ModMana;
 import lance5057.tDefense.core.library.ModuleBase;
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.ModelRegistryEvent;
-import net.minecraftforge.event.RegistryEvent.Register;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraftforge.registries.IForgeRegistry;
 import slimeknights.mantle.util.RecipeMatch;
 
 public class AddonBotania extends ModuleBase {
-	public AddonBotania() {
-	}
-
-	public static Item manasteelCore;
-	public static Item elementiumCore;
-	public static Item terrasteelCore;
-	public static Item corpseIvy;
+    public static Item manasteelCore;
+    public static Item elementiumCore;
+    public static Item terrasteelCore;
+    public static Item corpseIvy;
+    public static ModMana mod_mana = new ModMana();
 
 //	public static ModScabbing scabbing = new ModScabbing();
 //	public static ModWill will = new ModWill();
-	
-	public static ModMana mod_mana = new ModMana();
+
+    public AddonBotania() {
+    }
 //	public static ModPixies mod_pixies = new ModPixies();
 //	public static ModBeam mod_beam = new ModBeam();
 //	public static ModCorpseIvy mod_corpseIvy = new ModCorpseIvy();
@@ -64,15 +60,21 @@ public class AddonBotania extends ModuleBase {
 //			new HelmMaterialStats(600, 2, 1, 20), new ChestMaterialStats(600, 5, 2, 20),
 //			new LegsMaterialStats(600, 3, 2, 20), new FeetMaterialStats(600, 2, 1, 20));
 
-	@Override
-	public void preInit(FMLPreInitializationEvent e) {
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void registerModels(ModelRegistryEvent event) {
+
+    }
+
+    @Override
+    public void preInit(FMLPreInitializationEvent e) {
 //		bloodyBandages = new Item();
-		
-		manasteelCore = new Item();
-		elementiumCore = new Item();
-		terrasteelCore = new Item();
-		corpseIvy = new Item();
-		
+
+        manasteelCore = new Item();
+        elementiumCore = new Item();
+        terrasteelCore = new Item();
+        corpseIvy = new Item();
+
 //		this.setupItem(manasteelCore, "manasteelcore");
 //		this.setupItem(elementiumCore, "elementiumcore");
 //		this.setupItem(terrasteelCore, "terrasteelcore");
@@ -80,7 +82,7 @@ public class AddonBotania extends ModuleBase {
 //
 //		this.setupItem(bloodyBandages, "bloodybandages");
 
-		// CompendiumMaterials.itemList.add(bloodyBandages);
+        // CompendiumMaterials.itemList.add(bloodyBandages);
 
 //		CompendiumMaterials.materials.add(this.blankslate);
 //		CompendiumMaterials.materials.add(this.reinforcedslate);
@@ -88,30 +90,24 @@ public class AddonBotania extends ModuleBase {
 //		CompendiumMaterials.materials.add(this.demonicslate);
 //		CompendiumMaterials.materials.add(this.etherealslate);
 
-		// TinkerRegistry.registerModifier(scabbing);
+        // TinkerRegistry.registerModifier(scabbing);
 
-		TinkersCompendium.proxy.registerItemRenderer(manasteelCore, 0, "manasteelcore");
-		TinkersCompendium.proxy.registerItemRenderer(elementiumCore, 0, "elementiumcore");
-		TinkersCompendium.proxy.registerItemRenderer(terrasteelCore, 0, "terrasteelcore");
-		TinkersCompendium.proxy.registerItemRenderer(corpseIvy, 0, "corpseivy");
+        TinkersCompendium.proxy.registerItemRenderer(manasteelCore, 0, "manasteelcore");
+        TinkersCompendium.proxy.registerItemRenderer(elementiumCore, 0, "elementiumcore");
+        TinkersCompendium.proxy.registerItemRenderer(terrasteelCore, 0, "terrasteelcore");
+        TinkersCompendium.proxy.registerItemRenderer(corpseIvy, 0, "corpseivy");
 
-		TinkersCompendium.proxy.registerModifierModel(mod_mana);
+        TinkersCompendium.proxy.registerModifierModel(mod_mana);
 //		TinkersCompendium.proxy.registerModifierModel(elementiumCore);
 //		TinkersCompendium.proxy.registerModifierModel(terrasteelCore);
 //		TinkersCompendium.proxy.registerModifierModel(corpseIvy);
-	}
+    }
 
-	@Override
-	public void init(FMLInitializationEvent e) {
-		mod_mana.addRecipeMatch(new RecipeMatch.Item(new ItemStack(this.manasteelCore), 1));
+    @Override
+    public void init(FMLInitializationEvent e) {
+        mod_mana.addRecipeMatch(new RecipeMatch.Item(new ItemStack(manasteelCore), 1));
 //		will.addRecipeMatch(new RecipeMatch.Item(new ItemStack(RegistrarBloodMagicItems.SENTIENT_SWORD), 1));
-	}
-
-	@Override
-	public void postInit(FMLPostInitializationEvent e) {
-		// TODO Auto-generated method stub
-
-	}
+    }
 
 //	@Override
 //	public void registerItems(Register<Item> event) {
@@ -128,10 +124,10 @@ public class AddonBotania extends ModuleBase {
 //
 //	}
 
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public static void registerModels(ModelRegistryEvent event) {
+    @Override
+    public void postInit(FMLPostInitializationEvent e) {
+        // TODO Auto-generated method stub
 
-	}
+    }
 
 }

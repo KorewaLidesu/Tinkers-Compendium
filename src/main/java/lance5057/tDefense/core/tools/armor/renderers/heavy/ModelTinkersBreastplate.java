@@ -1,6 +1,5 @@
 package lance5057.tDefense.core.tools.armor.renderers.heavy;
 
-import lance5057.tDefense.core.library.interfaces.IFinishingAnvil;
 import lance5057.tDefense.core.tools.armor.renderers.ArmorRenderer;
 import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.item.ItemStack;
@@ -12,7 +11,7 @@ import net.minecraft.item.ItemStack;
 public class ModelTinkersBreastplate extends ArmorRenderer {
     public ModelRenderer BackPlate;
     public ModelRenderer BreastPlate;
-    public ModelRenderer Plackart; 
+    public ModelRenderer Plackart;
     public ModelRenderer PauldronR;
     public ModelRenderer PauldronL;
     public ModelRenderer ArmR;
@@ -21,7 +20,7 @@ public class ModelTinkersBreastplate extends ArmorRenderer {
     public ModelRenderer Pauldron2R;
 
     public ModelTinkersBreastplate(ItemStack stack) {
-    	super(0.25f, 0, 128, 128, stack);
+        super(0.25f, 0, 128, 128, stack);
         this.textureWidth = 128;
         this.textureHeight = 128;
 
@@ -41,25 +40,25 @@ public class ModelTinkersBreastplate extends ArmorRenderer {
         this.Plackart.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.Plackart.addBox(-4.0F, 5.0F, -3.0F, 8, 7, 6, 0.3F);
         this.bipedBody.addChild(Plackart);
-        
+
         this.ArmR = new ModelRenderer(this, 92, 12);
         this.ArmR.mirror = true;
         this.ArmR.setRotationPoint(0.0F, 0.0F, 0.0F);
-        this.ArmR.addBox(-4.0F, -2.3F, -3.0F, 5, 6, 6, 0.0F); 
+        this.ArmR.addBox(-4.0F, -2.3F, -3.0F, 5, 6, 6, 0.0F);
         this.bipedRightArm.addChild(ArmR);
-        
+
         this.BackPlate = new ModelRenderer(this, 64, 24);
         this.BackPlate.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.BackPlate.addBox(-4.0F, -0.1F, 1.0F, 8, 5, 3, 0.41F);
         this.setRotateAngle(BackPlate, -0.08726646259971647F, 0.0F, 0.0F);
         this.bipedBody.addChild(BackPlate);
-        
+
         this.Pauldron2L = new ModelRenderer(this, 88, 0);
         this.Pauldron2L.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.Pauldron2L.addBox(0.5F, -1.5F, -3.5F, 4, 4, 7, -0.4F);
         this.setRotateAngle(Pauldron2L, 0.0F, 0.0F, -1.1344640137963142F);
         this.bipedLeftArm.addChild(Pauldron2L);
-        
+
         this.Pauldron2R = new ModelRenderer(this, 88, 0);
         this.Pauldron2R.mirror = true;
         this.Pauldron2R.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -77,7 +76,7 @@ public class ModelTinkersBreastplate extends ArmorRenderer {
         this.PauldronL.addBox(0.5F, -2.0F, -3.5F, 4, 5, 7, 0.1F);
         this.setRotateAngle(PauldronL, 0.0F, 0.0F, -0.4363323129985824F);
         this.bipedLeftArm.addChild(PauldronL);
-        
+
         //this.partsList = init(stack, this.boxList);
     }
 }

@@ -1,36 +1,21 @@
 package lance5057.tDefense.core.library.materialutilities;
 
-import java.io.PrintWriter;
-import java.util.Locale;
-
-import org.apache.commons.lang3.StringUtils;
-
-import lance5057.tDefense.Reference;
-import lance5057.tDefense.TCBlocks;
-import lance5057.tDefense.TCFluids;
-import lance5057.tDefense.TCItems;
-import lance5057.tDefense.TinkersCompendium;
+import lance5057.tDefense.*;
 import lance5057.tDefense.core.library.OutputWikiPages;
-import lance5057.tDefense.core.materials.CompendiumMaterials;
 import lance5057.tDefense.core.materials.stats.ShieldMaterialStats;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
+import org.apache.commons.lang3.StringUtils;
 import slimeknights.tconstruct.library.MaterialIntegration;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.fluid.FluidMolten;
-import slimeknights.tconstruct.library.materials.BowMaterialStats;
-import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
-import slimeknights.tconstruct.library.materials.HandleMaterialStats;
-import slimeknights.tconstruct.library.materials.HeadMaterialStats;
-import slimeknights.tconstruct.library.materials.Material;
-import slimeknights.tconstruct.smeltery.block.BlockMolten;
+import slimeknights.tconstruct.library.materials.*;
+
+import java.io.PrintWriter;
 
 public class MeltableMaterial implements MaterialBase {
 
@@ -40,23 +25,20 @@ public class MeltableMaterial implements MaterialBase {
 	public ShieldMaterialStats shield;
 	public ExtraMaterialStats extra;
 	public BowMaterialStats bow;
-
-	int temp;
-
 	public Item ingot;
 	public Item nugget;
-
 	public Block block;
 	public Item itemBlock;
+	int temp;
 	boolean hasBlockTexture;
 
 	public MeltableMaterial(int temp, HeadMaterialStats head, HandleMaterialStats handle, ExtraMaterialStats extra,
-			ShieldMaterialStats shield, BowMaterialStats bow) {
+							ShieldMaterialStats shield, BowMaterialStats bow) {
 		this(temp, head, handle, extra, shield, bow, false);
 	}
 
 	public MeltableMaterial(int temp, HeadMaterialStats head, HandleMaterialStats handle, ExtraMaterialStats extra,
-			ShieldMaterialStats shield, BowMaterialStats bow, boolean hasBlockTexture) {
+							ShieldMaterialStats shield, BowMaterialStats bow, boolean hasBlockTexture) {
 		this.temp = temp;
 		this.head = head;
 		this.handle = handle;
@@ -108,7 +90,7 @@ public class MeltableMaterial implements MaterialBase {
 
 		mat.mat.addItem(nugget, 1, Material.VALUE_Nugget);
 		mat.mat.addItem(ingot, 1, Material.VALUE_Ingot);
-		mat.mat.addItem(block, Material.VALUE_Block); 
+		mat.mat.addItem(block, Material.VALUE_Block);
 	}
 
 	@Override
@@ -121,7 +103,6 @@ public class MeltableMaterial implements MaterialBase {
 		}
 	}
 
-	
 
 	public <T extends Block> T registerBlock(T block, String name) {
 		block.setTranslationKey(Reference.MOD_ID + "." + name);

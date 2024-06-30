@@ -6,10 +6,10 @@ import slimeknights.tconstruct.library.client.material.deserializers.AbstractRen
 
 public class AlphaColorTextureDeserializer extends AbstractRenderInfoDeserializer {
 
-	protected String color;
+    protected String color;
 
-	@Override
-	public MaterialRenderInfo getMaterialRenderInfo() {
-		return new TDMaterialRenderInfo.AlphaColor(fromHex(color));
-	}
+    @Override
+    public MaterialRenderInfo getMaterialRenderInfo() {
+        return new TDMaterialRenderInfo.AlphaColor(fromHex(color));
+    }
 }

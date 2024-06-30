@@ -1,40 +1,33 @@
 package lance5057.tDefense.core.tools.armor.cloth;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import lance5057.tDefense.core.library.ArmorNBT;
 import lance5057.tDefense.core.library.ArmorTags;
 import lance5057.tDefense.core.library.ArmorTextureBuilder;
 import lance5057.tDefense.core.materials.CompendiumMaterials;
 import lance5057.tDefense.core.materials.stats.ArmorMaterialStats;
-import lance5057.tDefense.core.materials.stats.ChestMaterialStats;
 import lance5057.tDefense.core.materials.stats.FabricMaterialStats;
 import lance5057.tDefense.core.parts.TDParts;
-import lance5057.tDefense.core.tools.armor.renderers.ArmorRenderer;
 import lance5057.tDefense.core.tools.armor.renderers.cloth.ModelTinkersShawl;
 import lance5057.tDefense.core.tools.bases.ArmorCore;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.NonNullList;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
-import net.minecraftforge.common.ISpecialArmor.ArmorProperties;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
-import slimeknights.tconstruct.library.utils.TagUtil;
+
+import javax.annotation.Nonnull;
+import java.util.List;
 
 public class TinkersShawl extends ArmorCore {
 	int induceDamage = 0;
@@ -47,14 +40,14 @@ public class TinkersShawl extends ArmorCore {
 	}
 
 	@Override
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
+	public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> subItems) {
 		if (this.isInCreativeTab(tab)) {
 			addDefaultSubItems(subItems, CompendiumMaterials.white.mat, CompendiumMaterials.white.mat, null);
 		}
 	}
 
 	@Override
-	public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
+	public void onUpdate(@Nonnull ItemStack stack, @Nonnull World world, @Nonnull Entity entity, int par4, boolean par5) {
 		super.onUpdate(stack, world, entity, par4, par5);
 
 	}
@@ -64,7 +57,7 @@ public class TinkersShawl extends ArmorCore {
 	public NBTTagCompound setupTexture(List<Material> materials) {
 		NBTTagCompound base = new NBTTagCompound();
 
-		ResourceLocation rc = ArmorTextureBuilder.createArmorTexture("shawl", new String[] { "cloth", "trim", "metal" },
+		ResourceLocation rc = ArmorTextureBuilder.createArmorTexture("shawl", new String[]{"cloth", "trim", "metal"},
 				materials, 96, 96);
 
 		if (rc != null) {
@@ -76,8 +69,11 @@ public class TinkersShawl extends ArmorCore {
 
 	@SideOnly(Side.CLIENT)
 	@Override
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot,
-			ModelBiped _default) {
+	public ModelBiped getArmorModel(
+			@Nonnull EntityLivingBase entityLiving,
+			@Nonnull ItemStack itemStack,
+			@Nonnull EntityEquipmentSlot armorSlot,
+			@Nonnull ModelBiped _default) {
 		return new ModelTinkersShawl(itemStack);
 	}
 

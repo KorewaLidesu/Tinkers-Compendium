@@ -16,49 +16,49 @@ import slimeknights.tconstruct.tools.tools.Hammer;
 
 public class HammeringTableBlock extends GuilessManualWorkstationBase {
 
-	public HammeringTableBlock() {
-		super();
-		this.setTranslationKey("hammeringtable");
-		this.setRegistryName("hammeringtable");
-		this.setCreativeTab(TinkersCompendium.tab);
-		this.setSoundType(SoundType.ANVIL);
-		this.setResistance(5f);
-		this.setHardness(1f);
-		this.setHarvestLevel("pickaxe", 0);
-	}
+    public HammeringTableBlock() {
+        super();
+        this.setTranslationKey("hammeringtable");
+        this.setRegistryName("hammeringtable");
+        this.setCreativeTab(TinkersCompendium.tab);
+        this.setSoundType(SoundType.ANVIL);
+        this.setResistance(5f);
+        this.setHardness(1f);
+        this.setHarvestLevel("pickaxe", 0);
+    }
 
-	@Override
-	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
-			EnumFacing side, float hitX, float hitY, float hitZ) {
-		// if (!world.isRemote) {
-		TileEntity te = world.getTileEntity(pos);
-		if (te instanceof HammeringTableTileEntity) {
-			HammeringTableTileEntity tile = (HammeringTableTileEntity) te;
-			ItemStack item = player.getHeldItem(hand);
+    @Override
+    public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
+                                    EnumFacing side, float hitX, float hitY, float hitZ) {
+        // if (!world.isRemote) {
+        TileEntity te = world.getTileEntity(pos);
+        if (te instanceof HammeringTableTileEntity) {
+            HammeringTableTileEntity tile = (HammeringTableTileEntity) te;
+            ItemStack item = player.getHeldItem(hand);
 
-			if (item.equals(ItemStack.EMPTY) && player.isSneaking()) {
-				tile.removeItemFromBlock(player, hand);
-			} else {
-				if (item.getItem() instanceof Hammer || item.getItem() instanceof Mallet)
-					tile.interact(player, hand, item);
-				else
-					tile.addItemToBlock(player, hand);
-			}
+            if (item.equals(ItemStack.EMPTY) && player.isSneaking()) {
+                tile.removeItemFromBlock(player, hand);
+            } else {
+                if (item.getItem() instanceof Hammer || item.getItem() instanceof Mallet)
+                    tile.interact(player, hand, item);
+                else
+                    tile.addItemToBlock(player, hand);
+            }
 
-			te.markDirty();
+            te.markDirty();
 
-			if (te.getWorld() != null) {
-				IBlockState bState = world.getBlockState(te.getPos());
-				world.notifyBlockUpdate(te.getPos(), bState, bState, 3);
-			}
-		}
-		// }
-		return false;
-	}
+            if (te.getWorld() != null) {
+                IBlockState bState = world.getBlockState(te.getPos());
+                world.notifyBlockUpdate(te.getPos(), bState, bState, 3);
+            }
+        }
+        // }
+        return false;
+    }
 
-	@Override
-	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new HammeringTableTileEntity(1, "hammeringtable", 4, "ore", "dust"); // TODO replace with
-																					// gravel ores
-	}
+    @Override
+    public TileEntity createNewTileEntity(World worldIn, int meta) {
+        return new HammeringTableTileEntity(1, "hammeringtable", 4, "ore", "dust"); // TODO replace with
+        // gravel ores
+    }
 }

@@ -1,17 +1,6 @@
 package lance5057.tDefense.core.materials;
 
-import static slimeknights.tconstruct.library.utils.HarvestLevels.IRON;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-
 import com.google.common.eventbus.Subscribe;
-
 import gnu.trove.map.hash.THashMap;
 import lance5057.tDefense.Reference;
 import lance5057.tDefense.TCConfig;
@@ -19,29 +8,13 @@ import lance5057.tDefense.TinkersCompendium;
 import lance5057.tDefense.core.blocks.fluid.ChorusJuice;
 import lance5057.tDefense.core.blocks.fluid.VibrantFluid;
 import lance5057.tDefense.core.blocks.fluid.VileFluid;
-import lance5057.tDefense.core.library.materialutilities.ArmorMaterial;
-import lance5057.tDefense.core.library.materialutilities.CraftableFabricMaterial;
-import lance5057.tDefense.core.library.materialutilities.CraftableMaterial;
-import lance5057.tDefense.core.library.materialutilities.MaterialComponents;
-import lance5057.tDefense.core.library.materialutilities.MaterialHelper;
-import lance5057.tDefense.core.library.materialutilities.MaterialOre;
-import lance5057.tDefense.core.library.materialutilities.MeltableMaterial;
-import lance5057.tDefense.core.library.materialutilities.PresetMaterial;
-import lance5057.tDefense.core.materials.stats.ArmorMaterialStats;
-import lance5057.tDefense.core.materials.stats.BackpackMaterialStats;
-import lance5057.tDefense.core.materials.stats.BaubleMaterialStats;
-import lance5057.tDefense.core.materials.stats.ChestMaterialStats;
-import lance5057.tDefense.core.materials.stats.FabricMaterialStats;
-import lance5057.tDefense.core.materials.stats.FeetMaterialStats;
-import lance5057.tDefense.core.materials.stats.HelmMaterialStats;
-import lance5057.tDefense.core.materials.stats.LegsMaterialStats;
-import lance5057.tDefense.core.materials.stats.ShieldMaterialStats;
+import lance5057.tDefense.core.library.materialutilities.*;
+import lance5057.tDefense.core.materials.stats.*;
 import lance5057.tDefense.core.parts.ComponentPart;
 import lance5057.tDefense.textiles.CompendiumTextiles;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
@@ -61,18 +34,13 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.IForgeRegistryEntry;
+import org.apache.commons.lang3.StringUtils;
 import slimeknights.tconstruct.TConstruct;
 import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.Util;
 import slimeknights.tconstruct.library.fluid.FluidColored;
 import slimeknights.tconstruct.library.fluid.FluidMolten;
-import slimeknights.tconstruct.library.materials.BowMaterialStats;
-import slimeknights.tconstruct.library.materials.BowStringMaterialStats;
-import slimeknights.tconstruct.library.materials.ExtraMaterialStats;
-import slimeknights.tconstruct.library.materials.HandleMaterialStats;
-import slimeknights.tconstruct.library.materials.HeadMaterialStats;
-import slimeknights.tconstruct.library.materials.Material;
-import slimeknights.tconstruct.library.materials.MaterialTypes;
+import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.smeltery.AlloyRecipe;
 import slimeknights.tconstruct.library.utils.HarvestLevels;
 import slimeknights.tconstruct.shared.TinkerCommons;
@@ -82,30 +50,22 @@ import slimeknights.tconstruct.smeltery.block.BlockMolten;
 import slimeknights.tconstruct.smeltery.block.BlockTinkerFluid;
 import slimeknights.tconstruct.tools.TinkerMaterials;
 
+import java.util.*;
+
+import static slimeknights.tconstruct.library.utils.HarvestLevels.IRON;
+
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class CompendiumMaterials {
-	ArmorMaterialStats ams = new ArmorMaterialStats(0, 0, 0, 0, "");
-
-	public static BowMaterialStats whyWouldYouMakeABowOutOfThis = new BowMaterialStats(0.2f, 0.4f, -1f);
-
-	String SHIELD = ShieldMaterialStats.TYPE;
-	String HELM = HelmMaterialStats.TYPE;
-	String CHEST = ChestMaterialStats.TYPE;
-	String LEGS = LegsMaterialStats.TYPE;
-	String BOOTS = FeetMaterialStats.TYPE;
-	String BAUBLE = BaubleMaterialStats.TYPE;
-
 	public static final Map<String, Integer> colors = new THashMap();
-
+	public static BowMaterialStats whyWouldYouMakeABowOutOfThis = new BowMaterialStats(0.2f, 0.4f, -1f);
 	public static FluidColored fluidVile;
 	public static FluidColored fluidVibrant;
 	public static FluidColored fluidSlush;
 	public static FluidMolten fluidQuartz;
 	public static FluidColored fluidChorusJuice;
 	public static FluidMolten fluidDragonsBreath;
-//
+	//
 	public static List<MaterialHelper> materials = new ArrayList<>();
-
 	// Base
 	public static MaterialHelper aeonsteel;
 	public static MaterialHelper queensgold;
@@ -121,7 +81,6 @@ public class CompendiumMaterials {
 	public static MaterialHelper valyriansteel;
 	public static MaterialHelper ice;
 	public static MaterialHelper froststeel;
-
 	// Advanced Materials
 	public static MaterialHelper purifiedGold;
 	public static MaterialHelper purifiedSilver;
@@ -129,13 +88,9 @@ public class CompendiumMaterials {
 	public static MaterialHelper purifiedCobalt;
 	public static MaterialHelper purifiedArdite;
 	public static MaterialHelper purifiedManyullyn;
-
 	// Wanderlust Materials
 	public static MaterialHelper mithril;
 	public static MaterialHelper werewolf;
-
-	// Wool Colors
-
 	public static MaterialHelper black;
 	public static MaterialHelper red;
 	public static MaterialHelper green;
@@ -143,6 +98,8 @@ public class CompendiumMaterials {
 	public static MaterialHelper blue;
 	public static MaterialHelper purple;
 	public static MaterialHelper cyan;
+
+	// Wool Colors
 	public static MaterialHelper lightgray;
 	public static MaterialHelper gray;
 	public static MaterialHelper pink;
@@ -152,9 +109,29 @@ public class CompendiumMaterials {
 	public static MaterialHelper magenta;
 	public static MaterialHelper orange;
 	public static MaterialHelper white;
-
 	public static MaterialHelper silky;
 	public static MaterialHelper roughspun;
+	// Holiday
+//	redcandy = new MaterialHelper("redcandy", 0xff0000, 100,
+//			new HeadMaterialStats(25, 2f, 2f, HarvestLevels.STONE), new HandleMaterialStats(1.0f, 12),
+//			new ExtraMaterialStats(12), new ShieldMaterialStats(25, 12), whyWouldYouMakeABowOutOfThis,
+//			new HelmMaterialStats(25, 1, 1, 0), new ChestMaterialStats(25, 2, 1, 0),
+//			new LegsMaterialStats(25, 2, 1, 0), new FeetMaterialStats(25, 1, 1, 0)).setGenBlock(true).addPremadeItems(HolidayBase.item_redmintcane, null, null, null, null, null, null, null);
+//
+//	greencandy = new MaterialHelper("greencandy", 0x00ff00, 100,
+//			new HeadMaterialStats(25, 2f, 2f, HarvestLevels.STONE), new HandleMaterialStats(1.0f, 12),
+//			new ExtraMaterialStats(12), new ShieldMaterialStats(25, 12), whyWouldYouMakeABowOutOfThis,
+//			new HelmMaterialStats(25, 1, 1, 0), new ChestMaterialStats(25, 2, 1, 0),
+//			new LegsMaterialStats(25, 2, 1, 0), new FeetMaterialStats(25, 1, 1, 0)).setGenBlock(true).addPremadeItems(HolidayBase.item_greenmintcane, null, null, null, null, null, null, null);
+//
+	// Gems
+	public static MaterialHelper sapphire;
+	public static MaterialHelper ruby;
+	public static MaterialHelper emerald;
+	public static MaterialHelper diamond;
+	public static MaterialHelper starsapphire;
+	public static MaterialHelper starruby;
+	public static MaterialHelper citrine;
 
 //
 //	ice = new MaterialHelper("ice", 0x99A5F2F3);
@@ -167,28 +144,6 @@ public class CompendiumMaterials {
 //	 new TDMatHelper("cheese", 0xffe900, fluids.put("cheese", new
 //	 FluidMolten("cheese", 0xffe900)), true),
 //	 new TDMatHelper("bread", 0x89732a), new TDMatHelper("melon", 0xff77a4)));
-
-	// Holiday
-//	redcandy = new MaterialHelper("redcandy", 0xff0000, 100,
-//			new HeadMaterialStats(25, 2f, 2f, HarvestLevels.STONE), new HandleMaterialStats(1.0f, 12),
-//			new ExtraMaterialStats(12), new ShieldMaterialStats(25, 12), whyWouldYouMakeABowOutOfThis,
-//			new HelmMaterialStats(25, 1, 1, 0), new ChestMaterialStats(25, 2, 1, 0),
-//			new LegsMaterialStats(25, 2, 1, 0), new FeetMaterialStats(25, 1, 1, 0)).setGenBlock(true).addPremadeItems(HolidayBase.item_redmintcane, null, null, null, null, null, null, null);
-//	
-//	greencandy = new MaterialHelper("greencandy", 0x00ff00, 100,
-//			new HeadMaterialStats(25, 2f, 2f, HarvestLevels.STONE), new HandleMaterialStats(1.0f, 12),
-//			new ExtraMaterialStats(12), new ShieldMaterialStats(25, 12), whyWouldYouMakeABowOutOfThis,
-//			new HelmMaterialStats(25, 1, 1, 0), new ChestMaterialStats(25, 2, 1, 0),
-//			new LegsMaterialStats(25, 2, 1, 0), new FeetMaterialStats(25, 1, 1, 0)).setGenBlock(true).addPremadeItems(HolidayBase.item_greenmintcane, null, null, null, null, null, null, null);
-//	
-	// Gems
-	public static MaterialHelper sapphire;
-	public static MaterialHelper ruby;
-	public static MaterialHelper emerald;
-	public static MaterialHelper diamond;
-	public static MaterialHelper starsapphire;
-	public static MaterialHelper starruby;
-	public static MaterialHelper citrine;
 	public static MaterialHelper quartz;
 	public static MaterialHelper amethyst;
 	public static MaterialHelper lapis;
@@ -197,6 +152,13 @@ public class CompendiumMaterials {
 	public static MaterialHelper opal;
 	public static MaterialHelper tanzinite;
 	public static MaterialHelper amber;
+	ArmorMaterialStats ams = new ArmorMaterialStats(0, 0, 0, 0, "");
+	String SHIELD = ShieldMaterialStats.TYPE;
+	String HELM = HelmMaterialStats.TYPE;
+	String CHEST = ChestMaterialStats.TYPE;
+	String LEGS = LegsMaterialStats.TYPE;
+	String BOOTS = FeetMaterialStats.TYPE;
+	String BAUBLE = BaubleMaterialStats.TYPE;
 	//
 	// // Cornucopia
 	// List<TDMatHelper> materials_cornucopia = new ArrayList<>(Arrays.asList(
@@ -288,6 +250,115 @@ public class CompendiumMaterials {
 
 //	public static ArrayList<Item> itemList = new ArrayList<Item>();
 //	public static ArrayList<Block> blockList = new ArrayList<Block>();
+
+	public static void registerAlloy(FluidStack output, FluidStack... components) {
+		AlloyRecipe r = new AlloyRecipe(output, components);
+		TinkerRegistry.registerAlloy(r);
+	}
+
+//	public void registerItems(final RegistryEvent.Register<Item> event) {
+//		final IForgeRegistry registry = event.getRegistry();
+//
+//		for (Item i : itemList) {
+//			registry.register(i);
+//		}
+//	}
+
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+	public static void registerModels(ModelRegistryEvent event) {
+		for (MaterialHelper m : materials)
+			m.models();
+	}
+
+	// @SubscribeEvent
+	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
+//		for (Block i : blockList) {
+//			event.getRegistry().register(i);
+//		}
+
+		fluidChorusJuice = regFluid("chorusjuice", 0xd982ff, event);
+		registerBlock(event.getRegistry(), new ChorusJuice(fluidChorusJuice), fluidChorusJuice.getName());
+		TinkersCompendium.proxy.registerFluidModels(fluidChorusJuice);
+
+		fluidVile = regFluid("vile", 0x111111, event);
+		registerBlock(event.getRegistry(), new VileFluid(fluidVile), fluidVile.getName());
+		TinkersCompendium.proxy.registerFluidModels(fluidVile);
+
+		fluidVibrant = regFluid("vibrant", 0x76ff00, event);
+		registerBlock(event.getRegistry(), new VibrantFluid(fluidVibrant), fluidVibrant.getName());
+		TinkersCompendium.proxy.registerFluidModels(fluidVibrant);
+
+		fluidSlush = regFluid("slush", 0xbfefff, event);
+		registerClassicBlock(event.getRegistry(), fluidSlush);
+		TinkersCompendium.proxy.registerFluidModels(fluidSlush);
+
+		fluidQuartz = regMoltenFluid("quartz", 0xdddddd, event);
+		fluidDragonsBreath = regMoltenFluid("dragonsbreath", 0x7f00b7, event);
+	}
+
+	@SubscribeEvent
+	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+//		for (MaterialHelper m : materials) {
+//			if (!TCConfig.materials.isBlacklisted(m.name))
+//				m.setupRecipes(event);
+//		}
+	}
+
+	static FluidColored regFluid(String name, int color, RegistryEvent.Register<Block> event) {
+		FluidColored f = new FluidColored(name, color);
+		f.setUnlocalizedName(Reference.MOD_ID + "." + name);
+		FluidRegistry.registerFluid(f);
+		FluidRegistry.addBucketForFluid(f);
+		return f;
+	}
+
+	static FluidMolten regMoltenFluid(String name, int color, RegistryEvent.Register<Block> event) {
+		FluidMolten f = new FluidMolten(name, color);
+		f.setUnlocalizedName(Reference.MOD_ID + "." + name);
+		FluidRegistry.registerFluid(f);
+		FluidRegistry.addBucketForFluid(f);
+
+		registerMoltenBlock(event.getRegistry(), f);
+
+		TinkersCompendium.proxy.registerFluidModels(f);
+
+		return f;
+	}
+
+	/**
+	 * Registers a non-burning water based block for the fluid
+	 */
+	public static BlockFluidBase registerClassicBlock(IForgeRegistry<Block> registry, Fluid fluid) {
+		return registerBlock(registry, new BlockTinkerFluid(fluid, net.minecraft.block.material.Material.WATER),
+				fluid.getName());
+	}
+
+	/**
+	 * Registers a hot lava-based block for the fluid, prefix with molten_
+	 */
+	public static BlockMolten registerMoltenBlock(IForgeRegistry<Block> registry, Fluid fluid) {
+		return registerBlock(registry, new BlockMolten(fluid), "molten_" + fluid.getName()); // molten_foobar prefix
+	}
+
+	protected static <T extends Block> T registerBlock(IForgeRegistry<Block> registry, T block, String name) {
+		if (!name.equals(name.toLowerCase(Locale.US))) {
+			throw new IllegalArgumentException(
+					String.format("Unlocalized names need to be all lowercase! Block: %s", name));
+		}
+
+		String prefixedName = Util.prefix(name);
+		block.setTranslationKey(prefixedName);
+
+		register(registry, block, name);
+		return block;
+	}
+
+	protected static <T extends IForgeRegistryEntry<T>> T register(IForgeRegistry<T> registry, T thing, String name) {
+		thing.setRegistryName(Util.getResource(name));
+		registry.register(thing);
+		return thing;
+	}
 
 	@Subscribe
 	public void preInit(FMLPreInitializationEvent event) {
@@ -444,7 +515,7 @@ public class CompendiumMaterials {
 			ice = new MaterialHelper("ice", 0xc6dcff);
 			ice.addons.add(new CraftableMaterial(new HeadMaterialStats(120, 4.00f, 3.00f, IRON),
 					new HandleMaterialStats(0.50f, -50), new ExtraMaterialStats(20),
-					new ShieldMaterialStats(120 / 4, 30), this.whyWouldYouMakeABowOutOfThis));
+					new ShieldMaterialStats(120 / 4, 30), whyWouldYouMakeABowOutOfThis));
 			ice.addons.add(new ArmorMaterial(new HelmMaterialStats(120, 2, 0, 0), new ChestMaterialStats(120, 4, 0, 0),
 					new LegsMaterialStats(120, 3, 0, 0), new FeetMaterialStats(120, 2, 0, 0)));
 			ice.addons.add(new MaterialComponents(false));
@@ -659,7 +730,7 @@ public class CompendiumMaterials {
 				emerald.addons.add(new CraftableMaterial("gem",
 						new HeadMaterialStats(320, 10f, 4f, HarvestLevels.OBSIDIAN), new HandleMaterialStats(0.1f, 10),
 						new ExtraMaterialStats(5), new ShieldMaterialStats(320 / 4, 45), whyWouldYouMakeABowOutOfThis)
-								.disableBlock().disableIngot());
+						.disableBlock().disableIngot());
 				emerald.addons.add(
 						new ArmorMaterial(new HelmMaterialStats(320, 3, 0, 10), new ChestMaterialStats(320, 6, 3, 15),
 								new LegsMaterialStats(320, 6, 0, 12.5f), new FeetMaterialStats(320, 3, 0, 10)));
@@ -673,7 +744,7 @@ public class CompendiumMaterials {
 				diamond.addons.add(new CraftableMaterial("gem",
 						new HeadMaterialStats(1006, 4f, 4f, HarvestLevels.OBSIDIAN), new HandleMaterialStats(0.1f, 100),
 						new ExtraMaterialStats(50), new ShieldMaterialStats(1006 / 4, 45), whyWouldYouMakeABowOutOfThis)
-								.disableBlock().disableIngot());
+						.disableBlock().disableIngot());
 				diamond.addons.add(
 						new ArmorMaterial(new HelmMaterialStats(1006, 3, 0, 10), new ChestMaterialStats(1006, 6, 3, 15),
 								new LegsMaterialStats(1006, 6, 0, 12.5f), new FeetMaterialStats(1006, 3, 0, 10)));
@@ -722,7 +793,7 @@ public class CompendiumMaterials {
 				quartz.addons.add(new CraftableMaterial("gem", new HeadMaterialStats(430, 5.5f, 7f, HarvestLevels.IRON),
 						new HandleMaterialStats(0.6f, -150), new ExtraMaterialStats(100),
 						new ShieldMaterialStats(430 / 4, 35), whyWouldYouMakeABowOutOfThis).disableBlock()
-								.disableIngot());
+						.disableIngot());
 				quartz.addons.add(new ArmorMaterial(new HelmMaterialStats(430, 2, 0, 2.5f),
 						new ChestMaterialStats(430, 5, 3, 3.5f), new LegsMaterialStats(430, 5, 0, 3f),
 						new FeetMaterialStats(430, 2, 0, 2.5f)));
@@ -746,7 +817,7 @@ public class CompendiumMaterials {
 				lapis.addons.add(new CraftableMaterial("gem", new HeadMaterialStats(120, 2f, 2f, HarvestLevels.STONE),
 						new HandleMaterialStats(1.1f, -150), new ExtraMaterialStats(50),
 						new ShieldMaterialStats(120 / 4, 35), whyWouldYouMakeABowOutOfThis).disableBlock()
-								.disableIngot());
+						.disableIngot());
 				lapis.addons.add(new ArmorMaterial(new HelmMaterialStats(120, 2, 0, 2.5f),
 						new ChestMaterialStats(120, 4, 3, 3.5f), new LegsMaterialStats(120, 4, 0, 3f),
 						new FeetMaterialStats(120, 2, 0, 2.5f)));
@@ -840,15 +911,15 @@ public class CompendiumMaterials {
 //		ruby.stoneOreGen.setupOre("stone", "crystal", 48, 24, 6, 7, 3, HarvestLevels.IRON, 5);
 //		ruby.stoneOreGen.isTransparent = true;
 //		ruby.stoneOreGen.setupBiome(0, 0, 0, 1, 0, 1);
-////		
+////
 ////		sapphire.genStoneOre();
 ////		sapphire.stoneOreGen.setupOre("stone", 256, 0, 1, 5);
 ////		sapphire.stoneOreGen.setupBiome(-1f, 0f, 0f, 0.5f, 0.5f, 1f);
-////		
+////
 ////		ruby.genStoneOre();
 ////		ruby.stoneOreGen.setupOre("stone", 256, 0, 1, 5);
 ////		ruby.stoneOreGen.setupBiome(-1f, 1f, 1f, 2f, 0f, 0.5f);
-////		
+////
 //		citrine.genStoneOre();
 //		citrine.stoneOreGen.isTransparent = true;
 //		citrine.stoneOreGen.setupOre("stone", "crystal", 256, 0, 1, 5, 3, HarvestLevels.IRON, 5);
@@ -1073,18 +1144,10 @@ public class CompendiumMaterials {
 
 	}
 
-//	public void registerItems(final RegistryEvent.Register<Item> event) {
-//		final IForgeRegistry registry = event.getRegistry();
-//
-//		for (Item i : itemList) {
-//			registry.register(i);
-//		}
-//	}
-
 	@Subscribe
 	public void init(FMLInitializationEvent event) {
 
-		if (TConstruct.instance.pulseManager.isPulseLoaded(TinkerSmeltery.PulseId)) {
+		if (TConstruct.pulseManager.isPulseLoaded(TinkerSmeltery.PulseId)) {
 			TinkerRegistry.registerMelting(Items.CHORUS_FRUIT, fluidChorusJuice, Material.VALUE_Nugget);
 			TinkerRegistry.registerMelting(Items.DRAGON_BREATH, fluidDragonsBreath, Material.VALUE_Ingot);
 			TinkerRegistry.registerMelting(TinkerCommons.matNecroticBone, fluidVile, Material.VALUE_Nugget);
@@ -1263,102 +1326,5 @@ public class CompendiumMaterials {
 			String str = s.getTagCompound().getString("Material");
 			OreDictionary.registerOre(name + StringUtils.capitalize(str), s);
 		}
-	}
-
-	public static void registerAlloy(FluidStack output, FluidStack... components) {
-		AlloyRecipe r = new AlloyRecipe(output, components);
-		TinkerRegistry.registerAlloy(r);
-	}
-
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public static void registerModels(ModelRegistryEvent event) {
-		for (MaterialHelper m : materials)
-			m.models();
-	}
-
-	// @SubscribeEvent
-	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
-//		for (Block i : blockList) {
-//			event.getRegistry().register(i);
-//		}
-
-		fluidChorusJuice = regFluid("chorusjuice", 0xd982ff, event);
-		registerBlock(event.getRegistry(), new ChorusJuice(fluidChorusJuice), fluidChorusJuice.getName());
-		TinkersCompendium.proxy.registerFluidModels(fluidChorusJuice);
-
-		fluidVile = regFluid("vile", 0x111111, event);
-		registerBlock(event.getRegistry(), new VileFluid(fluidVile), fluidVile.getName());
-		TinkersCompendium.proxy.registerFluidModels(fluidVile);
-
-		fluidVibrant = regFluid("vibrant", 0x76ff00, event);
-		registerBlock(event.getRegistry(), new VibrantFluid(fluidVibrant), fluidVibrant.getName());
-		TinkersCompendium.proxy.registerFluidModels(fluidVibrant);
-
-		fluidSlush = regFluid("slush", 0xbfefff, event);
-		registerClassicBlock(event.getRegistry(), fluidSlush);
-		TinkersCompendium.proxy.registerFluidModels(fluidSlush);
-
-		fluidQuartz = regMoltenFluid("quartz", 0xdddddd, event);
-		fluidDragonsBreath = regMoltenFluid("dragonsbreath", 0x7f00b7, event);
-	}
-
-	@SubscribeEvent
-	public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
-//		for (MaterialHelper m : materials) {
-//			if (!TCConfig.materials.isBlacklisted(m.name))
-//				m.setupRecipes(event);
-//		}
-	}
-
-	static FluidColored regFluid(String name, int color, RegistryEvent.Register<Block> event) {
-		FluidColored f = new FluidColored(name, color);
-		f.setUnlocalizedName(Reference.MOD_ID + "." + name);
-		FluidRegistry.registerFluid(f);
-		FluidRegistry.addBucketForFluid(f);
-		return f;
-	}
-
-	static FluidMolten regMoltenFluid(String name, int color, RegistryEvent.Register<Block> event) {
-		FluidMolten f = new FluidMolten(name, color);
-		f.setUnlocalizedName(Reference.MOD_ID + "." + name);
-		FluidRegistry.registerFluid(f);
-		FluidRegistry.addBucketForFluid(f);
-
-		registerMoltenBlock(event.getRegistry(), f);
-
-		TinkersCompendium.proxy.registerFluidModels(f);
-
-		return f;
-	}
-
-	/** Registers a non-burning water based block for the fluid */
-	public static BlockFluidBase registerClassicBlock(IForgeRegistry<Block> registry, Fluid fluid) {
-		return registerBlock(registry, new BlockTinkerFluid(fluid, net.minecraft.block.material.Material.WATER),
-				fluid.getName());
-	}
-
-	/** Registers a hot lava-based block for the fluid, prefix with molten_ */
-	public static BlockMolten registerMoltenBlock(IForgeRegistry<Block> registry, Fluid fluid) {
-		return registerBlock(registry, new BlockMolten(fluid), "molten_" + fluid.getName()); // molten_foobar prefix
-	}
-
-	protected static <T extends Block> T registerBlock(IForgeRegistry<Block> registry, T block, String name) {
-		if (!name.equals(name.toLowerCase(Locale.US))) {
-			throw new IllegalArgumentException(
-					String.format("Unlocalized names need to be all lowercase! Block: %s", name));
-		}
-
-		String prefixedName = Util.prefix(name);
-		block.setTranslationKey(prefixedName);
-
-		register(registry, block, name);
-		return block;
-	}
-
-	protected static <T extends IForgeRegistryEntry<T>> T register(IForgeRegistry<T> registry, T thing, String name) {
-		thing.setRegistryName(Util.getResource(name));
-		registry.register(thing);
-		return thing;
 	}
 }

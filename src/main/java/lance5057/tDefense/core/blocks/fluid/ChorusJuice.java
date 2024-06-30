@@ -4,7 +4,6 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
@@ -24,7 +23,7 @@ public class ChorusJuice extends BlockFluidClassic {
 			double d0 = ent.posX + (world.rand.nextDouble() - 0.5D) * 64.0D;
 			double d1 = ent.posY + (double) (world.rand.nextInt(64) - 32);
 			double d2 = ent.posZ + (world.rand.nextDouble() - 0.5D) * 64.0D;
-			
+
 			this.teleportTo(ent, d0, d1, d2);
 		}
 	}
@@ -37,7 +36,7 @@ public class ChorusJuice extends BlockFluidClassic {
 		boolean flag = entity.attemptTeleport(event.getTargetX(), event.getTargetY(), event.getTargetZ());
 
 		if (flag) {
-			entity.world.playSound((EntityPlayer) null, entity.prevPosX, entity.prevPosY, entity.prevPosZ,
+			entity.world.playSound(null, entity.prevPosX, entity.prevPosY, entity.prevPosZ,
 					SoundEvents.ENTITY_ENDERMEN_TELEPORT, entity.getSoundCategory(), 1.0F, 1.0F);
 			entity.playSound(SoundEvents.ENTITY_ENDERMEN_TELEPORT, 1.0F, 1.0F);
 		}

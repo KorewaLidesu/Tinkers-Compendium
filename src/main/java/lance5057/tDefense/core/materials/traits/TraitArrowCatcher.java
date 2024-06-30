@@ -12,26 +12,26 @@ import slimeknights.tconstruct.tools.common.entity.EntityArrow;
 
 public class TraitArrowCatcher extends AbstractTDTrait {
 
-	public TraitArrowCatcher() {
-		super("arrowcatcher", TextFormatting.WHITE);
-	}
+    public TraitArrowCatcher() {
+        super("arrowcatcher", TextFormatting.WHITE);
+    }
 
-	@Override
-	public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
-		if (e.getSource().getImmediateSource() instanceof EntityArrow) {
-			if (e.getEntityLiving() instanceof EntityPlayer) {
-				EntityPlayer p = (EntityPlayer) e.getEntityLiving();
-				if (p.world.rand.nextInt(100) < 20 && e.getSource().getTrueSource() != p) {
-					EntityArrow arrow = (EntityArrow) e.getSource().getImmediateSource();
-					ItemStack stack = arrow.tinkerProjectile.getItemStack();
+    @Override
+    public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
+        if (e.getSource().getImmediateSource() instanceof EntityArrow) {
+            if (e.getEntityLiving() instanceof EntityPlayer) {
+                EntityPlayer p = (EntityPlayer) e.getEntityLiving();
+                if (p.world.rand.nextInt(100) < 20 && e.getSource().getTrueSource() != p) {
+                    EntityArrow arrow = (EntityArrow) e.getSource().getImmediateSource();
+                    ItemStack stack = arrow.tinkerProjectile.getItemStack();
 
-					NBTTagList mats = TagUtil.getBaseMaterialsTagList(stack);
-					ItemStack head = TinkerTools.arrowHead
-							.getItemstackWithMaterial(TinkerRegistry.getMaterial(mats.getStringTagAt(0)));
+                    NBTTagList mats = TagUtil.getBaseMaterialsTagList(stack);
+                    ItemStack head = TinkerTools.arrowHead
+                            .getItemstackWithMaterial(TinkerRegistry.getMaterial(mats.getStringTagAt(0)));
 
-					p.addItemStackToInventory(head);
-				}
-			}
-		}
-	}
+                    p.addItemStackToInventory(head);
+                }
+            }
+        }
+    }
 }

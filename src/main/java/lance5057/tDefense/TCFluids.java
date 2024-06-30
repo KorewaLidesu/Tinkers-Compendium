@@ -1,20 +1,17 @@
 package lance5057.tDefense;
 
-import java.util.Locale;
-import java.util.Map;
-
 import gnu.trove.map.hash.THashMap;
 import net.minecraft.block.Block;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import slimeknights.tconstruct.library.fluid.FluidMolten;
 import slimeknights.tconstruct.smeltery.block.BlockMolten;
 
+import java.util.Locale;
+import java.util.Map;
+
 public class TCFluids {
-	
+
 	public static final Map<String, FluidMolten> fluids = new THashMap();
 
 	public static FluidMolten fluidMetal(String name, int color, int temp) {

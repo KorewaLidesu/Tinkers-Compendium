@@ -6,14 +6,14 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class TraitPoundofFlesh extends AbstractTDTrait {
 
-	public TraitPoundofFlesh() {
-		super("poundofflesh", 0x6d3300);
-	}
+    public TraitPoundofFlesh() {
+        super("poundofflesh", 0x6d3300);
+    }
 
-	@Override
-	public void onBlock(ItemStack tool, EntityPlayer player, LivingHurtEvent event) {
-		if (player.getFoodStats().getSaturationLevel() < 5)
-			player.getFoodStats().setFoodSaturationLevel(event.getAmount() / 2);
-	}
+    @Override
+    public void onBlock(ItemStack tool, EntityPlayer player, LivingHurtEvent event) {
+        if (player.getFoodStats().getSaturationLevel() < 5)
+            player.getFoodStats().setFoodSaturationLevel(event.getAmount() / 2);
+    }
 
 }

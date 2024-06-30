@@ -1,10 +1,5 @@
 package lance5057.tDefense;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import lance5057.tDefense.util.ArmorTagUtil;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommand;
@@ -16,6 +11,10 @@ import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.text.TextComponentString;
 import net.minecraft.world.World;
+
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TCCommands extends CommandBase implements ICommand {
 	private final List aliases;
@@ -89,8 +88,8 @@ public class TCCommands extends CommandBase implements ICommand {
 			//
 			// }
 			if (commandIn[0].equals("toggleDebugMode")) {
-				TinkersCompendium.config.debug = !TinkersCompendium.config.debug;
-				if (TinkersCompendium.config.debug) {
+				TCConfig.debug = !TCConfig.debug;
+				if (TCConfig.debug) {
 					sender.sendMessage(new TextComponentString("[TDefense] - Debug Mode on."));
 				} else {
 					sender.sendMessage(new TextComponentString("[TDefense] - Debug Mode off."));
@@ -106,7 +105,7 @@ public class TCCommands extends CommandBase implements ICommand {
 							ArmorTagUtil.setVisor(s, !ArmorTagUtil.getVisor(s));
 							ArmorTagUtil.setVisorTime(s, 0.0f);
 							s.serializeNBT();
-							if (TinkersCompendium.config.debug) {
+							if (TCConfig.debug) {
 								if (ArmorTagUtil.getVisor(s))
 									sender.sendMessage(new TextComponentString("[TDefense] - Visor closed."));
 								else
@@ -129,7 +128,7 @@ public class TCCommands extends CommandBase implements ICommand {
 	//
 	@Override
 	public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args,
-			@Nullable BlockPos pos) {
+										  @Nullable BlockPos pos) {
 		return commands;
 	}
 

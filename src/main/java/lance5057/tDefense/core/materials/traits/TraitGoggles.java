@@ -8,24 +8,20 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class TraitGoggles extends AbstractTDTrait {
 
-	public TraitGoggles() {
-		super("goggles", TextFormatting.AQUA);
-	}
+    public TraitGoggles() {
+        super("goggles", TextFormatting.AQUA);
+    }
 
-	@Override
-	@SideOnly(Side.CLIENT)
-	public void alterFogDensity(FogDensity event)
-	{
-		if(event.getEntity().isInsideOfMaterial(Material.WATER))
-		{
-			event.setDensity(0.0001f);
-		}
-		else
-		{
-			event.setDensity(0.0001f);
-		}
-		
-		event.setCanceled(true); 
-	}
+    @Override
+    @SideOnly(Side.CLIENT)
+    public void alterFogDensity(FogDensity event) {
+        if (event.getEntity().isInsideOfMaterial(Material.WATER)) {
+            event.setDensity(0.0001f);
+        } else {
+            event.setDensity(0.0001f);
+        }
+
+        event.setCanceled(true);
+    }
 
 }

@@ -1,16 +1,8 @@
 package lance5057.tDefense.core.library;
 
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Map;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.creativetab.CreativeTabs;
@@ -37,6 +29,12 @@ import slimeknights.tconstruct.library.traits.ITrait;
 import slimeknights.tconstruct.library.utils.TagUtil;
 import slimeknights.tconstruct.library.utils.Tags;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.Map;
+
 public class ArmorPart extends MaterialItem implements IToolPart {
 
   protected int cost;
@@ -53,12 +51,12 @@ public class ArmorPart extends MaterialItem implements IToolPart {
 
   @Override
   public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
-    if(this.isInCreativeTab(tab)) {
-      for(Material mat : TinkerRegistry.getAllMaterials()) {
+    if (this.isInCreativeTab(tab)) {
+      for (Material mat : TinkerRegistry.getAllMaterials()) {
         // check if the material makes sense for this item (is it usable to build stuff?)
-        if(canUseMaterial(mat)) {
+        if (canUseMaterial(mat)) {
           subItems.add(getItemstackWithMaterial(mat));
-          if(!Config.listAllPartMaterials) {
+          if (!Config.listAllPartMaterials) {
             break;
           }
         }
@@ -68,9 +66,9 @@ public class ArmorPart extends MaterialItem implements IToolPart {
 
   @Override
   public boolean canUseMaterial(Material mat) {
-    for(ToolCore tool : TinkerRegistry.getTools()) {
-      for(PartMaterialType pmt : tool.getRequiredComponents()) {
-        if(pmt.isValid(this, mat)) {
+    for (ToolCore tool : TinkerRegistry.getTools()) {
+      for (PartMaterialType pmt : tool.getRequiredComponents()) {
+        if (pmt.isValid(this, mat)) {
           return true;
         }
       }
@@ -87,18 +85,17 @@ public class ArmorPart extends MaterialItem implements IToolPart {
     // Material traits/info
     boolean shift = Util.isShiftKeyDown();
 
-    if(!checkMissingMaterialTooltip(stack, tooltip)) {
+    if (!checkMissingMaterialTooltip(stack, tooltip)) {
       tooltip.addAll(getTooltipTraitInfo(material));
     }
 
     // Stats
-    if(Config.extraTooltips) {
-      if(!shift) {
+    if (Config.extraTooltips) {
+      if (!shift) {
         // info tooltip for detailed and component info
         tooltip.add("");
         tooltip.add(Util.translate("tooltip.tool.holdShift"));
-      }
-      else {
+      } else {
         tooltip.addAll(getTooltipStatsInfo(material));
       }
     }
@@ -111,14 +108,14 @@ public class ArmorPart extends MaterialItem implements IToolPart {
     Map<String, List<ITrait>> mapping = Maps.newConcurrentMap();
 
     // go through all stats of the material, and check if they have a use, build the map from them
-    for(IMaterialStats stat : material.getAllStats()) {
-      if(hasUseForStat(stat.getIdentifier())) {
+    for (IMaterialStats stat : material.getAllStats()) {
+      if (hasUseForStat(stat.getIdentifier())) {
         List<ITrait> traits = material.getAllTraitsForStats(stat.getIdentifier());
-        if(!traits.isEmpty()) {
+        if (!traits.isEmpty()) {
           boolean unified = false;
-          for(Map.Entry<String, List<ITrait>> entry : mapping.entrySet()) {
+          for (Map.Entry<String, List<ITrait>> entry : mapping.entrySet()) {
             // group together if identical
-            if(entry.getValue().equals(traits)) {
+            if (entry.getValue().equals(traits)) {
               mapping.put(entry.getKey() + ", " + stat.getLocalizedName(), entry.getValue());
               mapping.remove(entry.getKey());
               unified = true;
@@ -126,7 +123,7 @@ public class ArmorPart extends MaterialItem implements IToolPart {
             }
           }
 
-          if(!unified) {
+          if (!unified) {
             mapping.put(stat.getLocalizedName(), traits);
           }
         }
@@ -137,22 +134,22 @@ public class ArmorPart extends MaterialItem implements IToolPart {
     boolean withType = mapping.size() > 1;
 
     // convert the entries into tooltips
-    for(Map.Entry<String, List<ITrait>> entry : mapping.entrySet()) {
+    for (Map.Entry<String, List<ITrait>> entry : mapping.entrySet()) {
       // add the traits in "Stattype: Trait1, Trait2,..." style
       StringBuilder sb = new StringBuilder();
-      if(withType) {
-        sb.append(TextFormatting.ITALIC.toString());
+      if (withType) {
+        sb.append(TextFormatting.ITALIC);
         sb.append(entry.getKey());
         sb.append(": ");
-        sb.append(TextFormatting.RESET.toString());
+        sb.append(TextFormatting.RESET);
       }
       sb.append(material.getTextColor());
       List<ITrait> traits = entry.getValue();
-      if(!traits.isEmpty()) {
+      if (!traits.isEmpty()) {
         ListIterator<ITrait> iter = traits.listIterator();
 
         sb.append(iter.next().getLocalizedName());
-        while(iter.hasNext()) {
+        while (iter.hasNext()) {
           sb.append(", ").append(iter.next().getLocalizedName());
         }
 
@@ -166,10 +163,10 @@ public class ArmorPart extends MaterialItem implements IToolPart {
   public List<String> getTooltipStatsInfo(Material material) {
     ImmutableList.Builder<String> builder = ImmutableList.builder();
 
-    for(IMaterialStats stat : material.getAllStats()) {
-      if(hasUseForStat(stat.getIdentifier())) {
+    for (IMaterialStats stat : material.getAllStats()) {
+      if (hasUseForStat(stat.getIdentifier())) {
         List<String> text = stat.getLocalizedInfo();
-        if(!text.isEmpty()) {
+        if (!text.isEmpty()) {
           builder.add("");
           builder.add(TextFormatting.WHITE.toString() + TextFormatting.UNDERLINE + stat.getLocalizedName());
           builder.addAll(stat.getLocalizedInfo());
@@ -182,9 +179,9 @@ public class ArmorPart extends MaterialItem implements IToolPart {
 
   public List<String> getAddedByInfo(Material material) {
     ImmutableList.Builder<String> builder = ImmutableList.builder();
-    if(TinkerRegistry.getTrace(material) != null) {
+    if (TinkerRegistry.getTrace(material) != null) {
       String materialInfo = I18n.translateToLocalFormatted("tooltip.part.material_added_by",
-                                                           TinkerRegistry.getTrace(material).getName());
+              TinkerRegistry.getTrace(material).getName());
       builder.add("");
       builder.add(materialInfo);
     }
@@ -199,7 +196,7 @@ public class ArmorPart extends MaterialItem implements IToolPart {
     String locString = getTranslationKey() + "." + material.getIdentifier();
 
     // custom name?
-    if(I18n.canTranslate(locString)) {
+    if (I18n.canTranslate(locString)) {
       return Util.translate(locString);
     }
 
@@ -216,9 +213,9 @@ public class ArmorPart extends MaterialItem implements IToolPart {
 
   @Override
   public boolean hasUseForStat(String stat) {
-    for(ToolCore tool : TinkerRegistry.getTools()) {
-      for(PartMaterialType pmt : tool.getRequiredComponents()) {
-        if(pmt.isValidItem(this) && pmt.usesStat(stat)) {
+    for (ToolCore tool : TinkerRegistry.getTools()) {
+      for (PartMaterialType pmt : tool.getRequiredComponents()) {
+        if (pmt.isValidItem(this) && pmt.usesStat(stat)) {
           return true;
         }
       }
@@ -234,21 +231,19 @@ public class ArmorPart extends MaterialItem implements IToolPart {
   public boolean checkMissingMaterialTooltip(ItemStack stack, List<String> tooltip, String statIdentifier) {
     Material material = getMaterial(stack);
 
-    if(material == Material.UNKNOWN) {
+    if (material == Material.UNKNOWN) {
       NBTTagCompound tag = TagUtil.getTagSafe(stack);
       String materialID = tag.getString(Tags.PART_MATERIAL);
 
       String error;
-      if(!materialID.isEmpty()) {
+      if (!materialID.isEmpty()) {
         error = I18n.translateToLocalFormatted("tooltip.part.missing_material", materialID);
-      }
-      else {
+      } else {
         error = I18n.translateToLocal("tooltip.part.missing_info");
       }
       tooltip.addAll(LocUtils.getTooltips(error));
       return true;
-    }
-    else if(statIdentifier != null && material.getStats(statIdentifier) == null) {
+    } else if (statIdentifier != null && material.getStats(statIdentifier) == null) {
       tooltip.addAll(LocUtils.getTooltips(Util.translateFormatted("tooltip.part.missing_stats", material.getLocalizedName(), statIdentifier)));
       return true;
     }

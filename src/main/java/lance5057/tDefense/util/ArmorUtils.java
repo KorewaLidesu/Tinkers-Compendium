@@ -8,12 +8,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class ArmorUtils {
-	public static boolean isCloth(ItemStack item) {
-		Item i = item.getItem();
-		if (i instanceof TinkersHood || i instanceof TinkersShawl || i instanceof TinkersRobe
-				|| i instanceof TinkersShoes) {
-			return true;
-		}
-		return false;
-	}
+    public static boolean isCloth(ItemStack item) {
+        Item i = item.getItem();
+        return i instanceof TinkersHood || i instanceof TinkersShawl || i instanceof TinkersRobe
+                || i instanceof TinkersShoes;
+    }
 }

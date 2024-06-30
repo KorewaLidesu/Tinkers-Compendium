@@ -1,21 +1,19 @@
 package lance5057.tDefense.core.workstations.registries.hammeringtable.crafttweaker;
 
-import static crafttweaker.api.minecraft.CraftTweakerMC.getItemStack;
-import static crafttweaker.api.minecraft.CraftTweakerMC.getItemStacks;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import crafttweaker.CraftTweakerAPI;
 import crafttweaker.annotations.ZenRegister;
 import crafttweaker.api.item.IIngredient;
 import crafttweaker.api.item.IItemStack;
-import crafttweaker.mc1120.actions.ActionAddFurnaceRecipe;
-import crafttweaker.mc1120.actions.ActionFurnaceRemoveAllRecipes;
 import net.minecraft.item.ItemStack;
 import stanhebben.zenscript.annotations.Optional;
 import stanhebben.zenscript.annotations.ZenClass;
 import stanhebben.zenscript.annotations.ZenMethod;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import static crafttweaker.api.minecraft.CraftTweakerMC.getItemStack;
+import static crafttweaker.api.minecraft.CraftTweakerMC.getItemStacks;
 
 @ZenClass("mods.tinkerscompendium.HammeringTable")
 @ZenRegister
@@ -29,7 +27,7 @@ public class HammeringTableManager {
 
     @ZenMethod
     public void remove(IIngredient output, @Optional IIngredient input) {
-        if(output == null)
+        if (output == null)
             throw new IllegalArgumentException("output cannot be null");
 
         recipesToRemove.add(new ActionRemoveHammeringRecipe(output, input));
@@ -42,8 +40,8 @@ public class HammeringTableManager {
     @ZenMethod
     public void addRecipe(IItemStack output, IIngredient input) {
         List<IItemStack> items = input.getItems();
-        if(items == null) {
-            CraftTweakerAPI.logError("Cannot turn " + input.toString() + " into a furnace recipe");
+        if (items == null) {
+            CraftTweakerAPI.logError("Cannot turn " + input + " into a furnace recipe");
             return;
         }
         ItemStack[] items2 = getItemStacks(items);

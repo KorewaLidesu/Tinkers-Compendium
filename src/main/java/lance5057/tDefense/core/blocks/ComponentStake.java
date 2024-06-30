@@ -4,7 +4,6 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirectional;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.state.BlockStateContainer;
@@ -25,13 +24,12 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ComponentStake extends Block {
 
+	public static final PropertyDirection FACING = BlockDirectional.FACING;
+	public static final PropertyBool CONNECTED = PropertyBool.create("connected");
 	protected static final AxisAlignedBB IRON_ROD_VERTICAL_AABB = new AxisAlignedBB(0.375D, 0.0D, 0.375D, 0.625D, 1.0D, 0.625D);
 	protected static final AxisAlignedBB IRON_ROD_NS_AABB = new AxisAlignedBB(0.375D, 0.375D, 0.0D, 0.625D, 0.625D, 1.0D);
 	protected static final AxisAlignedBB IRON_ROD_EW_AABB = new AxisAlignedBB(0.0D, 0.375D, 0.375D, 1.0D, 0.625D, 0.625D);
 
-	public static final PropertyDirection FACING = BlockDirectional.FACING;
-	public static final PropertyBool CONNECTED = PropertyBool.create("connected");
-	
 	public ComponentStake() {
 		super(Material.IRON);
 		setHardness(5.0F);
@@ -53,13 +51,13 @@ public class ComponentStake extends Block {
 
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		switch(((EnumFacing) state.getValue(FACING)).getAxis()) {
-		case X:
-			return IRON_ROD_EW_AABB;
-		case Z:
-			return IRON_ROD_NS_AABB;
-		default:
-			return IRON_ROD_VERTICAL_AABB;
+		switch (state.getValue(FACING).getAxis()) {
+			case X:
+				return IRON_ROD_EW_AABB;
+			case Z:
+				return IRON_ROD_NS_AABB;
+			default:
+				return IRON_ROD_VERTICAL_AABB;
 		}
 	}
 
@@ -67,10 +65,10 @@ public class ComponentStake extends Block {
 	public IBlockState getStateForPlacement(World worldIn, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		IBlockState iblockstate = worldIn.getBlockState(pos.offset(facing.getOpposite()));
 
-		if(iblockstate.getBlock() == Blocks.END_ROD) {
-			EnumFacing enumfacing = (EnumFacing)iblockstate.getValue(FACING);
+		if (iblockstate.getBlock() == Blocks.END_ROD) {
+			EnumFacing enumfacing = iblockstate.getValue(FACING);
 
-			if(enumfacing == facing)
+			if (enumfacing == facing)
 				return getDefaultState().withProperty(FACING, facing.getOpposite());
 		}
 
@@ -84,17 +82,17 @@ public class ComponentStake extends Block {
 
 	@Override
 	public IBlockState withRotation(IBlockState state, Rotation rot) {
-		return state.withProperty(FACING, rot.rotate((EnumFacing) state.getValue(FACING)));
+		return state.withProperty(FACING, rot.rotate(state.getValue(FACING)));
 	}
 
 	@Override
 	public IBlockState withMirror(IBlockState state, Mirror mirrorIn) {
-		return state.withProperty(FACING, mirrorIn.mirror((EnumFacing) state.getValue(FACING)));
+		return state.withProperty(FACING, mirrorIn.mirror(state.getValue(FACING)));
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return ((EnumFacing) state.getValue(FACING)).getIndex();
+		return state.getValue(FACING).getIndex();
 	}
 
 	@Override
@@ -106,7 +104,7 @@ public class ComponentStake extends Block {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] {FACING, CONNECTED});
+		return new BlockStateContainer(this, FACING, CONNECTED);
 	}
 
 	@Override
@@ -115,5 +113,5 @@ public class ComponentStake extends Block {
 		Block block = otherState.getBlock();
 		return state.withProperty(CONNECTED, block != this);
 	}
-	
+
 }

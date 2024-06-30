@@ -10,36 +10,31 @@ import slimeknights.tconstruct.library.utils.TagUtil;
 
 public class TDToolHelper {
 
-	public static boolean checkIfMetal(ItemStack item) {
-		
-		if(item.getItem() instanceof ArmorCore)
-		{
-			NBTTagList list = TagUtil.getBaseMaterialsTagList(item);
-	
-			for (int i = 0; i < list.tagCount(); i++) {
-				String s = list.getStringTagAt(i);
-				if (s != "obsidian") {
-					Material m = TinkerRegistry.getMaterial(s);
-					if(m.hasFluid())
-						return true;
-				}
-			}
-		}
-		else
-		{
-			if(item.getItem() instanceof ItemTool)
-			{
-				ItemTool i = (ItemTool) item.getItem();
-				
-				if(i.getToolMaterialName() != "WOOD" ||
-						i.getToolMaterialName() != "STONE")
-				{
-					
-				}
-			}
-		}
+    public static boolean checkIfMetal(ItemStack item) {
 
-		return false;
-	}
+        if (item.getItem() instanceof ArmorCore) {
+            NBTTagList list = TagUtil.getBaseMaterialsTagList(item);
+
+            for (int i = 0; i < list.tagCount(); i++) {
+                String s = list.getStringTagAt(i);
+                if (s != "obsidian") {
+                    Material m = TinkerRegistry.getMaterial(s);
+                    if (m.hasFluid())
+                        return true;
+                }
+            }
+        } else {
+            if (item.getItem() instanceof ItemTool) {
+                ItemTool i = (ItemTool) item.getItem();
+
+                if (i.getToolMaterialName() != "WOOD" ||
+                        i.getToolMaterialName() != "STONE") {
+
+                }
+            }
+        }
+
+        return false;
+    }
 
 }
