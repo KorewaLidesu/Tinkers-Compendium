@@ -38,14 +38,14 @@ public class TCItems {
 	}
 	
 	public static Item registerItem(String name, CreativeTabs tab) {
-		Item item = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setUnlocalizedName(name);
+		Item item = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setTranslationKey(name);
 		item.setCreativeTab(tab);
 		items.add(item);
 		return item;
 	}
 	
 	public static Item registerItem(String name, Item item, CreativeTabs tab) {
-		item.setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setUnlocalizedName(name);
+		item.setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setTranslationKey(name);
 		item.setCreativeTab(tab);
 		items.add(item);
 		return item;
@@ -53,7 +53,7 @@ public class TCItems {
 
 	public static Item registerItemBlock(String name, Block b, CreativeTabs tab) {
 		Item item = new ItemBlock(b).setRegistryName(new ResourceLocation(Reference.MOD_ID, name))
-				.setUnlocalizedName(name);
+				.setTranslationKey(name);
 		item.setCreativeTab(tab);
 		items.add(item);
 		return item;
@@ -61,7 +61,7 @@ public class TCItems {
 	
 	public static Item registerItemBlock(String name, Item item, Block b, CreativeTabs tab) {
 		item.setRegistryName(new ResourceLocation(Reference.MOD_ID, name))
-				.setUnlocalizedName(name);
+				.setTranslationKey(name);
 		item.setCreativeTab(tab);
 		items.add(item);
 		return item;

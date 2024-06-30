@@ -15,6 +15,6 @@ public class RoundShield extends Shield
 	    super(PartMaterialType.handle(TinkerTools.toolRod),
 	    	new PartMaterialType(TDParts.armorPlate, ShieldMaterialStats.TYPE),
 	            PartMaterialType.head(TinkerTools.panHead));
-		setUnlocalizedName("roundshield");
+		setTranslationKey("roundshield");
 	}
 }

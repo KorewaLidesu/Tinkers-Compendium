@@ -16,6 +16,6 @@ public class TowerShield extends Shield
 			new PartMaterialType(TinkerTools.largePlate, ShieldMaterialStats.TYPE),
 			new PartMaterialType(TinkerTools.largePlate, ShieldMaterialStats.TYPE),
 			PartMaterialType.extra(TDParts.rivets));
-		setUnlocalizedName("towershield");
+		setTranslationKey("towershield");
 	}
 }

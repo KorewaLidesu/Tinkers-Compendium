@@ -41,7 +41,7 @@ public class TinkersGrieves extends ArmorCore {
 				new PartMaterialType(TDParts.chainmail, LegsMaterialStats.TYPE),
 				PartMaterialType.handle(TDParts.filigree), PartMaterialType.extra(TDParts.clasp),
 				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE));
-		setUnlocalizedName("tinkersgrieves");
+		setTranslationKey("tinkersgrieves");
 	}
 	
 	@Override

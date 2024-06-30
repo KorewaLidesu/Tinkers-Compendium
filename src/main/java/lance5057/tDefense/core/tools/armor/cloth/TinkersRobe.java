@@ -42,7 +42,7 @@ public class TinkersRobe extends ArmorCore {
 	public TinkersRobe() {
 		super(EntityEquipmentSlot.LEGS, new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
 				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE), PartMaterialType.extra(TDParts.clasp));
-		setUnlocalizedName("tinkerrobe");
+		setTranslationKey("tinkerrobe");
 	}
 
 	@Override

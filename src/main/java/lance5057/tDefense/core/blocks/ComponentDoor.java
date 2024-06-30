@@ -84,7 +84,7 @@ public class ComponentDoor extends Block
      */
     public String getLocalizedName()
     {
-        return I18n.translateToLocal((this.getUnlocalizedName() + ".name").replaceAll("tile", "item"));
+        return I18n.translateToLocal((this.getTranslationKey() + ".name").replaceAll("tile", "item"));
     }
 
     /**
@@ -114,12 +114,12 @@ public class ComponentDoor extends Block
 
     private int getCloseSound()
     {
-        return this.blockMaterial == Material.IRON ? 1011 : 1012;
+        return this.material == Material.IRON ? 1011 : 1012;
     }
 
     private int getOpenSound()
     {
-        return this.blockMaterial == Material.IRON ? 1005 : 1006;
+        return this.material == Material.IRON ? 1005 : 1006;
     }
 
     /**
@@ -164,7 +164,7 @@ public class ComponentDoor extends Block
      */
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        if (this.blockMaterial == Material.IRON)
+        if (this.material == Material.IRON)
         {
             return false;
         }
@@ -428,7 +428,7 @@ public class ComponentDoor extends Block
      */
     public IBlockState getStateFromMeta(int meta)
     {
-        return (meta & 8) > 0 ? this.getDefaultState().withProperty(HALF, ComponentDoor.EnumDoorHalf.UPPER).withProperty(HINGE, (meta & 1) > 0 ? ComponentDoor.EnumHingePosition.RIGHT : ComponentDoor.EnumHingePosition.LEFT).withProperty(POWERED, Boolean.valueOf((meta & 2) > 0)) : this.getDefaultState().withProperty(HALF, ComponentDoor.EnumDoorHalf.LOWER).withProperty(FACING, EnumFacing.getHorizontal(meta & 3).rotateYCCW()).withProperty(OPEN, Boolean.valueOf((meta & 4) > 0));
+        return (meta & 8) > 0 ? this.getDefaultState().withProperty(HALF, ComponentDoor.EnumDoorHalf.UPPER).withProperty(HINGE, (meta & 1) > 0 ? ComponentDoor.EnumHingePosition.RIGHT : ComponentDoor.EnumHingePosition.LEFT).withProperty(POWERED, Boolean.valueOf((meta & 2) > 0)) : this.getDefaultState().withProperty(HALF, ComponentDoor.EnumDoorHalf.LOWER).withProperty(FACING, EnumFacing.byHorizontalIndex(meta & 3).rotateYCCW()).withProperty(OPEN, Boolean.valueOf((meta & 4) > 0));
     }
 
     /**
@@ -482,7 +482,7 @@ public class ComponentDoor extends Block
 
     public static EnumFacing getFacing(int combinedMeta)
     {
-        return EnumFacing.getHorizontal(combinedMeta & 3).rotateYCCW();
+        return EnumFacing.byHorizontalIndex(combinedMeta & 3).rotateYCCW();
     }
 
     protected static boolean isOpen(int combinedMeta)

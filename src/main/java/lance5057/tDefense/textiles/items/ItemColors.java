@@ -18,10 +18,10 @@ public class ItemColors extends Item
     }
 
     @Override
-    public String getUnlocalizedName(ItemStack stack)
+    public String getTranslationKey(ItemStack stack)
     {
         int i = stack.getMetadata();
-        return super.getUnlocalizedName() + "." + EnumDyeColor.byDyeDamage(i).getUnlocalizedName();
+        return super.getTranslationKey() + "." + EnumDyeColor.byDyeDamage(i).getTranslationKey();
     }
 
     @Override

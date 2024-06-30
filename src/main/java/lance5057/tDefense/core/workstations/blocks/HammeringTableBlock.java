@@ -18,7 +18,7 @@ public class HammeringTableBlock extends GuilessManualWorkstationBase {
 
 	public HammeringTableBlock() {
 		super();
-		this.setUnlocalizedName("hammeringtable");
+		this.setTranslationKey("hammeringtable");
 		this.setRegistryName("hammeringtable");
 		this.setCreativeTab(TinkersCompendium.tab);
 		this.setSoundType(SoundType.ANVIL);

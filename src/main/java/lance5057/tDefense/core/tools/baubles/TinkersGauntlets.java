@@ -16,7 +16,7 @@ package lance5057.tDefense.core.tools.baubles;
 //	public TinkersGauntlets()
 //	{
 //		super(0, -1);
-//		setUnlocalizedName("tinkersgauntlets");
+//		setTranslationKey("tinkersgauntlets");
 //	}
 //
 //	@Override

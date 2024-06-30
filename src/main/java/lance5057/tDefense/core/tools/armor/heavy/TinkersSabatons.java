@@ -41,7 +41,7 @@ public class TinkersSabatons extends ArmorCore {
 				new PartMaterialType(TDParts.armorPlate, FeetMaterialStats.TYPE),
 				PartMaterialType.handle(TDParts.filigree), PartMaterialType.extra(TDParts.rivets),
 				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE));
-		setUnlocalizedName("tinkerssabatons");
+		setTranslationKey("tinkerssabatons");
 	}
 
 	@Override

@@ -130,7 +130,7 @@ public class CommonProxy implements IGuiHandler {
 	}
 
 //	private static Item registerItem(Register<Item> event, Item item, String string) {
-//		item.setUnlocalizedName(string).setRegistryName(Reference.MOD_ID, string);
+//		item.setTranslationKey(string).setRegistryName(Reference.MOD_ID, string);
 //		event.getRegistry().register(item);
 //		return item;
 //	}

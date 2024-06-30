@@ -28,7 +28,7 @@ public abstract class BlocksBase {
 	
 	protected Block setupRegister(String name, CreativeTabs tabName, float hardness) 
 	{
-		Block block = new Block(Material.IRON).setCreativeTab(tabName).setUnlocalizedName(name).setRegistryName(Reference.MOD_ID, name).setHardness(hardness);
+		Block block = new Block(Material.IRON).setCreativeTab(tabName).setTranslationKey(name).setRegistryName(Reference.MOD_ID, name).setHardness(hardness);
 		blockList.add(block);
 		return block;
 	}
@@ -36,7 +36,7 @@ public abstract class BlocksBase {
 	protected ItemBlock setupRegister(String name, int size, CreativeTabs tabName, Block block) 
 	{
 		ItemBlock item = new ItemBlock(block);
-		item.setCreativeTab(tabName).setMaxStackSize(size).setUnlocalizedName(name).setRegistryName(Reference.MOD_ID, name).setCreativeTab(tabName);
+		item.setCreativeTab(tabName).setMaxStackSize(size).setTranslationKey(name).setRegistryName(Reference.MOD_ID, name).setCreativeTab(tabName);
 		itemList.add(item);
 		return item;
 	}
@@ -46,7 +46,7 @@ public abstract class BlocksBase {
 	
 //	protected MetaItem registerMeta(String name, String[] names,int size) 
 //	{
-//		Item item = new MetaItem(names).setCreativeTab(tabName).setMaxStackSize(size).setUnlocalizedName(name).setRegistryName(Reference.MOD_ID, name);
+//		Item item = new MetaItem(names).setCreativeTab(tabName).setMaxStackSize(size).setTranslationKey(name).setRegistryName(Reference.MOD_ID, name);
 //
 //		GameRegistry.register(item);
 //		return (MetaItem) item;

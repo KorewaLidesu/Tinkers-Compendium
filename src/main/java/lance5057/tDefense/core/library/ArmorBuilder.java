@@ -542,7 +542,7 @@ public final class ArmorBuilder {
 			}
 
 			modifier.applyEffect(rootNBT, tag);
-			if (!tag.hasNoTags()) {
+			if (!tag.isEmpty()) {
 				int indexNew = TinkerUtil.getIndexInList(modifiersTag, modifier.getIdentifier());
 				if (indexNew >= 0) {
 					modifiersTag.set(indexNew, tag);

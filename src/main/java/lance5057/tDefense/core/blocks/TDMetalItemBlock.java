@@ -20,8 +20,8 @@ public class TDMetalItemBlock extends ItemBlock {
 
 	  // create a unique unlocalised name for each colour, so that we can give each one a unique name
 	  @Override
-	  public String getUnlocalizedName(ItemStack stack)
+	  public String getTranslationKey(ItemStack stack)
 	  {
-	    return super.getUnlocalizedName() + "." + stack.getMetadata();
+	    return super.getTranslationKey() + "." + stack.getMetadata();
 	}
 }

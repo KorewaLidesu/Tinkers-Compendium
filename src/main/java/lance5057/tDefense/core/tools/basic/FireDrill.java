@@ -36,7 +36,7 @@ public class FireDrill extends ToolCore {
 		super(PartMaterialType.head(TinkerTools.bowLimb), PartMaterialType.bowstring(TinkerTools.bowString),
 				PartMaterialType.handle(TinkerTools.toolRod));
 
-		setUnlocalizedName("firedrill");
+		setTranslationKey("firedrill");
 	}
 	
 	@Override

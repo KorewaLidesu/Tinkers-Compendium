@@ -36,7 +36,7 @@ public class TinkersHauberk extends ArmorCore {
 				PartMaterialType.handle(TDParts.clasp),
 				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
 				PartMaterialType.extra(TDParts.rivets));
-		setUnlocalizedName("tinkershauberk");
+		setTranslationKey("tinkershauberk");
 	}
 
 	@Override

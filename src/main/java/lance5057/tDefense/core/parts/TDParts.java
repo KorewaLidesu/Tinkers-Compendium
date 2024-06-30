@@ -152,7 +152,7 @@ public class TDParts extends ModuleBase
 	private static ToolPart regToolPart(int castVolume, String name, RegistryEvent.Register<Item> event)
 	{
 		ToolPart part = new ToolPart(castVolume);
-		part.setUnlocalizedName(name).setRegistryName(new ResourceLocation(Reference.MOD_ID,name));
+		part.setTranslationKey(name).setRegistryName(new ResourceLocation(Reference.MOD_ID,name));
 		event.getRegistry().register(part);
 		
 		if(TinkerTools.pattern != null) {
@@ -186,7 +186,7 @@ public class TDParts extends ModuleBase
 	private static ArmorPart regArmorPart(int castVolume, String name, RegistryEvent.Register<Item> event)
 	{
 		ArmorPart part = new ArmorPart(castVolume);
-		part.setUnlocalizedName(name).setRegistryName(new ResourceLocation(Reference.MOD_ID,name));
+		part.setTranslationKey(name).setRegistryName(new ResourceLocation(Reference.MOD_ID,name));
 		event.getRegistry().register(part);
 		
 		if(TinkerTools.pattern != null) {

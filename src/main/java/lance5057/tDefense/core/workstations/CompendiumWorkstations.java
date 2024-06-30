@@ -85,21 +85,21 @@ public class CompendiumWorkstations {
 		registry.register(HammeringTableItem);
 
 		geodeStone = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_stone"))
-				.setUnlocalizedName("geode_stone");
+				.setTranslationKey("geode_stone");
 		geodeGranite = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_granite"))
-				.setUnlocalizedName("geode_granite");
+				.setTranslationKey("geode_granite");
 		geodeDiorite = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_diorite"))
-				.setUnlocalizedName("geode_diorite");
+				.setTranslationKey("geode_diorite");
 		geodeAndesite = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_andesite"))
-				.setUnlocalizedName("geode_andesite");
+				.setTranslationKey("geode_andesite");
 		geodeEndstone = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_endstone"))
-				.setUnlocalizedName("geode_endstone");
+				.setTranslationKey("geode_endstone");
 		geodeNetherrack = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_netherrack"))
-				.setUnlocalizedName("geode_netherrack");
+				.setTranslationKey("geode_netherrack");
 		geodeObsidian = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_obsidian"))
-				.setUnlocalizedName("geode_obsidian");
+				.setTranslationKey("geode_obsidian");
 		geodeMagma = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_magma"))
-				.setUnlocalizedName("geode_magma");
+				.setTranslationKey("geode_magma");
 
 		registry.register(geodeStone);
 		registry.register(geodeGranite);

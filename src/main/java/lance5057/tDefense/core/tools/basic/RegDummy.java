@@ -44,7 +44,7 @@ public class RegDummy extends ToolCore {
 //				PartMaterialType.extra(TDParts.filigree),
 //				PartMaterialType.extra(TinkerTools.arrowHead));
 
-		setUnlocalizedName("regdummy");
+		setTranslationKey("regdummy");
 	}
 
 	@Override

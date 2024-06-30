@@ -35,7 +35,7 @@ public class TinkersBoots extends ArmorCore {
 				PartMaterialType.handle(TDParts.armorPlate),
 				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
 				PartMaterialType.bowstring(TinkerTools.bowString));
-		setUnlocalizedName("tinkersboots");
+		setTranslationKey("tinkersboots");
 	}
 
 	@Override

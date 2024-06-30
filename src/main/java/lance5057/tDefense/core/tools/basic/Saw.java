@@ -17,7 +17,7 @@ public class Saw extends ToolCore {
 		super(PartMaterialType.head(TinkerTools.toolRod), PartMaterialType.extra(TinkerTools.binding),
 				PartMaterialType.handle(TinkerTools.toughToolRod));
 
-		setUnlocalizedName("saw");
+		setTranslationKey("saw");
 	}
 	
 	@Override

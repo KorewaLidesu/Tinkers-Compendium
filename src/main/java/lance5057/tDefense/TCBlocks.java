@@ -34,13 +34,13 @@ public class TCBlocks {
 	
 	public static Block registerBlock(String name, Material mat) {
 		Block block = new Block(mat)
-				.setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setUnlocalizedName(name);
+				.setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setTranslationKey(name);
 		blocks.add(block);
 		return block;
 	}
 	
 	public static Block registerBlock(Block block,String name) {
-		block.setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setUnlocalizedName(name);
+		block.setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setTranslationKey(name);
 		blocks.add(block);
 		return block;
 	}

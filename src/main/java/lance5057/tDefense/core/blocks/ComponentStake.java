@@ -100,7 +100,7 @@ public class ComponentStake extends Block {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState iblockstate = getDefaultState();
-		iblockstate = iblockstate.withProperty(FACING, EnumFacing.getFront(meta));
+		iblockstate = iblockstate.withProperty(FACING, EnumFacing.byIndex(meta));
 		return iblockstate;
 	}
 

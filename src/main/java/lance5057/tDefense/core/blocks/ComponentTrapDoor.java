@@ -116,7 +116,7 @@ public class ComponentTrapDoor extends Block
      */
     public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ)
     {
-        if (this.blockMaterial == Material.IRON)
+        if (this.material == Material.IRON)
         {
             return false;
         }
@@ -133,12 +133,12 @@ public class ComponentTrapDoor extends Block
     {
         if (p_185731_4_)
         {
-            int i = this.blockMaterial == Material.IRON ? 1037 : 1007;
+            int i = this.material == Material.IRON ? 1037 : 1007;
             worldIn.playEvent(player, i, pos, 0);
         }
         else
         {
-            int j = this.blockMaterial == Material.IRON ? 1036 : 1013;
+            int j = this.material == Material.IRON ? 1036 : 1013;
             worldIn.playEvent(player, j, pos, 0);
         }
     }

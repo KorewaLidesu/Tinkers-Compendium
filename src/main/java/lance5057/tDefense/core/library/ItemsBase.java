@@ -35,14 +35,14 @@ public abstract class ItemsBase {
 	
 	protected Item register(String name, int size, CreativeTabs tabName) 
 	{
-		Item item = new Item().setCreativeTab(tabName).setMaxStackSize(size).setUnlocalizedName(name).setRegistryName(Reference.MOD_ID, name);
+		Item item = new Item().setCreativeTab(tabName).setMaxStackSize(size).setTranslationKey(name).setRegistryName(Reference.MOD_ID, name);
 		itemList.add(item);
 		return item;
 	}
 	
 	protected MetaItem registerMeta(String name, String[] names,int size, CreativeTabs tabName) 
 	{
-		Item item = new MetaItem(names).setCreativeTab(tabName).setMaxStackSize(size).setUnlocalizedName(name).setRegistryName(Reference.MOD_ID, name);
+		Item item = new MetaItem(names).setCreativeTab(tabName).setMaxStackSize(size).setTranslationKey(name).setRegistryName(Reference.MOD_ID, name);
 
 		itemList.add(item);
 		return (MetaItem) item;

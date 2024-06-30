@@ -30,7 +30,7 @@ public class FinishingAnvilBlock extends BlockTable implements ITinkerStationBlo
 
 	public FinishingAnvilBlock() {
 		super(Material.IRON);
-		this.setUnlocalizedName("finishinganvil");
+		this.setTranslationKey("finishinganvil");
 		this.setRegistryName("finishinganvil");
 		this.setCreativeTab(TinkersCompendium.tab);
 		this.setSoundType(SoundType.ANVIL);

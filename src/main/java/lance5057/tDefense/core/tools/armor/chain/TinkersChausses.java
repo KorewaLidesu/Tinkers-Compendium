@@ -35,7 +35,7 @@ public class TinkersChausses extends ArmorCore {
 		super(EntityEquipmentSlot.LEGS, new PartMaterialType(TDParts.chainmail, LegsMaterialStats.TYPE),
 				new PartMaterialType(TDParts.armorPlate, LegsMaterialStats.TYPE),
 				PartMaterialType.handle(TDParts.clasp), new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE));
-		setUnlocalizedName("tinkerschausses");
+		setTranslationKey("tinkerschausses");
 	}
 
 	@Override

@@ -1350,7 +1350,7 @@ public class CompendiumMaterials {
 		}
 
 		String prefixedName = Util.prefix(name);
-		block.setUnlocalizedName(prefixedName);
+		block.setTranslationKey(prefixedName);
 
 		register(registry, block, name);
 		return block;

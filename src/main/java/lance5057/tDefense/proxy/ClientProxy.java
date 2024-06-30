@@ -308,7 +308,7 @@ public class ClientProxy extends CommonProxy {
 			return null;
 		}
 		ResourceLocation itemLocation = tool.getRegistryName();
-		String path = "tools/" + itemLocation.getResourcePath() + ToolModelLoader.EXTENSION;
+		String path = "tools/" + itemLocation.getPath() + ToolModelLoader.EXTENSION;
 
 		ResourceLocation location = new ResourceLocation(Reference.MOD_ID, path);
 		ToolModelLoader.addPartMapping(location, tool);

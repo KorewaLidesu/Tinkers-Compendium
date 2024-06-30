@@ -35,7 +35,7 @@ public class TinkersCoif extends ArmorCore {
 		super(EntityEquipmentSlot.HEAD, new PartMaterialType(TDParts.chainmail, HelmMaterialStats.TYPE),
 				PartMaterialType.handle(TinkerTools.toolRod),
 				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE));
-		setUnlocalizedName("tinkerscoif");
+		setTranslationKey("tinkerscoif");
 	}
 
 	@Override

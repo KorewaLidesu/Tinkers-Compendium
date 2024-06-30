@@ -43,7 +43,7 @@ public class TinkersShawl extends ArmorCore {
 		super(EntityEquipmentSlot.CHEST, new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
 				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
 				PartMaterialType.extra(TDParts.armorPlate));
-		setUnlocalizedName("tinkershawl");
+		setTranslationKey("tinkershawl");
 	}
 
 	@Override

@@ -81,38 +81,38 @@ public class CompendiumModifiers {
 	public void preInit() {
 		blockList.add(unstable_obsidian = new CrackedObsidian()
 				.setRegistryName(new ResourceLocation(Reference.MOD_ID, "crackedobsidian"))
-				.setUnlocalizedName("crackedobsidian").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("crackedobsidian").setCreativeTab(TinkersCompendium.tab));
 
 		itemList.add(item_unstable_obsidian = (ItemBlock) new ItemBlock(unstable_obsidian)
 				.setRegistryName(new ResourceLocation(Reference.MOD_ID, "crackedobsidianitemblock"))
-				.setUnlocalizedName("crackedobsidianitemblock").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("crackedobsidianitemblock").setCreativeTab(TinkersCompendium.tab));
 
 		itemList.add(item_canister = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "canister"))
-				.setUnlocalizedName("canister").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("canister").setCreativeTab(TinkersCompendium.tab));
 		itemList.add(item_emptycanister = new Item()
 				.setRegistryName(new ResourceLocation(Reference.MOD_ID, "empty_canister"))
-				.setUnlocalizedName("empty_canister").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("empty_canister").setCreativeTab(TinkersCompendium.tab));
 		itemList.add(item_rebreather = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "rebreather"))
-				.setUnlocalizedName("rebreather").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("rebreather").setCreativeTab(TinkersCompendium.tab));
 		itemList.add(item_eldergills = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "eldergills"))
-				.setUnlocalizedName("eldergills").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("eldergills").setCreativeTab(TinkersCompendium.tab));
 		itemList.add(item_nightvisiongoggles = new Item()
 				.setRegistryName(new ResourceLocation(Reference.MOD_ID, "nightvisiongoggles"))
-				.setUnlocalizedName("nightvisiongoggles").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("nightvisiongoggles").setCreativeTab(TinkersCompendium.tab));
 		itemList.add(item_goggles = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "goggles"))
-				.setUnlocalizedName("goggles").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("goggles").setCreativeTab(TinkersCompendium.tab));
 
 		itemList.add(item_glowsole = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "glowsole"))
-				.setUnlocalizedName("glowsole").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("glowsole").setCreativeTab(TinkersCompendium.tab));
 		itemList.add(item_firesole = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "firesole"))
-				.setUnlocalizedName("firesole").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("firesole").setCreativeTab(TinkersCompendium.tab));
 		itemList.add(item_icesole = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "icesole"))
-				.setUnlocalizedName("icesole").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("icesole").setCreativeTab(TinkersCompendium.tab));
 		itemList.add(
 				item_feathersole = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "feathersole"))
-						.setUnlocalizedName("feathersole").setCreativeTab(TinkersCompendium.tab));
+						.setTranslationKey("feathersole").setCreativeTab(TinkersCompendium.tab));
 		itemList.add(item_flippers = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "flippers"))
-				.setUnlocalizedName("flippers").setCreativeTab(TinkersCompendium.tab));
+				.setTranslationKey("flippers").setCreativeTab(TinkersCompendium.tab));
 
 		frostwalker = new ModWalker("frostwalker", 0x93d7ff, Blocks.WATER, Blocks.FLOWING_WATER, Blocks.FROSTED_ICE);
 		firewalker = new ModWalker("firewalker", 0xff4300, Blocks.LAVA, Blocks.FLOWING_LAVA, unstable_obsidian);

@@ -196,7 +196,7 @@ public class ArmorPart extends MaterialItem implements IToolPart {
   public String getItemStackDisplayName(@Nonnull ItemStack stack) {
     Material material = getMaterial(stack);
 
-    String locString = getUnlocalizedName() + "." + material.getIdentifier();
+    String locString = getTranslationKey() + "." + material.getIdentifier();
 
     // custom name?
     if(I18n.canTranslate(locString)) {

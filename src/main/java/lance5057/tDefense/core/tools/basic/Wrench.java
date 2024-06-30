@@ -18,7 +18,7 @@ public class Wrench extends ToolCore {
 		super(PartMaterialType.head(TDParts.ringShank), PartMaterialType.extra(TinkerTools.binding),
 				PartMaterialType.handle(TinkerTools.toolRod));
 
-		setUnlocalizedName("wrench");
+		setTranslationKey("wrench");
 	}
 	
 	@Override

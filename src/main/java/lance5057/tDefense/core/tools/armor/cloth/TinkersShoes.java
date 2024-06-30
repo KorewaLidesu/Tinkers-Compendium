@@ -42,7 +42,7 @@ public class TinkersShoes extends ArmorCore {
 		super(EntityEquipmentSlot.FEET, new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
 				PartMaterialType.extra(TDParts.rivets), new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
 				PartMaterialType.bowstring(TinkerTools.bowString));
-		setUnlocalizedName("tinkershoes");
+		setTranslationKey("tinkershoes");
 
 	}
 

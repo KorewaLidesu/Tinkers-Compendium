@@ -562,13 +562,13 @@ public abstract class ArmorCore extends ArmorBase implements IToolStationDisplay
 	 * generation etc.
 	 */
 	public String getIdentifier() {
-		return getRegistryName().getResourcePath();
+		return getRegistryName().getPath();
 	}
 
 	/** The tools name completely without material information */
 	@Override
 	public String getLocalizedToolName() {
-		return Util.translate(getUnlocalizedName() + ".name");
+		return Util.translate(getTranslationKey() + ".name");
 	}
 
 	/** The tools name with the given material. e.g. "Wooden Pickaxe" */
@@ -578,7 +578,7 @@ public abstract class ArmorCore extends ArmorBase implements IToolStationDisplay
 
 	/** Returns info about the Tool. Displayed in the tool stations etc. */
 	public String getLocalizedDescription() {
-		return Util.translate(getUnlocalizedName() + ".desc");
+		return Util.translate(getTranslationKey() + ".desc");
 	}
 
 	@Override

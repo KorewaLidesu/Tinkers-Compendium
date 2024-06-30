@@ -70,7 +70,7 @@ public class TCCommands extends CommandBase implements ICommand {
 			// if(p_71515_2_[0].equals("reloadRenderers"))
 			// {
 			// p_71515_1_.addChatMessage(new TextComponentString(
-			// "§9[TDefense]§f - Reloading All Renderers..."));
+			// "[TDefense] - Reloading All Renderers..."));
 			// reloadModels();
 			// }
 			// else if(p_71515_2_[0].equals("toggleTransparency"))
@@ -79,21 +79,21 @@ public class TCCommands extends CommandBase implements ICommand {
 			// if(TinkersDefense.config.transparency)
 			// {
 			// p_71515_1_.addChatMessage(new TextComponentString(
-			// "§9[TDefense]§f - Transparency on."));
+			// "[TDefense] - Transparency on."));
 			// }
 			// else
 			// {
 			// p_71515_1_.addChatMessage(new TextComponentString(
-			// "§9[TDefense]§f - Transparency off."));
+			// "[TDefense] - Transparency off."));
 			// }
 			//
 			// }
 			if (commandIn[0].equals("toggleDebugMode")) {
 				TinkersCompendium.config.debug = !TinkersCompendium.config.debug;
 				if (TinkersCompendium.config.debug) {
-					sender.sendMessage(new TextComponentString("§9[TDefense]§f - Debug Mode on."));
+					sender.sendMessage(new TextComponentString("[TDefense] - Debug Mode on."));
 				} else {
-					sender.sendMessage(new TextComponentString("§9[TDefense]§f - Debug Mode off."));
+					sender.sendMessage(new TextComponentString("[TDefense] - Debug Mode off."));
 				}
 
 			} else if (commandIn[0].equals("reloadRenderers")) {
@@ -108,15 +108,15 @@ public class TCCommands extends CommandBase implements ICommand {
 							s.serializeNBT();
 							if (TinkersCompendium.config.debug) {
 								if (ArmorTagUtil.getVisor(s))
-									sender.sendMessage(new TextComponentString("§9[TDefense]§f - Visor closed."));
+									sender.sendMessage(new TextComponentString("[TDefense] - Visor closed."));
 								else
-									sender.sendMessage(new TextComponentString("§9[TDefense]§f - Visor opened."));
+									sender.sendMessage(new TextComponentString("[TDefense] - Visor opened."));
 							}
 						}
 					}
 				}
 			} else {
-				sender.sendMessage(new TextComponentString("§c[TDefense]§f - Invalid Command"));
+				sender.sendMessage(new TextComponentString("ï¿½c[TDefense] - Invalid Command"));
 			}
 		}
 	}

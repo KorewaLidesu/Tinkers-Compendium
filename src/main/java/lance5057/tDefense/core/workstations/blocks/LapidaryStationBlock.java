@@ -41,7 +41,7 @@ package lance5057.tDefense.core.workstations.blocks;
 //
 //	public FinishingAnvilBlock() {
 //		super(Material.IRON);
-//		this.setUnlocalizedName("finishinganvil");
+//		this.setTranslationKey("finishinganvil");
 //		this.setRegistryName("finishinganvil");
 //		this.setCreativeTab(TinkersDefense.tab);
 //		this.setSoundType(SoundType.ANVIL);

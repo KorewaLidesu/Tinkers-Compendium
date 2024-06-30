@@ -25,10 +25,10 @@ public abstract class ModuleBase
 //	public abstract void registerBlocks(final RegistryEvent.Register<Block> event);
 	
 //	protected void setupItem(Item i, String name) {
-//		i.setUnlocalizedName(name).setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setCreativeTab(tab);
+//		i.setTranslationKey(name).setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setCreativeTab(tab);
 //	}
 //
 //	protected void setupBlock(Block b, String name) {
-//		b.setUnlocalizedName(name).setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setCreativeTab(tab);
+//		b.setTranslationKey(name).setRegistryName(new ResourceLocation(Reference.MOD_ID, name)).setCreativeTab(tab);
 //	}
 }

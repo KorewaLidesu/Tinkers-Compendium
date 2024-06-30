@@ -39,7 +39,7 @@ public class TinkersHood extends ArmorCore {
 	public TinkersHood() {
 		super(EntityEquipmentSlot.HEAD, new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
 				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE), PartMaterialType.extra(TDParts.rivets));
-		setUnlocalizedName("tinkerhood");
+		setTranslationKey("tinkerhood");
 	}
 
 	@Override

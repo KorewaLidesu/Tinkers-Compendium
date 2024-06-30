@@ -16,8 +16,8 @@ public class MetaItem extends Item
 	}
 	
 	@Override
-	public String getUnlocalizedName(ItemStack stack) {
-	    return super.getUnlocalizedName() + "." + items[stack.getItemDamage()];
+	public String getTranslationKey(ItemStack stack) {
+	    return super.getTranslationKey() + "." + items[stack.getItemDamage()];
 	}
 	
 	@Override

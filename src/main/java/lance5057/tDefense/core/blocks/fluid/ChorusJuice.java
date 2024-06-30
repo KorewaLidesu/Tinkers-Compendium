@@ -18,7 +18,7 @@ public class ChorusJuice extends BlockFluidClassic {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (entity instanceof EntityLivingBase) {
 			EntityLivingBase ent = (EntityLivingBase) entity;
 			double d0 = ent.posX + (world.rand.nextDouble() - 0.5D) * 64.0D;

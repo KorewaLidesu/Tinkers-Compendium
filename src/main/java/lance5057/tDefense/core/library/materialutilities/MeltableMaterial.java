@@ -124,7 +124,7 @@ public class MeltableMaterial implements MaterialBase {
 	
 
 	public <T extends Block> T registerBlock(T block, String name) {
-		block.setUnlocalizedName(Reference.MOD_ID + "." + name);
+		block.setTranslationKey(Reference.MOD_ID + "." + name);
 		block.setRegistryName(Reference.MOD_ID + "." + name);
 		Item ib = new ItemBlock(block).setRegistryName(block.getRegistryName());
 		ForgeRegistries.BLOCKS.register(block);

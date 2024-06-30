@@ -24,7 +24,7 @@ public class Shears extends ToolCore {
 		super(PartMaterialType.head(TinkerTools.knifeBlade), PartMaterialType.head(TinkerTools.knifeBlade),
 				PartMaterialType.handle(TinkerTools.binding));
 
-		setUnlocalizedName("shears");
+		setTranslationKey("shears");
 	}
 
 	@Override

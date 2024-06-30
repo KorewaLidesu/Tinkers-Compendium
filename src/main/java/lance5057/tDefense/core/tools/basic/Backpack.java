@@ -37,7 +37,7 @@ public class Backpack extends ToolCore {
 				new PartMaterialType(TDParts.fabric, BackpackMaterialStats.TYPE), PartMaterialType.extra(TDParts.clasp),
 				new PartMaterialType(TDParts.fabric, BackpackMaterialStats.TYPE));
 
-		setUnlocalizedName("backpack");
+		setTranslationKey("backpack");
 	}
 
 	@Override

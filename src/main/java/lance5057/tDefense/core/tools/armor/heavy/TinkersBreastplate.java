@@ -36,7 +36,7 @@ public class TinkersBreastplate extends ArmorCore {
 				new PartMaterialType(TDParts.armorPlate, ChestMaterialStats.TYPE),
 				PartMaterialType.handle(TDParts.filigree), PartMaterialType.extra(TDParts.chainmail),
 				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE));
-		setUnlocalizedName("tinkersbreastplate");
+		setTranslationKey("tinkersbreastplate");
 	}
 
 	@Override

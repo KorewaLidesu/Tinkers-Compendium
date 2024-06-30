@@ -27,7 +27,7 @@ public class VileFluid extends BlockFluidClassic {
 	}
 
 	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity) {
+	public void onEntityCollision(World world, BlockPos pos, IBlockState state, Entity entity) {
 		if (entity instanceof EntitySkeleton) {
 			EntityWitherSkeleton wither = new EntityWitherSkeleton(world);
 			wither.setPosition(entity.posX, entity.posY, entity.posZ);

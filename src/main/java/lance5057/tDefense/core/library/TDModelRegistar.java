@@ -17,9 +17,9 @@ public class TDModelRegistar {
 			return null;
 		}
 		ResourceLocation itemLocation = armor.getRegistryName();
-		String path = "tools/" + itemLocation.getResourcePath() + TDModelLoader.EXTENSION;
+		String path = "tools/" + itemLocation.getPath() + TDModelLoader.EXTENSION;
 
-		ResourceLocation location = new ResourceLocation(itemLocation.getResourceDomain(), path);
+		ResourceLocation location = new ResourceLocation(itemLocation.getNamespace(), path);
 		TDModelLoader.addPartMapping(location, armor);
 
 		return registerToolModel(armor, location);
@@ -29,7 +29,7 @@ public class TDModelRegistar {
 	 * Manual registration of a tool model. You probably shouldn't be using this.
 	 */
 	public static ResourceLocation registerToolModel(Item item, final ResourceLocation location) {
-		if (!location.getResourcePath().endsWith(TDModelLoader.EXTENSION)) {
+		if (!location.getPath().endsWith(TDModelLoader.EXTENSION)) {
 			TConstruct.log.error("The material-model " + location.toString() + " does not end with '"
 					+ TDModelLoader.EXTENSION + "' and will therefore not be loaded by the custom model loader!");
 		}
