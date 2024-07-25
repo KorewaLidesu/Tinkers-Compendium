@@ -875,8 +875,8 @@ item.tinkershelm.desc=A heavy set of interlocking plates to protect the head fro
 item.tinkersbreastplate.name=Breastplate
 item.tinkersbreastplate.desc=A heavy set of interlocking plates to protect the chest from most damage.
 
-item.tinkersgrieves.name=Grieves
-item.tinkersgrieves.desc=A heavy set of interlocking plates to protect the legs from most damage.
+item.tinkersgreaves.name=Greaves
+item.tinkersgreaves.desc=A heavy set of interlocking plates to protect the legs from most damage.
 
 item.tinkerssabatons.name=Sabatons
 item.tinkerssabatons.desc=A heavy set of interlocking plates to protect the feet from most damage.

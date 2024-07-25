@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
  * ModelPlayer - Either Mojang or a mod author
  * Created using Tabula 7.0.0
  */
-public class ModelTinkersGrieves extends ArmorRenderer {
+public class ModelTinkersGreaves extends ArmorRenderer {
     public ModelRenderer LegPlateL;
     public ModelRenderer CodPiece;
     public ModelRenderer LegPlateBackL;
@@ -22,7 +22,7 @@ public class ModelTinkersGrieves extends ArmorRenderer {
     public ModelRenderer ThighLB;
     public ModelRenderer SecBeltL;
 
-    public ModelTinkersGrieves(ItemStack stack) {
+    public ModelTinkersGreaves(ItemStack stack) {
         super(0.25f, 0, 96, 96, stack);
         this.textureWidth = 96;
         this.textureHeight = 96;

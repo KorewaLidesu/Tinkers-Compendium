@@ -1,9 +1,9 @@
 {
-  "tool": "grieves",
+  "tool": "greaves",
   "text": [
     {
       "text": "A heavy set of interlocking plates was \n found to protect the legs from most damage. \nThe Greives are difficult to manuvuer in."
-    },
+    }
   ],
   "properties": [
     "Full Coverage.",
