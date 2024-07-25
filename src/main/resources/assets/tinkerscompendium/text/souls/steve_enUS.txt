@@ -230,7 +230,7 @@ He looks like he'll die pretty soon with our without our help.
 He must be rotten.
 You reek man.
 Yeeek...
-There are alot of guys running around that look like him.
+There are a lot of guys running around that look like him.
 
 InsultSkeleton
 Calcium rich bones have such a nice pop when they break.
@@ -304,7 +304,7 @@ He thinks he's so cool with his sword. Loser.
 He's strong. But he's not all that strong when you attack from a distance.
 Whoa, careful! You'll put somebody's eye out with that thing.
 His weapon is great, but he is meager.
-There are alot of guys running around that look like him.
+There are a lot of guys running around that look like him.
 So he's still kickin' huh?
 
 InsultOther
@@ -370,7 +370,7 @@ Waffle, waffle, waffle.
 Why on earth can I talk? I'm a %tool%...
 Do you understand, %player%, what it feels like to be a %tool%?
 ...Achoo!
-I has a twin sister who I have been separated from for a long time... I wonder how she's doing.
+I have a twin sister who I have been separated from for a long time... I wonder how she's doing.
 My sister was totally cute. She was the belle of the village.
 When I take a close look at you, %player% you look like my sister.
 My pitiful attempts to be cool. Blasted playground!
