@@ -674,14 +674,15 @@ public class CompendiumMaterials {
                         new ItemStack(Blocks.WOOL, 1, 1)));
                 materials.add(orange);
             }
+        }
 
-            if (TinkerRegistry.getMaterial("whitecloth") == Material.UNKNOWN && TCConfig.materials.white) {
-                white = new MaterialHelper("whitecloth", 0xDDDDDD);
-                white.addons.add(new CraftableFabricMaterial(new FabricMaterialStats(100, 0, 0, 100),
-                        new BowStringMaterialStats(1), new BackpackMaterialStats(100, 9, 3), null,
-                        new ItemStack(Blocks.WOOL, 1, 0)));
-                materials.add(white);
-            }
+        // exclusive as placeholder material
+        if (TinkerRegistry.getMaterial("whitecloth") == Material.UNKNOWN) {
+            white = new MaterialHelper("whitecloth", 0xDDDDDD);
+            white.addons.add(new CraftableFabricMaterial(new FabricMaterialStats(100, 0, 0, 100),
+                    new BowStringMaterialStats(1), new BackpackMaterialStats(100, 9, 3), null,
+                    new ItemStack(Blocks.WOOL, 1, 0)));
+            materials.add(white);
         }
 
         if (TinkerRegistry.getMaterial("silky") == Material.UNKNOWN && TCConfig.materials.silky) {

@@ -299,7 +299,7 @@ public class TDTools {
             regArmor(boots, "boots", event);
         }
 
-        if (TCConfig.armor.enableChainArmor) {
+        if (TCConfig.armor.enableHeavyArmor) {
             helm = new TinkersHelm();
             regArmor(helm, "helm", event);
             breastplate = new TinkersBreastplate();

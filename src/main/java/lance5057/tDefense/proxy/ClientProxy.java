@@ -361,7 +361,7 @@ public class ClientProxy extends CommonProxy {
             shoesGUI = new ArmorBuildGuiInfo(TDTools.shoes);
         }
 
-        if (TCConfig.armor.enableClothArmor) {
+        if (TCConfig.armor.enableChainArmor) {
             coifGUI = new ArmorBuildGuiInfo(TDTools.coif);
             hauberkGUI = new ArmorBuildGuiInfo(TDTools.hauberk);
             chaussesGUI = new ArmorBuildGuiInfo(TDTools.chausses);

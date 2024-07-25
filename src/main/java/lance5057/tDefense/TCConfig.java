@@ -131,7 +131,7 @@ public class TCConfig {
         public boolean lightblue = true;
         public boolean magenta = true;
         public boolean orange = true;
-        public boolean white = true;
+//        public boolean white = true;
 
         public boolean silky = true;
         public boolean roughspun = true;
