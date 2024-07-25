@@ -8,7 +8,7 @@ import lance5057.tDefense.core.materials.stats.ArmorMaterialStats;
 import lance5057.tDefense.core.materials.stats.FabricMaterialStats;
 import lance5057.tDefense.core.materials.stats.LegsMaterialStats;
 import lance5057.tDefense.core.parts.TDParts;
-import lance5057.tDefense.core.tools.armor.renderers.heavy.ModelTinkersGrieves;
+import lance5057.tDefense.core.tools.armor.renderers.heavy.ModelTinkersGreaves;
 import lance5057.tDefense.core.tools.bases.ArmorCore;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.creativetab.CreativeTabs;
@@ -29,13 +29,13 @@ import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import javax.annotation.Nonnull;
 import java.util.List;
 
-public class TinkersGrieves extends ArmorCore {
-    public TinkersGrieves() {
+public class TinkersGreaves extends ArmorCore {
+    public TinkersGreaves() {
         super(EntityEquipmentSlot.LEGS, new PartMaterialType(TDParts.armorPlate, LegsMaterialStats.TYPE),
                 new PartMaterialType(TDParts.chainmail, LegsMaterialStats.TYPE),
                 PartMaterialType.handle(TDParts.filigree), PartMaterialType.extra(TDParts.clasp),
                 new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE));
-        setTranslationKey("tinkersgrieves");
+        setTranslationKey("tinkersgreaves");
     }
 
     @Override
@@ -51,7 +51,7 @@ public class TinkersGrieves extends ArmorCore {
     public NBTTagCompound setupTexture(List<Material> materials) {
         NBTTagCompound base = new NBTTagCompound();
 
-        ResourceLocation rc = ArmorTextureBuilder.createArmorTexture("grieves",
+        ResourceLocation rc = ArmorTextureBuilder.createArmorTexture("greaves",
                 new String[]{"plate", "chain", "trim", "clasp", "cloth"}, materials, 96, 96);
 
         if (rc != null) {
@@ -65,7 +65,7 @@ public class TinkersGrieves extends ArmorCore {
     @Override
     public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot,
                                     ModelBiped _default) {
-        return new ModelTinkersGrieves(itemStack);
+        return new ModelTinkersGreaves(itemStack);
     }
 
     @Override
@@ -111,6 +111,6 @@ public class TinkersGrieves extends ArmorCore {
 
     @Override
     public String getArmorType() {
-        return "grieves";
+        return "greaves";
     }
 }

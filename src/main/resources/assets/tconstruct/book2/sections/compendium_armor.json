@@ -10,9 +10,9 @@
     "data": "armor/heavy/breastplate.json"
   },
   {
-    "name": "grieves",
+    "name": "greaves",
     "type": "td_armor",
-    "data": "armor/heavy/grieves.json"
+    "data": "armor/heavy/greaves.json"
   },
   {
     "name": "sabatons",

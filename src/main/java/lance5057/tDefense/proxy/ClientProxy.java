@@ -79,7 +79,7 @@ public class ClientProxy extends CommonProxy {
     ArmorBuildGuiInfo bootsGUI;
     ArmorBuildGuiInfo helmGUI;
     ArmorBuildGuiInfo breastplateGUI;
-    ArmorBuildGuiInfo grievesGUI;
+    ArmorBuildGuiInfo greavesGUI;
     ArmorBuildGuiInfo sabatonsGUI;
     // ToolBuildGuiInfo sheatheGUI;
     ToolBuildGuiInfo ringGUI;
@@ -181,15 +181,15 @@ public class ClientProxy extends CommonProxy {
                     .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/breastplate/_breastplate_cloth"));
 
             CustomArmorTextureCreator
-                    .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/grieves/_grieves_chain"));
+                    .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/greaves/_greaves_chain"));
             CustomArmorTextureCreator
-                    .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/grieves/_grieves_plate"));
+                    .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/greaves/_greaves_plate"));
             CustomArmorTextureCreator
-                    .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/grieves/_grieves_cloth"));
+                    .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/greaves/_greaves_cloth"));
             CustomArmorTextureCreator
-                    .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/grieves/_grieves_trim"));
+                    .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/greaves/_greaves_trim"));
             CustomArmorTextureCreator
-                    .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/grieves/_grieves_clasp"));
+                    .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/greaves/_greaves_clasp"));
 
             CustomArmorTextureCreator
                     .registerTexture(new ResourceLocation(Reference.MOD_ID, "armor/sabatons/_sabatons_caps"));
@@ -371,7 +371,7 @@ public class ClientProxy extends CommonProxy {
         if (TCConfig.armor.enableHeavyArmor) {
             helmGUI = new ArmorBuildGuiInfo(TDTools.helm);
             breastplateGUI = new ArmorBuildGuiInfo(TDTools.breastplate);
-            grievesGUI = new ArmorBuildGuiInfo(TDTools.grieves);
+            greavesGUI = new ArmorBuildGuiInfo(TDTools.greaves);
             sabatonsGUI = new ArmorBuildGuiInfo(TDTools.sabatons);
         }
 
@@ -442,7 +442,7 @@ public class ClientProxy extends CommonProxy {
         if (TCConfig.armor.enableHeavyArmor) {
             TDClientRegistry.addArmorBuilding(helmGUI);
             TDClientRegistry.addArmorBuilding(breastplateGUI);
-            TDClientRegistry.addArmorBuilding(grievesGUI);
+            TDClientRegistry.addArmorBuilding(greavesGUI);
             TDClientRegistry.addArmorBuilding(sabatonsGUI);
         }
 
@@ -607,12 +607,12 @@ public class ClientProxy extends CommonProxy {
             sabatonsGUI.addSlotPosition(28 - 18, 16 + 18 + 18);
             sabatonsGUI.addSlotPosition(28, 16 + 18 + 9);
 
-            grievesGUI.positions.clear();
-            grievesGUI.addSlotPosition(28 - 14, 23 + 18);
-            grievesGUI.addSlotPosition(28 + 14, 23 + 18);
-            grievesGUI.addSlotPosition(28 + 14, 23 + 18 + 18);
-            grievesGUI.addSlotPosition(28, 23);
-            grievesGUI.addSlotPosition(28 - 14, 23 + 18 + 18);
+            greavesGUI.positions.clear();
+            greavesGUI.addSlotPosition(28 - 14, 23 + 18);
+            greavesGUI.addSlotPosition(28 + 14, 23 + 18);
+            greavesGUI.addSlotPosition(28 + 14, 23 + 18 + 18);
+            greavesGUI.addSlotPosition(28, 23);
+            greavesGUI.addSlotPosition(28 - 14, 23 + 18 + 18);
         }
 
         // sheatheGUI.positions.clear();

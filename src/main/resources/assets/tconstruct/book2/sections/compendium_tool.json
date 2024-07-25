@@ -1,18 +1,18 @@
 [
   {
-    "name": "roundsheild",
+    "name": "roundshield",
     "type": "tool",
-    "data": "tool/roundsheild.json"
+    "data": "tool/roundshield.json"
   },
   {
-    "name": "heatersheild",
+    "name": "heatershield",
     "type": "tool",
-    "data": "tool/heatersheild.json"
+    "data": "tool/heatershield.json"
   },
   {
-    "name": "towersheild",
+    "name": "towershield",
     "type": "tool",
-    "data": "tool/towersheild.json"
+    "data": "tool/towershield.json"
   },
   {
     "name": "zweihander",

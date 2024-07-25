@@ -17,7 +17,7 @@ import lance5057.tDefense.core.tools.armor.cloth.TinkersRobe;
 import lance5057.tDefense.core.tools.armor.cloth.TinkersShawl;
 import lance5057.tDefense.core.tools.armor.cloth.TinkersShoes;
 import lance5057.tDefense.core.tools.armor.heavy.TinkersBreastplate;
-import lance5057.tDefense.core.tools.armor.heavy.TinkersGrieves;
+import lance5057.tDefense.core.tools.armor.heavy.TinkersGreaves;
 import lance5057.tDefense.core.tools.armor.heavy.TinkersHelm;
 import lance5057.tDefense.core.tools.armor.heavy.TinkersSabatons;
 import lance5057.tDefense.core.tools.bases.ArmorCore;
@@ -89,7 +89,7 @@ public class TDTools {
     public static ArmorCore boots;
     public static ArmorCore helm;
     public static ArmorCore breastplate;
-    public static ArmorCore grieves;
+    public static ArmorCore greaves;
     public static ArmorCore sabatons;
     // baubles
     public static ToolCore sheathe;
@@ -304,8 +304,8 @@ public class TDTools {
             regArmor(helm, "helm", event);
             breastplate = new TinkersBreastplate();
             regArmor(breastplate, "breastplate", event);
-            grieves = new TinkersGrieves();
-            regArmor(grieves, "grieves", event);
+            greaves = new TinkersGreaves();
+            regArmor(greaves, "greaves", event);
             sabatons = new TinkersSabatons();
             regArmor(sabatons, "sabatons", event);
         }
@@ -433,7 +433,7 @@ public class TDTools {
         if (TCConfig.armor.enableHeavyArmor) {
             TCRegistry.registerArmorCrafting(helm);
             TCRegistry.registerArmorCrafting(breastplate);
-            TCRegistry.registerArmorCrafting(grieves);
+            TCRegistry.registerArmorCrafting(greaves);
             TCRegistry.registerArmorCrafting(sabatons);
         }
 
