@@ -23,44 +23,44 @@ public class ModelTinkersGrieves extends ArmorRenderer {
     public ModelRenderer SecBeltL;
 
     public ModelTinkersGrieves(ItemStack stack) {
-    	super(0.25f, 0, 96, 96, stack);
+        super(0.25f, 0, 96, 96, stack);
         this.textureWidth = 96;
         this.textureHeight = 96;
-        
+
         this.Belt = new ModelRenderer(this, 64, 0);
         this.Belt.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.Belt.addBox(-4.5F, 10.0F, -2.8F, 9, 2, 6, 0.3F);
         this.bipedBody.addChild(Belt);
-        
+
         this.LegPlateR = new ModelRenderer(this, 64, 32);
         this.LegPlateR.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.LegPlateR.addBox(-2.6F, 0.9F, -2.5F, 1, 5, 5, 0.1F);
         this.setRotateAngle(LegPlateR, 0.0F, 0.0F, 0.2617993877991494F);
         this.bipedRightLeg.addChild(LegPlateR);
-        
+
         this.LegPlateL = new ModelRenderer(this, 64, 32);
         this.LegPlateL.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.LegPlateL.addBox(1.8F, 0.8F, -2.5F, 1, 5, 5, 0.1F);
         this.setRotateAngle(LegPlateL, 0.0F, 0.0F, -0.2617993877991494F);
         this.bipedLeftLeg.addChild(LegPlateL);
-        
+
         this.ThighLB = new ModelRenderer(this, 80, 8);
         this.ThighLB.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.ThighLB.addBox(-2.0F, 0.0F, -1.5F, 4, 6, 4, 0.3F);
         this.setRotateAngle(ThighLB, -0.08726646259971647F, 0.0F, 0.0F);
         this.bipedLeftLeg.addChild(ThighLB);
-        
+
         this.ThighRB = new ModelRenderer(this, 80, 8);
         this.ThighRB.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.ThighRB.addBox(-2.0F, 0.0F, -1.5F, 4, 6, 4, 0.3F);
         this.setRotateAngle(ThighRB, -0.08726646259971647F, 0.0F, 0.0F);
         this.bipedRightLeg.addChild(ThighRB);
-        
+
         this.CodPiece = new ModelRenderer(this, 64, 49);
         this.CodPiece.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.CodPiece.addBox(-2.5F, 11.0F, -3.3F, 5, 5, 3, -0.4F);
         this.bipedBody.addChild(CodPiece);
-        
+
         this.BeltBuckle = new ModelRenderer(this, 64, 58);
         this.BeltBuckle.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.BeltBuckle.addBox(-2.0F, 9.0F, -3.5F, 4, 4, 2, -0.3F);

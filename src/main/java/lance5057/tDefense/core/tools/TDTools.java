@@ -1,18 +1,11 @@
 package lance5057.tDefense.core.tools;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.annotation.Nullable;
-
 import com.google.common.eventbus.Subscribe;
-
 import lance5057.tDefense.Reference;
 import lance5057.tDefense.TCConfig;
 import lance5057.tDefense.TinkersCompendium;
 import lance5057.tDefense.core.library.ArmorTags;
 import lance5057.tDefense.core.library.TCRegistry;
-import lance5057.tDefense.core.library.TDClientRegistry;
 import lance5057.tDefense.core.network.ArmorStationSelectionPacket;
 import lance5057.tDefense.core.network.FinishingAnvilSelectionPacket;
 import lance5057.tDefense.core.tools.armor.chain.TinkersBoots;
@@ -29,17 +22,7 @@ import lance5057.tDefense.core.tools.armor.heavy.TinkersHelm;
 import lance5057.tDefense.core.tools.armor.heavy.TinkersSabatons;
 import lance5057.tDefense.core.tools.bases.ArmorCore;
 import lance5057.tDefense.core.tools.bases.BaubleTool;
-import lance5057.tDefense.core.tools.basic.Backpack;
-import lance5057.tDefense.core.tools.basic.FireDrill;
-import lance5057.tDefense.core.tools.basic.FishingRod;
-import lance5057.tDefense.core.tools.basic.HeaterShield;
-import lance5057.tDefense.core.tools.basic.Mallet;
-import lance5057.tDefense.core.tools.basic.RegDummy;
-import lance5057.tDefense.core.tools.basic.RoundShield;
-import lance5057.tDefense.core.tools.basic.Saw;
-import lance5057.tDefense.core.tools.basic.Shears;
-import lance5057.tDefense.core.tools.basic.TowerShield;
-import lance5057.tDefense.core.tools.basic.Zweihander;
+import lance5057.tDefense.core.tools.basic.*;
 import lance5057.tDefense.core.tools.baubles.TinkerRing;
 import lance5057.tDefense.core.tools.baubles.TinkersTabard;
 import lance5057.tDefense.core.workstations.blocks.ArmorStationBlock;
@@ -70,82 +53,74 @@ import slimeknights.tconstruct.library.TinkerRegistry;
 import slimeknights.tconstruct.library.tools.ToolCore;
 import slimeknights.tconstruct.library.utils.TagUtil;
 
+import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
+
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class TDTools {
-	public static final List<ToolCore> tools = new ArrayList<>();
-	public static final List<ArmorCore> armors = new ArrayList<>();
-	TDToolEvents events = new TDToolEvents();
+    public static final List<ToolCore> tools = new ArrayList<>();
+    public static final List<ArmorCore> armors = new ArrayList<>();
+    protected static final ResourceLocation PROPERTY_FINISHING_ANVIL0 = new ResourceLocation("finishinganvil0");
+    protected static final ResourceLocation PROPERTY_FINISHING_ANVIL1 = new ResourceLocation("finishinganvil1");
+    protected static final ResourceLocation PROPERTY_FINISHING_ANVIL2 = new ResourceLocation("finishinganvil2");
+    protected static final ResourceLocation PROPERTY_FINISHING_ANVIL3 = new ResourceLocation("finishinganvil3");
+    protected static final ResourceLocation PROPERTY_FINISHING_ANVIL4 = new ResourceLocation("finishinganvil4");
+    public static ArmorStationBlock station;
+    public static ItemBlock stationItem;
+    // Tools
+    public static ToolCore regDummy;
+    public static ToolCore roundshield;
+    public static ToolCore heatershield;
+    public static ToolCore towershield;
+    public static ToolCore zweihander;
+    public static ToolCore shears;
+    public static ToolCore fishingRod;
+    public static ToolCore mallet;
+    public static ToolCore saw;
+    public static ToolCore fireDrill;
+    public static ArmorCore hood;
+    public static ArmorCore shawl;
+    public static ArmorCore robe;
+    public static ArmorCore shoes;
+    public static ArmorCore coif;
+    public static ArmorCore hauberk;
+    public static ArmorCore chausses;
+    public static ArmorCore boots;
+    public static ArmorCore helm;
+    public static ArmorCore breastplate;
+    public static ArmorCore grieves;
+    public static ArmorCore sabatons;
+    // baubles
+    public static ToolCore sheathe;
 
-	public static ArmorStationBlock station;
+    // Tool Parts
 
-	public static ItemBlock stationItem;
+    // Modifiers
 
-	// Tools
-	public static ToolCore regDummy;
-
-	public static ToolCore roundshield;
-	public static ToolCore heatershield;
-	public static ToolCore towershield;
-	public static ToolCore zweihander;
-	public static ToolCore shears;
-	public static ToolCore fishingRod;
-	public static ToolCore mallet;
-	public static ToolCore saw;
-	public static ToolCore fireDrill;
-
-	public static ArmorCore hood;
-	public static ArmorCore shawl;
-	public static ArmorCore robe;
-	public static ArmorCore shoes;
-
-	public static ArmorCore coif;
-	public static ArmorCore hauberk;
-	public static ArmorCore chausses;
-	public static ArmorCore boots;
-
-	public static ArmorCore helm;
-	public static ArmorCore breastplate;
-	public static ArmorCore grieves;
-	public static ArmorCore sabatons;
-
-	// baubles
-	public static ToolCore sheathe;
-	public static ToolCore ring;
-	// public static ToolCore amulet;
-	public static BaubleTool tabard;
-
-	public static ToolCore backpack;
-
-	static ArrayList<Item> itemList = new ArrayList<Item>();
-
-	// Tool Parts
-
-	// Modifiers
-
-	// Helper stuff
-	// static List<ToolCore> tools = Lists.newLinkedList(); // contains all
-	// tools registered in this pulse
-	// static List<ToolPart> toolparts = Lists.newLinkedList(); // ^ all
-	// toolparts
-	// static List<IModifier> modifiers = Lists.newLinkedList(); // ^ all
-	// modifiers
-
-	protected static final ResourceLocation PROPERTY_FINISHING_ANVIL0 = new ResourceLocation("finishinganvil0");
-	protected static final ResourceLocation PROPERTY_FINISHING_ANVIL1 = new ResourceLocation("finishinganvil1");
-	protected static final ResourceLocation PROPERTY_FINISHING_ANVIL2 = new ResourceLocation("finishinganvil2");
-	protected static final ResourceLocation PROPERTY_FINISHING_ANVIL3 = new ResourceLocation("finishinganvil3");
-	protected static final ResourceLocation PROPERTY_FINISHING_ANVIL4 = new ResourceLocation("finishinganvil4");
-
-	protected final IItemPropertyGetter finishingAnvilPropertyGetter = new IItemPropertyGetter() {
-		@Override
-		@SideOnly(Side.CLIENT)
-		public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {
-			if (stack.getItem() instanceof ToolCore) {
-				return getAnvilID(stack, entityIn, 0);
-			}
-			return 0;
-		}
-	};
+    // Helper stuff
+    // static List<ToolCore> tools = Lists.newLinkedList(); // contains all
+    // tools registered in this pulse
+    // static List<ToolPart> toolparts = Lists.newLinkedList(); // ^ all
+    // toolparts
+    // static List<IModifier> modifiers = Lists.newLinkedList(); // ^ all
+    // modifiers
+    public static ToolCore ring;
+    // public static ToolCore amulet;
+    public static BaubleTool tabard;
+    public static ToolCore backpack;
+    static ArrayList<Item> itemList = new ArrayList<Item>();
+    protected final IItemPropertyGetter finishingAnvilPropertyGetter = new IItemPropertyGetter() {
+        @Override
+        @SideOnly(Side.CLIENT)
+        public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {
+            if (stack.getItem() instanceof ToolCore) {
+                return getAnvilID(stack, entityIn, 0);
+            }
+            return 0;
+        }
+    };
+    TDToolEvents events = new TDToolEvents();
 //
 //	protected final IItemPropertyGetter finishingAnvilPropertyGetter1 = new IItemPropertyGetter() {
 //		@Override
@@ -191,303 +166,303 @@ public class TDTools {
 //		}
 //	};
 
-	public float getAnvilID(ItemStack stack, EntityLivingBase e, int layer) {
+    private static void regTool(ToolCore tool, String name, RegistryEvent.Register<Item> event) {
+        tool.setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
+        event.getRegistry().register(tool);
+        TinkerRegistry.registerTool(tool);
+        TinkersCompendium.proxy.registerToolModel(tool);
+        tools.add(tool);
+    }
 
-		NBTTagCompound tag = TagUtil.getTagSafe(stack);
-		if (!tag.hasKey(ArmorTags.AnvilBase)) {
-			tag.setTag(ArmorTags.AnvilBase, new NBTTagCompound());
-		}
-		NBTTagCompound anvil = tag.getCompoundTag(ArmorTags.AnvilBase);
-		if (!anvil.hasKey(ArmorTags.ModelType)) {
-			anvil.setInteger(ArmorTags.ModelType, 0);
-		}
+    private static void regArmor(ArmorCore armor, String name, RegistryEvent.Register<Item> event) {
+        armor.setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
+        event.getRegistry().register(armor);
+        TCRegistry.registerTool(armor);
+        TinkersCompendium.proxy.registerArmorModel(armor);
+        armors.add(armor);
+    }
 
-		int bit = anvil.getInteger(ArmorTags.ModelType) >> (layer * 8);
-		return bit;
-	}
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void registerModels(ModelRegistryEvent event) {
+        TinkersCompendium.proxy.registerItemBlockRenderer(station, 0, "armorstation");
 
-	// PRE-INITIALIZATION
-	@Subscribe
-	public void preInit(FMLPreInitializationEvent event) {
+        if (TCConfig.anvil.enableFinishingAnvilTools)
+            for (ToolCore i : TinkerRegistry.getTools()) {
+                for (String s : TCConfig.anvil.overrides) {
+                    String[] info = s.split(" ");
+                    if (info[0].equals(i.getRegistryName().toString())) {
+                        TinkersCompendium.proxy.registerAnvilToolModel(i);
+                    }
 
-	}
+                }
+            }
+    }
 
-	private void regTools() {
+    public float getAnvilID(ItemStack stack, EntityLivingBase e, int layer) {
 
-	}
+        NBTTagCompound tag = TagUtil.getTagSafe(stack);
+        if (!tag.hasKey(ArmorTags.AnvilBase)) {
+            tag.setTag(ArmorTags.AnvilBase, new NBTTagCompound());
+        }
+        NBTTagCompound anvil = tag.getCompoundTag(ArmorTags.AnvilBase);
+        if (!anvil.hasKey(ArmorTags.ModelType)) {
+            anvil.setInteger(ArmorTags.ModelType, 0);
+        }
 
-	public void registerItems(final RegistryEvent.Register<Item> event) {
+        int bit = anvil.getInteger(ArmorTags.ModelType) >> (layer * 8);
+        return bit;
+    }
 
-		// TODO find a way to not use this
-		regDummy = new RegDummy();
-		regTool(regDummy, "regdummy", event);
+    // PRE-INITIALIZATION
+    @Subscribe
+    public void preInit(FMLPreInitializationEvent event) {
 
-		if (TinkersCompendium.config.shields.enableShields) {
-			if (TinkersCompendium.config.shields.enableBuckler) {
-				roundshield = new RoundShield();
-				regTool(roundshield, "roundshield", event);
-			}
-			if (TinkersCompendium.config.shields.enableHeaterShield) {
-				heatershield = new HeaterShield();
-				regTool(heatershield, "heatershield", event);
-			}
-			if (TinkersCompendium.config.shields.enableTowerShield) {
-				towershield = new TowerShield();
-				regTool(towershield, "towershield", event);
-			}
-		}
+    }
 
-		if (TinkersCompendium.config.tools.enableTools) {
-			if (TinkersCompendium.config.tools.enableZweihander) {
-				zweihander = new Zweihander();
-				regTool(zweihander, "zweihander", event);
-			}
-			if (TinkersCompendium.config.tools.enableShears) {
-				shears = new Shears();
-				regTool(shears, "shears", event);
-			}
-			if (TinkersCompendium.config.tools.enableFishingRod) {
-				fishingRod = new FishingRod();
-				regTool(fishingRod, "fishingRod", event);
-			}
-			if (TinkersCompendium.config.tools.enableSaw) {
-				saw = new Saw();
-				regTool(saw, "saw", event);
-			}
-			if (TinkersCompendium.config.tools.enableMallet) {
-				mallet = new Mallet();
-				regTool(mallet, "mallet", event);
-			}
-			if (TinkersCompendium.config.tools.enableFireDrill) {
-				fireDrill = new FireDrill();
-				regTool(fireDrill, "fireDrill", event);
-			}
+    private void regTools() {
 
-			if (TinkersCompendium.config.tools.enableBackpack) {
-				backpack = new Backpack();
-				regTool(backpack, "backpack", event);
-			}
-		}
+    }
 
-		if (TinkersCompendium.config.armor.enableClothArmor) {
-			hood = new TinkersHood();
-			regArmor(hood, "hood", event);
-			shawl = new TinkersShawl();
-			regArmor(shawl, "shawl", event);
-			robe = new TinkersRobe();
-			regArmor(robe, "robe", event);
-			shoes = new TinkersShoes();
-			regArmor(shoes, "shoes", event);
-		}
+    public void registerItems(final RegistryEvent.Register<Item> event) {
 
-		if (TinkersCompendium.config.armor.enableChainArmor) {
-			coif = new TinkersCoif();
-			regArmor(coif, "coif", event);
-			hauberk = new TinkersHauberk();
-			regArmor(hauberk, "hauberk", event);
-			chausses = new TinkersChausses();
-			regArmor(chausses, "chausses", event);
-			boots = new TinkersBoots();
-			regArmor(boots, "boots", event);
-		}
+        // TODO find a way to not use this
+        regDummy = new RegDummy();
+        regTool(regDummy, "regdummy", event);
 
-		if (TinkersCompendium.config.armor.enableChainArmor) {
-			helm = new TinkersHelm();
-			regArmor(helm, "helm", event);
-			breastplate = new TinkersBreastplate();
-			regArmor(breastplate, "breastplate", event);
-			grieves = new TinkersGrieves();
-			regArmor(grieves, "grieves", event);
-			sabatons = new TinkersSabatons();
-			regArmor(sabatons, "sabatons", event);
-		}
+        if (TCConfig.shields.enableShields) {
+            if (TCConfig.shields.enableBuckler) {
+                roundshield = new RoundShield();
+                regTool(roundshield, "roundshield", event);
+            }
+            if (TCConfig.shields.enableHeaterShield) {
+                heatershield = new HeaterShield();
+                regTool(heatershield, "heatershield", event);
+            }
+            if (TCConfig.shields.enableTowerShield) {
+                towershield = new TowerShield();
+                regTool(towershield, "towershield", event);
+            }
+        }
 
-		if (TinkersCompendium.config.baubles.enableBaubles) {
-			if (TinkersCompendium.config.baubles.enableTabard) {
-				tabard = new TinkersTabard();
-				regTool(tabard, "tabard", event);
-			}
-			if (TinkersCompendium.config.baubles.enableRing) {
-				ring = new TinkerRing();
-				regTool(ring, "ring", event);
-			}
-		}
+        if (TCConfig.tools.enableTools) {
+            if (TCConfig.tools.enableZweihander) {
+                zweihander = new Zweihander();
+                regTool(zweihander, "zweihander", event);
+            }
+            if (TCConfig.tools.enableShears) {
+                shears = new Shears();
+                regTool(shears, "shears", event);
+            }
+            if (TCConfig.tools.enableFishingRod) {
+                fishingRod = new FishingRod();
+                regTool(fishingRod, "fishingRod", event);
+            }
+            if (TCConfig.tools.enableSaw) {
+                saw = new Saw();
+                regTool(saw, "saw", event);
+            }
+            if (TCConfig.tools.enableMallet) {
+                mallet = new Mallet();
+                regTool(mallet, "mallet", event);
+            }
+            if (TCConfig.tools.enableFireDrill) {
+                fireDrill = new FireDrill();
+                regTool(fireDrill, "fireDrill", event);
+            }
 
-		// sheathe = new Sheathe();
+            if (TCConfig.tools.enableBackpack) {
+                backpack = new Backpack();
+                regTool(backpack, "backpack", event);
+            }
+        }
 
-		// amulet = new Amulet();
+        if (TCConfig.armor.enableClothArmor) {
+            hood = new TinkersHood();
+            regArmor(hood, "hood", event);
+            shawl = new TinkersShawl();
+            regArmor(shawl, "shawl", event);
+            robe = new TinkersRobe();
+            regArmor(robe, "robe", event);
+            shoes = new TinkersShoes();
+            regArmor(shoes, "shoes", event);
+        }
 
-		// regTool(boots, "boots", event);
+        if (TCConfig.armor.enableChainArmor) {
+            coif = new TinkersCoif();
+            regArmor(coif, "coif", event);
+            hauberk = new TinkersHauberk();
+            regArmor(hauberk, "hauberk", event);
+            chausses = new TinkersChausses();
+            regArmor(chausses, "chausses", event);
+            boots = new TinkersBoots();
+            regArmor(boots, "boots", event);
+        }
 
-		// CustomTextureCreator.registerTexture(new
-		// ResourceLocation("tinkersdefense",
-		// "items/battleaxe/_halbard_accessory"));
+        if (TCConfig.armor.enableChainArmor) {
+            helm = new TinkersHelm();
+            regArmor(helm, "helm", event);
+            breastplate = new TinkersBreastplate();
+            regArmor(breastplate, "breastplate", event);
+            grieves = new TinkersGrieves();
+            regArmor(grieves, "grieves", event);
+            sabatons = new TinkersSabatons();
+            regArmor(sabatons, "sabatons", event);
+        }
 
-		//
-		// regTool(sheathe, "sheathe", event);
+        if (TCConfig.baubles.enableBaubles) {
+            if (TCConfig.baubles.enableTabard) {
+                tabard = new TinkersTabard();
+                regTool(tabard, "tabard", event);
+            }
+            if (TCConfig.baubles.enableRing) {
+                ring = new TinkerRing();
+                regTool(ring, "ring", event);
+            }
+        }
 
-		// regTool(amulet, "amulet", event);
+        // sheathe = new Sheathe();
 
-		final IForgeRegistry registry = event.getRegistry();
-		for (Item i : itemList) {
-			registry.register(i);
-		}
+        // amulet = new Amulet();
 
-		stationItem = (ItemBlock) new ItemBlock(station).setRegistryName(station.getRegistryName());
-		registry.register(stationItem);
+        // regTool(boots, "boots", event);
 
-		for (ToolCore i : TinkerRegistry.getTools()) {
-			i.addPropertyOverride(PROPERTY_FINISHING_ANVIL0, finishingAnvilPropertyGetter);
+        // CustomTextureCreator.registerTexture(new
+        // ResourceLocation("tinkersdefense",
+        // "items/battleaxe/_halbard_accessory"));
+
+        //
+        // regTool(sheathe, "sheathe", event);
+
+        // regTool(amulet, "amulet", event);
+
+        final IForgeRegistry registry = event.getRegistry();
+        for (Item i : itemList) {
+            registry.register(i);
+        }
+
+        stationItem = (ItemBlock) new ItemBlock(station).setRegistryName(station.getRegistryName());
+        registry.register(stationItem);
+
+        for (ToolCore i : TinkerRegistry.getTools()) {
+            i.addPropertyOverride(PROPERTY_FINISHING_ANVIL0, finishingAnvilPropertyGetter);
 //			i.addPropertyOverride(PROPERTY_FINISHING_ANVIL1, finishingAnvilPropertyGetter1);
 //			i.addPropertyOverride(PROPERTY_FINISHING_ANVIL2, finishingAnvilPropertyGetter2);
 //			i.addPropertyOverride(PROPERTY_FINISHING_ANVIL3, finishingAnvilPropertyGetter3);
 //			i.addPropertyOverride(PROPERTY_FINISHING_ANVIL4, finishingAnvilPropertyGetter4);
-			// TinkersCompendium.proxy.registerAnvilToolModel(i);
-		}
+            // TinkersCompendium.proxy.registerAnvilToolModel(i);
+        }
 
-	}
+    }
 
-	public void registerBlocks(final RegistryEvent.Register<Block> event) {
-		IForgeRegistry<Block> registry = event.getRegistry();
+    public void registerBlocks(final RegistryEvent.Register<Block> event) {
+        IForgeRegistry<Block> registry = event.getRegistry();
 
-		station = new ArmorStationBlock();
-		registry.register(station);
+        station = new ArmorStationBlock();
+        registry.register(station);
 
-		GameRegistry.registerTileEntity(ArmorStationTile.class, "armorstationtile");
+        GameRegistry.registerTileEntity(ArmorStationTile.class, "armorstationtile");
 
-		//
-	}
+        //
+    }
 
-	private static void regTool(ToolCore tool, String name, RegistryEvent.Register<Item> event) {
-		tool.setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
-		event.getRegistry().register(tool);
-		TinkerRegistry.registerTool(tool);
-		TinkersCompendium.proxy.registerToolModel(tool);
-		tools.add(tool);
-	}
+    private void registerModifiers() {
 
-	private static void regArmor(ArmorCore armor, String name, RegistryEvent.Register<Item> event) {
-		armor.setRegistryName(new ResourceLocation(Reference.MOD_ID, name));
-		event.getRegistry().register(armor);
-		TCRegistry.registerTool(armor);
-		TinkersCompendium.proxy.registerArmorModel(armor);
-		armors.add(armor);
-	}
+    }
 
-	private void registerModifiers() {
+    // INITIALIZATION
+    @Subscribe
+    public void init(FMLInitializationEvent event) {
+        // register items
 
-	}
+        // register blocks
 
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public static void registerModels(ModelRegistryEvent event) {
-		TinkersCompendium.proxy.registerItemBlockRenderer(station, 0, "armorstation");
+        // register entities
 
-		if (TinkersCompendium.config.anvil.enableFinishingAnvilTools)
-			for (ToolCore i : TinkerRegistry.getTools()) {
-				for (String s : TCConfig.anvil.overrides) {
-					String[] info = s.split(" ");
-					if (info[0].equals(i.getRegistryName().toString())) {
-						TinkersCompendium.proxy.registerAnvilToolModel(i);
-					}
+        // proxy.preInit();
+        regToolBuilding();
+        regRecipies();
 
-				}
-			}
-	}
+        // proxy.init();
 
-	// INITIALIZATION
-	@Subscribe
-	public void init(FMLInitializationEvent event) {
-		// register items
+        TinkerNetwork.instance.registerPacket(ArmorStationSelectionPacket.class);
+        TinkerNetwork.instance.registerPacket(FinishingAnvilSelectionPacket.class);
+    }
 
-		// register blocks
+    private void regToolBuilding() {
+        if (TCConfig.shields.enableShields) {
+            if (TCConfig.shields.enableBuckler)
+                TinkerRegistry.registerToolCrafting(roundshield);
+            if (TCConfig.shields.enableHeaterShield)
+                TinkerRegistry.registerToolForgeCrafting(heatershield);
+            if (TCConfig.shields.enableTowerShield)
+                TinkerRegistry.registerToolForgeCrafting(towershield);
+        }
 
-		// register entities
+        if (TCConfig.tools.enableTools) {
+            if (TCConfig.tools.enableZweihander)
+                TinkerRegistry.registerToolForgeCrafting(zweihander);
+            if (TCConfig.tools.enableShears)
+                TinkerRegistry.registerToolCrafting(shears);
+            if (TCConfig.tools.enableFishingRod)
+                TinkerRegistry.registerToolCrafting(fishingRod);
+            if (TCConfig.tools.enableMallet)
+                TinkerRegistry.registerToolCrafting(mallet);
+            if (TCConfig.tools.enableSaw)
+                TinkerRegistry.registerToolCrafting(saw);
+            if (TCConfig.tools.enableFireDrill)
+                TinkerRegistry.registerToolCrafting(fireDrill);
+            if (TCConfig.tools.enableBackpack)
+                TinkerRegistry.registerToolCrafting(backpack);
+        }
 
-		// proxy.preInit();
-		regToolBuilding();
-		regRecipies();
+        if (TCConfig.armor.enableClothArmor) {
+            TCRegistry.registerArmorCrafting(hood);
+            TCRegistry.registerArmorCrafting(shawl);
+            TCRegistry.registerArmorCrafting(robe);
+            TCRegistry.registerArmorCrafting(shoes);
+        }
 
-		// proxy.init();
+        if (TCConfig.armor.enableChainArmor) {
+            TCRegistry.registerArmorCrafting(coif);
+            TCRegistry.registerArmorCrafting(hauberk);
+            TCRegistry.registerArmorCrafting(chausses);
+            TCRegistry.registerArmorCrafting(boots);
+        }
 
-		TinkerNetwork.instance.registerPacket(ArmorStationSelectionPacket.class);
-		TinkerNetwork.instance.registerPacket(FinishingAnvilSelectionPacket.class);
-	}
+        if (TCConfig.armor.enableHeavyArmor) {
+            TCRegistry.registerArmorCrafting(helm);
+            TCRegistry.registerArmorCrafting(breastplate);
+            TCRegistry.registerArmorCrafting(grieves);
+            TCRegistry.registerArmorCrafting(sabatons);
+        }
 
-	private void regToolBuilding() {
-		if (TinkersCompendium.config.shields.enableShields) {
-			if (TinkersCompendium.config.shields.enableBuckler)
-				TinkerRegistry.registerToolCrafting(roundshield);
-			if (TinkersCompendium.config.shields.enableHeaterShield)
-				TinkerRegistry.registerToolForgeCrafting(heatershield);
-			if (TinkersCompendium.config.shields.enableTowerShield)
-				TinkerRegistry.registerToolForgeCrafting(towershield);
-		}
+        if (TCConfig.baubles.enableBaubles) {
+            if (TCConfig.baubles.enableTabard) {
+                TinkerRegistry.registerToolCrafting(tabard);
+            }
+            if (TCConfig.baubles.enableRing) {
+                TinkerRegistry.registerToolCrafting(ring);
+            }
+        }
 
-		if (TinkersCompendium.config.tools.enableTools) {
-			if (TinkersCompendium.config.tools.enableZweihander)
-				TinkerRegistry.registerToolForgeCrafting(zweihander);
-			if (TinkersCompendium.config.tools.enableShears)
-				TinkerRegistry.registerToolCrafting(shears);
-			if (TinkersCompendium.config.tools.enableFishingRod)
-				TinkerRegistry.registerToolCrafting(fishingRod);
-			if (TinkersCompendium.config.tools.enableMallet)
-				TinkerRegistry.registerToolCrafting(mallet);
-			if (TinkersCompendium.config.tools.enableSaw)
-				TinkerRegistry.registerToolCrafting(saw);
-			if (TinkersCompendium.config.tools.enableFireDrill)
-				TinkerRegistry.registerToolCrafting(fireDrill);
-			if (TinkersCompendium.config.tools.enableBackpack)
-				TinkerRegistry.registerToolCrafting(backpack);
-		}
+        // TinkerRegistry.registerToolCrafting(sheathe);
+        // TinkerRegistry.registerToolCrafting(ring);
+        // TinkerRegistry.registerToolCrafting(amulet);
+    }
 
-		if (TinkersCompendium.config.armor.enableClothArmor) {
-			TCRegistry.registerArmorCrafting(hood);
-			TCRegistry.registerArmorCrafting(shawl);
-			TCRegistry.registerArmorCrafting(robe);
-			TCRegistry.registerArmorCrafting(shoes);
-		}
+    private void regRecipies() {
 
-		if (TinkersCompendium.config.armor.enableChainArmor) {
-			TCRegistry.registerArmorCrafting(coif);
-			TCRegistry.registerArmorCrafting(hauberk);
-			TCRegistry.registerArmorCrafting(chausses);
-			TCRegistry.registerArmorCrafting(boots);
-		}
+    }
 
-		if (TinkersCompendium.config.armor.enableHeavyArmor) {
-			TCRegistry.registerArmorCrafting(helm);
-			TCRegistry.registerArmorCrafting(breastplate);
-			TCRegistry.registerArmorCrafting(grieves);
-			TCRegistry.registerArmorCrafting(sabatons);
-		}
+    // POST-INITIALIZATION
+    @Subscribe
+    public void postInit(FMLPostInitializationEvent event) {
+        // proxy.postInit();
 
-		if (TinkersCompendium.config.baubles.enableBaubles) {
-			if (TinkersCompendium.config.baubles.enableTabard) {
-				TinkerRegistry.registerToolCrafting(tabard);
-			}
-			if (TinkersCompendium.config.baubles.enableRing) {
-				TinkerRegistry.registerToolCrafting(ring);
-			}
-		}
+        MinecraftForge.EVENT_BUS.register(events);
 
-		// TinkerRegistry.registerToolCrafting(sheathe);
-		// TinkerRegistry.registerToolCrafting(ring);
-		// TinkerRegistry.registerToolCrafting(amulet);
-	}
-
-	private void regRecipies() {
-
-	}
-
-	// POST-INITIALIZATION
-	@Subscribe
-	public void postInit(FMLPostInitializationEvent event) {
-		// proxy.postInit();
-
-		MinecraftForge.EVENT_BUS.register(events);
-
-		regTools();
-		registerModifiers();
-	}
+        regTools();
+        registerModifiers();
+    }
 }

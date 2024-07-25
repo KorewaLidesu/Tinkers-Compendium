@@ -9,18 +9,18 @@ import net.minecraft.world.World;
 
 public class TraitIgnite extends AbstractTDTrait {
 
-	public TraitIgnite() {
-		super("ignite", TextFormatting.DARK_RED);
-	}
+    public TraitIgnite() {
+        super("ignite", TextFormatting.DARK_RED);
+    }
 
-	@Override
-	public void onArmorTick(ItemStack tool, World world, EntityPlayer player) {
+    @Override
+    public void onArmorTick(ItemStack tool, World world, EntityPlayer player) {
 
-		if (world.rand.nextInt(100) > 75) {
-			BlockPos underPlayer = new BlockPos(player.posX, player.posY - 1, player.posZ);
-			if (world.getBlockState(underPlayer) == Blocks.NETHERRACK.getDefaultState()) {
-				world.setBlockState(player.getPosition(), Blocks.FIRE.getDefaultState(), 11);
-			}
-		}
-	}
+        if (world.rand.nextInt(100) > 75) {
+            BlockPos underPlayer = new BlockPos(player.posX, player.posY - 1, player.posZ);
+            if (world.getBlockState(underPlayer) == Blocks.NETHERRACK.getDefaultState()) {
+                world.setBlockState(player.getPosition(), Blocks.FIRE.getDefaultState(), 11);
+            }
+        }
+    }
 }

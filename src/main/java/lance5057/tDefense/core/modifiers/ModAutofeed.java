@@ -16,51 +16,48 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 
 public class ModAutofeed extends ModifierTDTrait {
 
-	public ModAutofeed() {
-		super("autofeed", 0x752700);
-	}
+    public ModAutofeed() {
+        super("autofeed", 0x752700);
+    }
 
-	@Override
-	public boolean canApplyCustom(ItemStack stack) {
+    @Override
+    public boolean canApplyCustom(ItemStack stack) {
 
-		if (stack.getItem() instanceof ArmorCore)
-			if (((ArmorCore) stack.getItem()).armorType == EntityEquipmentSlot.HEAD) {
-				// not present yet, ok
-				if (super.canApplyCustom(stack)) {
-					return true;
-				}
-				// no max level
-				else if (maxLevel == 0) {
-					return false;
-				}
+        if (stack.getItem() instanceof ArmorCore)
+            if (((ArmorCore) stack.getItem()).armorType == EntityEquipmentSlot.HEAD) {
+                // not present yet, ok
+                if (super.canApplyCustom(stack)) {
+                    return true;
+                }
+                // no max level
+                else if (maxLevel == 0) {
+                    return false;
+                }
 
-				// already present, limit by level
-				NBTTagCompound tag = TinkerUtil.getModifierTag(stack, identifier);
+                // already present, limit by level
+                NBTTagCompound tag = TinkerUtil.getModifierTag(stack, identifier);
 
-				return ModifierNBT.readTag(tag).level <= maxLevel;
-			}
-		return false;
-	}
+                return ModifierNBT.readTag(tag).level <= maxLevel;
+            }
+        return false;
+    }
 
-	@Override
-	public void onArmorTick(ItemStack tool, World world, EntityPlayer player) {
-		if(player.canEat(false))
-		{
-			for(ItemStack i: player.inventory.mainInventory)
-			{
-				if(i.getItem() instanceof ItemFood)
-				{
-					player.getFoodStats().addStats((ItemFood) i.getItem(), i);
-					i.setCount(i.getCount()-1);
-					
-					world.playSound(player, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 1, 1);
-				}
-			}
-		}
-	}
+    @Override
+    public void onArmorTick(ItemStack tool, World world, EntityPlayer player) {
+        if (player.canEat(false)) {
+            for (ItemStack i : player.inventory.mainInventory) {
+                if (i.getItem() instanceof ItemFood) {
+                    player.getFoodStats().addStats((ItemFood) i.getItem(), i);
+                    i.setCount(i.getCount() - 1);
 
-	@Override
-	protected ModifierAspect[] getAspects() {
-		return new ModifierAspect[] {ModifierAspect.freeModifier};
-	}
+                    world.playSound(player, player.getPosition(), SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.PLAYERS, 1, 1);
+                }
+            }
+        }
+    }
+
+    @Override
+    protected ModifierAspect[] getAspects() {
+        return new ModifierAspect[]{ModifierAspect.freeModifier};
+    }
 }

@@ -15,36 +15,36 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class TraitIncinerate extends AbstractTDTrait {
 
-	public TraitIncinerate() {
-		super("incinerate", TextFormatting.RED);
-	}
+    public TraitIncinerate() {
+        super("incinerate", TextFormatting.RED);
+    }
 
-	//Armor
-	public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
-		incinerate(tool, e);
-	}
+    //Armor
+    public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
+        incinerate(tool, e);
+    }
 
-	//Shields
-	@Override
-	public void onBlock(ItemStack tool, EntityPlayer player, LivingHurtEvent e) {
-		incinerate(tool, e);
-	}
+    //Shields
+    @Override
+    public void onBlock(ItemStack tool, EntityPlayer player, LivingHurtEvent e) {
+        incinerate(tool, e);
+    }
 
-	//Extra Crispy
-	void incinerate(ItemStack tool, LivingHurtEvent e) {
-		ItemStack item = e.getEntityLiving().getHeldItemMainhand();
-		if (item.getItem() instanceof ToolCore || item.getItem() instanceof ArmorCore) {
-			NBTTagList tag = TagUtil.getBaseMaterialsTagList(item);
-			boolean isFlammable = false;
-			for (NBTBase s : tag) {
-				if (TCConfig.traits.isFlammable(((NBTTagString) s).getString()))
-					isFlammable = true;
-			}
-			if (isFlammable) {
-				int dur = ToolHelper.getCurrentDurability(item);
-				ToolHelper.damageTool(item, (int) Math.floor(dur / 2), e.getEntityLiving());
-			}
-		}
-	}
+    //Extra Crispy
+    void incinerate(ItemStack tool, LivingHurtEvent e) {
+        ItemStack item = e.getEntityLiving().getHeldItemMainhand();
+        if (item.getItem() instanceof ToolCore || item.getItem() instanceof ArmorCore) {
+            NBTTagList tag = TagUtil.getBaseMaterialsTagList(item);
+            boolean isFlammable = false;
+            for (NBTBase s : tag) {
+                if (TCConfig.traits.isFlammable(((NBTTagString) s).getString()))
+                    isFlammable = true;
+            }
+            if (isFlammable) {
+                int dur = ToolHelper.getCurrentDurability(item);
+                ToolHelper.damageTool(item, (int) Math.floor(dur / 2), e.getEntityLiving());
+            }
+        }
+    }
 
 }

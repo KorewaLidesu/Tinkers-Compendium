@@ -10,28 +10,28 @@ import slimeknights.tconstruct.library.utils.TinkerUtil;
 
 public class TraitRetribution extends AbstractTDTrait {
 
-	int level = 0;
-	
-	public TraitRetribution(int level) {
-		super("retribution" + level, TextFormatting.GRAY);
-		this.level = level;
-	}
+    int level = 0;
 
-	public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
-		if (e.getSource().getTrueSource() instanceof EntityMob) {
-			EntityMob ent = (EntityMob) e.getSource().getTrueSource();
-			if (ent.isEntityUndead()) {
-				
-				int count = 0;
-				
-				for (ItemStack i : e.getEntityLiving().getArmorInventoryList()) {
-					if (TinkerUtil.hasTrait(TagUtil.getTagSafe(i), this.identifier)) {
-						count++;
-					}
-				}
-				
-				ent.attackEntityFrom(DamageSource.MAGIC, count * level);
-			}
-		}
-	}
+    public TraitRetribution(int level) {
+        super("retribution" + level, TextFormatting.GRAY);
+        this.level = level;
+    }
+
+    public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
+        if (e.getSource().getTrueSource() instanceof EntityMob) {
+            EntityMob ent = (EntityMob) e.getSource().getTrueSource();
+            if (ent.isEntityUndead()) {
+
+                int count = 0;
+
+                for (ItemStack i : e.getEntityLiving().getArmorInventoryList()) {
+                    if (TinkerUtil.hasTrait(TagUtil.getTagSafe(i), this.identifier)) {
+                        count++;
+                    }
+                }
+
+                ent.attackEntityFrom(DamageSource.MAGIC, count * level);
+            }
+        }
+    }
 }

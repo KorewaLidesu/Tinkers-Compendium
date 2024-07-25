@@ -1,10 +1,7 @@
 package lance5057.tDefense.core.tools.armor.heavy;
 
-import java.util.List;
-
 import lance5057.tDefense.Reference;
 import lance5057.tDefense.TCConfig;
-import lance5057.tDefense.TinkersCompendium;
 import lance5057.tDefense.core.library.ArmorNBT;
 import lance5057.tDefense.core.library.ArmorTags;
 import lance5057.tDefense.core.library.ArmorTextureBuilder;
@@ -40,132 +37,135 @@ import slimeknights.tconstruct.library.materials.MaterialTypes;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.tools.TinkerTools;
 
+import javax.annotation.Nonnull;
+import java.util.List;
+
 public class TinkersHelm extends ArmorCore {
-	public TinkersHelm() {
-		super(EntityEquipmentSlot.HEAD, new PartMaterialType(TinkerTools.panHead, HelmMaterialStats.TYPE),
-				new PartMaterialType(TDParts.chainmail, HelmMaterialStats.TYPE),
-				PartMaterialType.handle(TDParts.filigree), PartMaterialType.extra(TDParts.armorPlate),
-				new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE));
-		setUnlocalizedName("tinkershelm");
-	}
+    public TinkersHelm() {
+        super(EntityEquipmentSlot.HEAD, new PartMaterialType(TinkerTools.panHead, HelmMaterialStats.TYPE),
+                new PartMaterialType(TDParts.chainmail, HelmMaterialStats.TYPE),
+                PartMaterialType.handle(TDParts.filigree), PartMaterialType.extra(TDParts.armorPlate),
+                new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE));
+        setTranslationKey("tinkershelm");
+    }
 
-	@Override
-	public void getSubItems(CreativeTabs tab, NonNullList<ItemStack> subItems) {
-		if (this.isInCreativeTab(tab)) {
-			addDefaultSubItems(subItems, null, null, null, null,
-					CompendiumMaterials.white.mat);
-		}
-	}
-	
-	@SideOnly(Side.CLIENT)
-	@Override
-	public NBTTagCompound setupTexture(List<Material> materials) {
-		NBTTagCompound base = new NBTTagCompound();
+    @Override
+    public void getSubItems(@Nonnull CreativeTabs tab, @Nonnull NonNullList<ItemStack> subItems) {
+        if (this.isInCreativeTab(tab)) {
+            addDefaultSubItems(subItems, null, null, null, null,
+                    CompendiumMaterials.white.mat);
+        }
+    }
 
-		ResourceLocation rc = ArmorTextureBuilder.createArmorTexture("helm",
-				new String[] { "top", "chain", "trim", "plate", "cloth" }, materials, 64, 64);
+    @SideOnly(Side.CLIENT)
+    @Override
+    public NBTTagCompound setupTexture(List<Material> materials) {
+        NBTTagCompound base = new NBTTagCompound();
 
-		if (rc != null) {
-			base.setString(ArmorTags.TexLoc, rc.toString());
-			return base;
-		}
-		return null;
-	}
+        ResourceLocation rc = ArmorTextureBuilder.createArmorTexture("helm",
+                new String[]{"top", "chain", "trim", "plate", "cloth"}, materials, 64, 64);
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot,
-			ModelBiped _default) {
-		//return new ModelTinkerTabard(itemStack);
-		return new ModelTinkersHelm(itemStack);
-	}
+        if (rc != null) {
+            base.setString(ArmorTags.TexLoc, rc.toString());
+            return base;
+        }
+        return null;
+    }
 
-	@Override
-	public NBTTagCompound buildTag(List<Material> materials) {
-		ArmorNBT data = buildDefaultTag(materials);
-		return data.get();
-	}
+    @SideOnly(Side.CLIENT)
+    @Override
+    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, EntityEquipmentSlot armorSlot,
+                                    ModelBiped _default) {
+        //return new ModelTinkerTabard(itemStack);
+        return new ModelTinkersHelm(itemStack);
+    }
 
-	@Override
-	public EntityEquipmentSlot getArmorSlot(ItemStack stack, EntityEquipmentSlot armorType) {
-		return EntityEquipmentSlot.HEAD;
-	}
+    @Override
+    public NBTTagCompound buildTag(List<Material> materials) {
+        ArmorNBT data = buildDefaultTag(materials);
+        return data.get();
+    }
 
-	@Override
-	public float armorMultiplier() {
-		// TODO Auto-generated method stub
-		return 1f;
-	}
+    @Override
+    public EntityEquipmentSlot getArmorSlot(ItemStack stack, EntityEquipmentSlot armorType) {
+        return EntityEquipmentSlot.HEAD;
+    }
 
-	@Override
-	public float potencyMultiplier() {
-		// TODO Auto-generated method stub
-		return 0f;
-	}
+    @Override
+    public float armorMultiplier() {
+        // TODO Auto-generated method stub
+        return 1f;
+    }
 
-	@Override
-	protected ArmorNBT buildDefaultTag(List<Material> materials) {
-		ArmorNBT data = new ArmorNBT();
+    @Override
+    public float potencyMultiplier() {
+        // TODO Auto-generated method stub
+        return 0f;
+    }
 
-		ArmorMaterialStats head2 = materials.get(0).getStatsOrUnknown(HelmMaterialStats.TYPE);
-		ArmorMaterialStats head = materials.get(1).getStatsOrUnknown(HelmMaterialStats.TYPE);
-		HandleMaterialStats handle = materials.get(2).getStatsOrUnknown(MaterialTypes.HANDLE);
-		ExtraMaterialStats extra = materials.get(3).getStatsOrUnknown(MaterialTypes.EXTRA);
-		// start with head
-		data.head(this, head, head2);
-		data.extra(extra);
-		data.handle(handle);
+    @Override
+    protected ArmorNBT buildDefaultTag(List<Material> materials) {
+        ArmorNBT data = new ArmorNBT();
 
-		data.modifiers = 5;
+        ArmorMaterialStats head2 = materials.get(0).getStatsOrUnknown(HelmMaterialStats.TYPE);
+        ArmorMaterialStats head = materials.get(1).getStatsOrUnknown(HelmMaterialStats.TYPE);
+        HandleMaterialStats handle = materials.get(2).getStatsOrUnknown(MaterialTypes.HANDLE);
+        ExtraMaterialStats extra = materials.get(3).getStatsOrUnknown(MaterialTypes.EXTRA);
+        // start with head
+        data.head(this, head, head2);
+        data.extra(extra);
+        data.handle(handle);
 
-		return data;
-	}
+        data.modifiers = 5;
 
-	@SideOnly(Side.CLIENT)
-	@Override
-	public void renderHelmetOverlay(ItemStack stack, EntityPlayer player,
-			net.minecraft.client.gui.ScaledResolution resolution, float partialTicks) {
-		if (TinkersCompendium.config.armor.HelmOverlay) {
+        return data;
+    }
 
-			if (ArmorTagUtil.getVisor(stack)) {
-				GlStateManager.disableDepth();
-				GlStateManager.depthMask(false);
-				GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
-						GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
-						GlStateManager.DestFactor.ZERO);
-				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-				GlStateManager.disableAlpha();
+    @SideOnly(Side.CLIENT)
+    @Override
+    public void renderHelmetOverlay(ItemStack stack, EntityPlayer player,
+                                    net.minecraft.client.gui.ScaledResolution resolution, float partialTicks) {
+        if (TCConfig.armor.HelmOverlay) {
 
-				if (TDToolEvents.overlayJumpTimer <= 0) {
+            if (ArmorTagUtil.getVisor(stack)) {
+                GlStateManager.disableDepth();
+                GlStateManager.depthMask(false);
+                GlStateManager.tryBlendFuncSeparate(GlStateManager.SourceFactor.SRC_ALPHA,
+                        GlStateManager.DestFactor.ONE_MINUS_SRC_ALPHA, GlStateManager.SourceFactor.ONE,
+                        GlStateManager.DestFactor.ZERO);
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+                GlStateManager.disableAlpha();
 
-					Minecraft.getMinecraft().getTextureManager()
-							.bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/misc/helm_overlay.png"));
-				} else {
-					if (!TCConfig.IAmEasilyStartled)
-						Minecraft.getMinecraft().getTextureManager()
-								.bindTexture(new ResourceLocation("textures/misc/pumpkinblur.png"));
-					TDToolEvents.overlayJumpTimer--;
-				}
+                if (TDToolEvents.overlayJumpTimer <= 0) {
 
-				Tessellator tessellator = Tessellator.getInstance();
-				BufferBuilder bufferbuilder = tessellator.getBuffer();
-				bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
-				bufferbuilder.pos(0.0D, (double) resolution.getScaledHeight(), -90.0D).tex(0.0D, 1.0D).endVertex();
-				bufferbuilder.pos((double) resolution.getScaledWidth(), (double) resolution.getScaledHeight(), -90.0D)
-						.tex(1.0D, 1.0D).endVertex();
-				bufferbuilder.pos((double) resolution.getScaledWidth(), 0.0D, -90.0D).tex(1.0D, 0.0D).endVertex();
-				bufferbuilder.pos(0.0D, 0.0D, -90.0D).tex(0.0D, 0.0D).endVertex();
-				tessellator.draw();
-				GlStateManager.depthMask(true);
-				GlStateManager.enableDepth();
-				GlStateManager.enableAlpha();
-				GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
-			}
-		}
-	}
+                    Minecraft.getMinecraft().getTextureManager()
+                            .bindTexture(new ResourceLocation(Reference.MOD_ID, "textures/misc/helm_overlay.png"));
+                } else {
+                    if (!TCConfig.IAmEasilyStartled)
+                        Minecraft.getMinecraft().getTextureManager()
+                                .bindTexture(new ResourceLocation("textures/misc/pumpkinblur.png"));
+                    TDToolEvents.overlayJumpTimer--;
+                }
 
-	@Override
-	public String getArmorType() {
-		return "helm";
-	}
+                Tessellator tessellator = Tessellator.getInstance();
+                BufferBuilder bufferbuilder = tessellator.getBuffer();
+                bufferbuilder.begin(7, DefaultVertexFormats.POSITION_TEX);
+                bufferbuilder.pos(0.0D, resolution.getScaledHeight(), -90.0D).tex(0.0D, 1.0D).endVertex();
+                bufferbuilder.pos(resolution.getScaledWidth(), resolution.getScaledHeight(), -90.0D)
+                        .tex(1.0D, 1.0D).endVertex();
+                bufferbuilder.pos(resolution.getScaledWidth(), 0.0D, -90.0D).tex(1.0D, 0.0D).endVertex();
+                bufferbuilder.pos(0.0D, 0.0D, -90.0D).tex(0.0D, 0.0D).endVertex();
+                tessellator.draw();
+                GlStateManager.depthMask(true);
+                GlStateManager.enableDepth();
+                GlStateManager.enableAlpha();
+                GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+            }
+        }
+    }
+
+    @Override
+    public String getArmorType() {
+        return "helm";
+    }
 }

@@ -1,10 +1,5 @@
 package lance5057.tDefense.core.items;
 
-import java.util.List;
-
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
-
 import lance5057.tDefense.TinkersCompendium;
 import lance5057.tDefense.core.library.book.CompendiumBook;
 import net.minecraft.client.util.ITooltipFlag;
@@ -19,27 +14,31 @@ import net.minecraft.util.text.translation.I18n;
 import net.minecraft.world.World;
 import slimeknights.mantle.util.LocUtils;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
+
 public class ItemCompendiumBook extends Item {
 
-  public ItemCompendiumBook() {
-    this.setCreativeTab(TinkersCompendium.tab);
-    this.setMaxStackSize(1);
-  }
-
-  @Nonnull
-  @Override
-  public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
-    ItemStack itemStack = playerIn.getHeldItem(handIn);
-    if(worldIn.isRemote) {
-      CompendiumBook.INSTANCE.openGui(itemStack);
+    public ItemCompendiumBook() {
+        this.setCreativeTab(TinkersCompendium.tab);
+        this.setMaxStackSize(1);
     }
-    return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
-  }
 
-  @Override
-  public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
-    if(I18n.canTranslate(super.getUnlocalizedName(stack) + ".tooltip")) {
-      tooltip.addAll(LocUtils.getTooltips(TextFormatting.GRAY.toString() + LocUtils.translateRecursive(super.getUnlocalizedName(stack) + ".tooltip")));
+    @Nonnull
+    @Override
+    public ActionResult<ItemStack> onItemRightClick(World worldIn, EntityPlayer playerIn, EnumHand handIn) {
+        ItemStack itemStack = playerIn.getHeldItem(handIn);
+        if (worldIn.isRemote) {
+            CompendiumBook.INSTANCE.openGui(itemStack);
+        }
+        return new ActionResult<>(EnumActionResult.SUCCESS, itemStack);
     }
-  }
+
+    @Override
+    public void addInformation(ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn) {
+        if (I18n.canTranslate(super.getTranslationKey(stack) + ".tooltip")) {
+            tooltip.addAll(LocUtils.getTooltips(TextFormatting.GRAY + LocUtils.translateRecursive(super.getTranslationKey(stack) + ".tooltip")));
+        }
+    }
 }

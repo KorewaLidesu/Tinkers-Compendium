@@ -39,164 +39,161 @@ import net.minecraftforge.registries.IForgeRegistry;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID)
 public class CompendiumWorkstations {
 
-	public static final int ArmorStationID = 0;
-	public static final int FinishingAnvilID = 1;
+    public static final int ArmorStationID = 0;
+    public static final int FinishingAnvilID = 1;
 
-	public static FinishingAnvilBlock finishingAnvil;
-	private ItemBlock FinishingAnvilItem;
+    public static FinishingAnvilBlock finishingAnvil;
+    public static HammeringTableBlock hammeringtable;
+    public static Item geodeStone;
+    public static Item geodeGranite;
+    public static Item geodeDiorite;
+    public static Item geodeAndesite;
+    public static Item geodeEndstone;
+    public static Item geodeNetherrack;
+    public static Item geodeObsidian;
+    public static Item geodeMagma;
+    public static ResourceLocation geodeStoneRL = new ResourceLocation(Reference.MOD_ID, "geodes/geode_stone");
+    private ItemBlock FinishingAnvilItem;
+    private ItemBlock HammeringTableItem;
 
-	public static HammeringTableBlock hammeringtable; 
-	private ItemBlock HammeringTableItem;
+    @SideOnly(Side.CLIENT)
+    @SubscribeEvent
+    public static void registerModels(ModelRegistryEvent event) {
+        ClientRegistry.bindTileEntitySpecialRenderer(HammeringTableTileEntity.class, new HammeringTableRenderer());
 
-	public static Item geodeStone;
-	public static Item geodeGranite;
-	public static Item geodeDiorite;
-	public static Item geodeAndesite;
-	public static Item geodeEndstone;
-	public static Item geodeNetherrack;
-	public static Item geodeObsidian;
-	public static Item geodeMagma;
-	
-	public static ResourceLocation geodeStoneRL = new ResourceLocation(Reference.MOD_ID, "geodes/geode_stone");
+        TinkersCompendium.proxy.registerItemBlockRenderer(finishingAnvil, 0, "finishinganvil");
+        TinkersCompendium.proxy.registerItemBlockRenderer(hammeringtable, 0, "hammeringtable");
 
-	public void preInit(FMLPreInitializationEvent e) {
-		
-		
-		LootTableList.register(geodeStoneRL);
-	}
+        TinkersCompendium.proxy.registerItemRenderer(geodeStone, 0, "geode_stone");
+        TinkersCompendium.proxy.registerItemRenderer(geodeGranite, 0, "geode_granite");
+        TinkersCompendium.proxy.registerItemRenderer(geodeDiorite, 0, "geode_diorite");
+        TinkersCompendium.proxy.registerItemRenderer(geodeAndesite, 0, "geode_andesite");
+        TinkersCompendium.proxy.registerItemRenderer(geodeEndstone, 0, "geode_endstone");
+        TinkersCompendium.proxy.registerItemRenderer(geodeNetherrack, 0, "geode_netherrack");
+        TinkersCompendium.proxy.registerItemRenderer(geodeObsidian, 0, "geode_obsidian");
+        TinkersCompendium.proxy.registerItemRenderer(geodeMagma, 0, "geode_magma");
+    }
 
-	public void init(FMLInitializationEvent e) {
-		registerRecipes();
-	}
+    // @SubscribeEvent
+    public static void registerBlocks(final RegistryEvent.Register<Block> event) {
+        IForgeRegistry<Block> registry = event.getRegistry();
 
-	public void postInit(FMLPostInitializationEvent e) {
+        finishingAnvil = new FinishingAnvilBlock();
+        hammeringtable = new HammeringTableBlock();
 
-	}
+        registry.register(finishingAnvil);
+        registry.register(hammeringtable);
 
-	public void registerItems(final RegistryEvent.Register<Item> event) {
-		final IForgeRegistry registry = event.getRegistry();
+        GameRegistry.registerTileEntity(FinishingAnvilTile.class, "finishinganviltile");
+        GameRegistry.registerTileEntity(HammeringTableTileEntity.class, "hammeringtabletile");
+    }
 
-		FinishingAnvilItem = (ItemBlock) new ItemBlock(finishingAnvil)
-				.setRegistryName(finishingAnvil.getRegistryName());
-		HammeringTableItem = (ItemBlock) new ItemBlock(hammeringtable)
-				.setRegistryName(hammeringtable.getRegistryName());
+    public static Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        BlockPos pos = new BlockPos(x, y, z);
 
-		registry.register(FinishingAnvilItem);
-		registry.register(HammeringTableItem);
+        switch (ID) {
+            case ArmorStationID:
+                return new ArmorStationContainer(player.inventory, (ArmorStationTile) world.getTileEntity(pos));
+            case FinishingAnvilID:
+                return new FinishingAnvilContainer(player.inventory, (FinishingAnvilTile) world.getTileEntity(pos));
+        }
+        return null;
+    }
 
-		geodeStone = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_stone"))
-				.setUnlocalizedName("geode_stone");
-		geodeGranite = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_granite"))
-				.setUnlocalizedName("geode_granite");
-		geodeDiorite = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_diorite"))
-				.setUnlocalizedName("geode_diorite");
-		geodeAndesite = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_andesite"))
-				.setUnlocalizedName("geode_andesite");
-		geodeEndstone = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_endstone"))
-				.setUnlocalizedName("geode_endstone");
-		geodeNetherrack = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_netherrack"))
-				.setUnlocalizedName("geode_netherrack");
-		geodeObsidian = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_obsidian"))
-				.setUnlocalizedName("geode_obsidian");
-		geodeMagma = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_magma"))
-				.setUnlocalizedName("geode_magma");
+    public static Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
+        BlockPos pos = new BlockPos(x, y, z);
 
-		registry.register(geodeStone);
-		registry.register(geodeGranite);
-		registry.register(geodeDiorite);
-		registry.register(geodeAndesite);
-		registry.register(geodeEndstone);
-		registry.register(geodeNetherrack);
-		registry.register(geodeObsidian);
-		registry.register(geodeMagma);
-	}
+        switch (ID) {
+            case ArmorStationID:
+                return new ArmorStationGui(player.inventory, world, pos, (ArmorStationTile) world.getTileEntity(pos));
+            case FinishingAnvilID:
+                return new FinishingAnvilGui(player.inventory, world, pos, (FinishingAnvilTile) world.getTileEntity(pos));
+        }
+        return null;
+    }
 
-	@SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public static void registerModels(ModelRegistryEvent event) {
-		ClientRegistry.bindTileEntitySpecialRenderer(HammeringTableTileEntity.class, new HammeringTableRenderer());
+    public void preInit(FMLPreInitializationEvent e) {
 
-		TinkersCompendium.proxy.registerItemBlockRenderer(finishingAnvil, 0, "finishinganvil");
-		TinkersCompendium.proxy.registerItemBlockRenderer(hammeringtable, 0, "hammeringtable");
 
-		TinkersCompendium.proxy.registerItemRenderer(geodeStone, 0, "geode_stone");
-		TinkersCompendium.proxy.registerItemRenderer(geodeGranite, 0, "geode_granite");
-		TinkersCompendium.proxy.registerItemRenderer(geodeDiorite, 0, "geode_diorite");
-		TinkersCompendium.proxy.registerItemRenderer(geodeAndesite, 0, "geode_andesite");
-		TinkersCompendium.proxy.registerItemRenderer(geodeEndstone, 0, "geode_endstone");
-		TinkersCompendium.proxy.registerItemRenderer(geodeNetherrack, 0, "geode_netherrack");
-		TinkersCompendium.proxy.registerItemRenderer(geodeObsidian, 0, "geode_obsidian");
-		TinkersCompendium.proxy.registerItemRenderer(geodeMagma, 0, "geode_magma");
-	}
+        LootTableList.register(geodeStoneRL);
+    }
 
-	// @SubscribeEvent
-	public static void registerBlocks(final RegistryEvent.Register<Block> event) {
-		IForgeRegistry<Block> registry = event.getRegistry();
+    public void init(FMLInitializationEvent e) {
+        registerRecipes();
+    }
 
-		finishingAnvil = new FinishingAnvilBlock();
-		hammeringtable = new HammeringTableBlock();
+    public void postInit(FMLPostInitializationEvent e) {
 
-		registry.register(finishingAnvil);
-		registry.register(hammeringtable);
+    }
 
-		GameRegistry.registerTileEntity(FinishingAnvilTile.class, "finishinganviltile");
-		GameRegistry.registerTileEntity(HammeringTableTileEntity.class, "hammeringtabletile");
-	}
+    public void registerItems(final RegistryEvent.Register<Item> event) {
+        final IForgeRegistry registry = event.getRegistry();
 
-	public static Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		BlockPos pos = new BlockPos(x, y, z);
+        FinishingAnvilItem = (ItemBlock) new ItemBlock(finishingAnvil)
+                .setRegistryName(finishingAnvil.getRegistryName());
+        HammeringTableItem = (ItemBlock) new ItemBlock(hammeringtable)
+                .setRegistryName(hammeringtable.getRegistryName());
 
-		switch (ID) {
-		case ArmorStationID:
-			return new ArmorStationContainer(player.inventory, (ArmorStationTile) world.getTileEntity(pos));
-		case FinishingAnvilID:
-			return new FinishingAnvilContainer(player.inventory, (FinishingAnvilTile) world.getTileEntity(pos));
-		}
-		return null;
-	}
+        registry.register(FinishingAnvilItem);
+        registry.register(HammeringTableItem);
 
-	public static Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		BlockPos pos = new BlockPos(x, y, z);
+        geodeStone = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_stone"))
+                .setTranslationKey("geode_stone");
+        geodeGranite = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_granite"))
+                .setTranslationKey("geode_granite");
+        geodeDiorite = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_diorite"))
+                .setTranslationKey("geode_diorite");
+        geodeAndesite = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_andesite"))
+                .setTranslationKey("geode_andesite");
+        geodeEndstone = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_endstone"))
+                .setTranslationKey("geode_endstone");
+        geodeNetherrack = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_netherrack"))
+                .setTranslationKey("geode_netherrack");
+        geodeObsidian = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_obsidian"))
+                .setTranslationKey("geode_obsidian");
+        geodeMagma = new Item().setRegistryName(new ResourceLocation(Reference.MOD_ID, "geode_magma"))
+                .setTranslationKey("geode_magma");
 
-		switch (ID) {
-		case ArmorStationID:
-			return new ArmorStationGui(player.inventory, world, pos, (ArmorStationTile) world.getTileEntity(pos));
-		case FinishingAnvilID:
-			return new FinishingAnvilGui(player.inventory, world, pos, (FinishingAnvilTile) world.getTileEntity(pos));
-		}
-		return null;
-	}
+        registry.register(geodeStone);
+        registry.register(geodeGranite);
+        registry.register(geodeDiorite);
+        registry.register(geodeAndesite);
+        registry.register(geodeEndstone);
+        registry.register(geodeNetherrack);
+        registry.register(geodeObsidian);
+        registry.register(geodeMagma);
+    }
 
-	private void registerRecipes() {
-		registerHammeringTableRecipes();
-	}
+    private void registerRecipes() {
+        registerHammeringTableRecipes();
+    }
 
-	private void registerHammeringTableRecipes() {
-		HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.STONE),
-				new ItemStack(Blocks.COBBLESTONE));
-		HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.COBBLESTONE),
-				new ItemStack(Blocks.GRAVEL));
-		HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.GRAVEL),
-				new ItemStack(Blocks.SAND));
+    private void registerHammeringTableRecipes() {
+        HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.STONE),
+                new ItemStack(Blocks.COBBLESTONE));
+        HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.COBBLESTONE),
+                new ItemStack(Blocks.GRAVEL));
+        HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.GRAVEL),
+                new ItemStack(Blocks.SAND));
 
-		HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.STONEBRICK),
-				new ItemStack(Blocks.STONEBRICK, 1, 1));
-		HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.STONEBRICK, 1, 1),
-				new ItemStack(Blocks.COBBLESTONE));
+        HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.STONEBRICK),
+                new ItemStack(Blocks.STONEBRICK, 1, 1));
+        HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.STONEBRICK, 1, 1),
+                new ItemStack(Blocks.COBBLESTONE));
 
-		HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.SANDSTONE),
-				new ItemStack(Blocks.SAND, 4));
-		HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.SANDSTONE, 1, 1),
-				new ItemStack(Blocks.SAND, 4));
-		HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.SANDSTONE, 1, 2),
-				new ItemStack(Blocks.SAND, 4));
-		HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.SANDSTONE, 1, 3),
-				new ItemStack(Blocks.SAND, 4));
+        HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.SANDSTONE),
+                new ItemStack(Blocks.SAND, 4));
+        HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.SANDSTONE, 1, 1),
+                new ItemStack(Blocks.SAND, 4));
+        HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.SANDSTONE, 1, 2),
+                new ItemStack(Blocks.SAND, 4));
+        HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.SANDSTONE, 1, 3),
+                new ItemStack(Blocks.SAND, 4));
 
-		HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.COBBLESTONE_WALL),
-				new ItemStack(Blocks.COBBLESTONE, 6));
-		
-		HammeringTableRecipeRegistry.instance().addHammering(geodeStone, geodeStoneRL);
-	}
+        HammeringTableRecipeRegistry.instance().addHammeringRecipe(new ItemStack(Blocks.COBBLESTONE_WALL),
+                new ItemStack(Blocks.COBBLESTONE, 6));
+
+        HammeringTableRecipeRegistry.instance().addHammering(geodeStone, geodeStoneRL);
+    }
 
 }

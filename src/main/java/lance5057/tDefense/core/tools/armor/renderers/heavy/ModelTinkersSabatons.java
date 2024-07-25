@@ -23,7 +23,7 @@ public class ModelTinkersSabatons extends ArmorRenderer {
     public ModelRenderer KneeGuardL;
 
     public ModelTinkersSabatons(ItemStack stack) {
-    	super(0.3f, 0, 96, 96, stack);
+        super(0.3f, 0, 96, 96, stack);
         this.textureWidth = 96;
         this.textureHeight = 96;
 
@@ -33,7 +33,7 @@ public class ModelTinkersSabatons extends ArmorRenderer {
 //        this.ShinGuardL.addBox(-2.0F, 4.0F, -2.5F, 40, 50, 30, 10.26F);
 //        this.setRotateAngle(ShinGuardL, 0.05759586531581287F, 0.0F, 0.0F);
 //        this.bipedLeftLeg.addChild(ShinGuardL);
-        
+
         this.ShinGuardL = new ModelRenderer(this, 64, 48);
         this.ShinGuardL.mirror = true;
         this.ShinGuardL.setRotationPoint(0.0F, 0.0F, 0.0F);
@@ -46,21 +46,21 @@ public class ModelTinkersSabatons extends ArmorRenderer {
         this.BootL.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.BootL.addBox(-2.0F, 9.0F, -3.0F, 4, 3, 5, 0.31F);
         this.bipedLeftLeg.addChild(BootL);
-        
+
         this.LegBackL = new ModelRenderer(this, 64, 40);
         this.LegBackL.mirror = true;
         this.LegBackL.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.LegBackL.addBox(-2.0F, 3.0F, 0.6F, 4, 6, 2, 0.3F);
         this.setRotateAngle(LegBackL, -0.05759586531581287F, 0.0F, 0.0F);
         this.bipedLeftLeg.addChild(LegBackL);
-        
+
         this.KneeGuardCapL = new ModelRenderer(this, 80, 36);
         this.KneeGuardCapL.mirror = true;
         this.KneeGuardCapL.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.KneeGuardCapL.addBox(-1.5F, 2.4F, -3.8F, 3, 2, 1, 0.2F);
         this.setRotateAngle(KneeGuardCapL, 0.17453292519943295F, 0.0F, 0.0F);
         this.bipedLeftLeg.addChild(KneeGuardCapL);
-        
+
         this.KneeGuardR = new ModelRenderer(this, 64, 32);
         this.KneeGuardR.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.KneeGuardR.addBox(-2.0F, 3.0F, -2.5F, 4, 3, 4, 0.31F);
@@ -76,18 +76,18 @@ public class ModelTinkersSabatons extends ArmorRenderer {
         this.ShinGuardR.addBox(-2.0F, 4.0F, -2.5F, 4, 5, 3, 0.26F);
         this.setRotateAngle(ShinGuardR, 0.05759586531581287F, 0.0F, 0.0F);
         this.bipedRightLeg.addChild(ShinGuardR);
-        
+
         this.KneeGuardL = new ModelRenderer(this, 64, 32);
         this.KneeGuardL.mirror = true;
         this.KneeGuardL.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.KneeGuardL.addBox(-2.0F, 3.0F, -2.5F, 4, 3, 4, 0.31F);
         this.bipedLeftLeg.addChild(KneeGuardL);
-        
+
         this.BootCapR = new ModelRenderer(this, 76, 32);
         this.BootCapR.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.BootCapR.addBox(-1.5F, 10.0F, -4.0F, 3, 2, 2, 0.3F);
         this.bipedRightLeg.addChild(BootCapR);
-        
+
         this.KneeGuardCapR = new ModelRenderer(this, 80, 36);
         this.KneeGuardCapR.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.KneeGuardCapR.addBox(-1.5F, 2.4F, -3.8F, 3, 2, 1, 0.2F);
@@ -99,7 +99,7 @@ public class ModelTinkersSabatons extends ArmorRenderer {
         this.BootCapL.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.BootCapL.addBox(-1.5F, 10.0F, -4.0F, 3, 2, 2, 0.3F);
         this.bipedLeftLeg.addChild(BootCapL);
-        
+
         this.LegBackR = new ModelRenderer(this, 64, 40);
         this.LegBackR.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.LegBackR.addBox(-2.0F, 3.0F, 0.6F, 4, 6, 2, 0.3F);

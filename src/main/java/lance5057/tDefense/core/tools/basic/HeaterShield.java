@@ -6,16 +6,14 @@ import lance5057.tDefense.core.tools.bases.Shield;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.tools.TinkerTools;
 
-public class HeaterShield extends Shield
-{
-	int	induceDamage	= 0;
+public class HeaterShield extends Shield {
+    int induceDamage = 0;
 
-	public HeaterShield()
-	{
-		super(PartMaterialType.handle(TinkerTools.toughToolRod),
-			new PartMaterialType(TDParts.armorPlate, ShieldMaterialStats.TYPE),
-			new PartMaterialType(TDParts.armorPlate, ShieldMaterialStats.TYPE),
-			PartMaterialType.extra(TDParts.rivets));
-		setUnlocalizedName("heatershield");
-	}
+    public HeaterShield() {
+        super(PartMaterialType.handle(TinkerTools.toughToolRod),
+                new PartMaterialType(TDParts.armorPlate, ShieldMaterialStats.TYPE),
+                new PartMaterialType(TDParts.armorPlate, ShieldMaterialStats.TYPE),
+                PartMaterialType.extra(TDParts.rivets));
+        setTranslationKey("heatershield");
+    }
 }

@@ -16,47 +16,47 @@ import vazkii.botania.api.mana.ManaItemHandler;
 
 public class ModMana extends ModifierTDTrait {
 
-	public ModMana() {
-		super("mana", 0x5555FF);
-	}
+    public ModMana() {
+        super("mana", 0x5555FF);
+    }
 
-	@Override
-	public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
-		if (entity instanceof EntityPlayer) {
-			EntityPlayer player = (EntityPlayer) entity;
-			int dur = ToolHelper.getMaxDurability(tool) - ToolHelper.getCurrentDurability(tool);
-			if (dur > 0) {
-				if(ManaItemHandler.requestManaExactForTool(tool, player, 10, true))
-					ToolHelper.repairTool(tool, 1);
-			}
-		}
-	}
-	
-	@Override
-	public boolean canApplyCustom(ItemStack stack) {
+    @Override
+    public void onUpdate(ItemStack tool, World world, Entity entity, int itemSlot, boolean isSelected) {
+        if (entity instanceof EntityPlayer) {
+            EntityPlayer player = (EntityPlayer) entity;
+            int dur = ToolHelper.getMaxDurability(tool) - ToolHelper.getCurrentDurability(tool);
+            if (dur > 0) {
+                if (ManaItemHandler.requestManaExactForTool(tool, player, 10, true))
+                    ToolHelper.repairTool(tool, 1);
+            }
+        }
+    }
 
-		if (!(stack.getItem() instanceof ArmorCore || stack.getItem() instanceof ToolCore)) {
-			return false;
-		}
-		
-		// not present yet, ok
-		if (super.canApplyCustom(stack)) {
-			return true;
-		}
-		// no max level
+    @Override
+    public boolean canApplyCustom(ItemStack stack) {
+
+        if (!(stack.getItem() instanceof ArmorCore || stack.getItem() instanceof ToolCore)) {
+            return false;
+        }
+
+        // not present yet, ok
+        if (super.canApplyCustom(stack)) {
+            return true;
+        }
+        // no max level
 //		else if (maxLevel == 0) {
 //			return false;
 //		}
 
-		// already present, limit by level
-		NBTTagCompound tag = TinkerUtil.getModifierTag(stack, identifier);
+        // already present, limit by level
+        NBTTagCompound tag = TinkerUtil.getModifierTag(stack, identifier);
 
-		return ModifierNBT.readTag(tag).level <= maxLevel;
-	}
-	
-	@Override
-	protected ModifierAspect[] getAspects() {
-		return new ModifierAspect[] {ModifierAspect.freeModifier};
-	}
+        return ModifierNBT.readTag(tag).level <= maxLevel;
+    }
+
+    @Override
+    protected ModifierAspect[] getAspects() {
+        return new ModifierAspect[]{ModifierAspect.freeModifier};
+    }
 
 }

@@ -8,11 +8,11 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class TraitHotHead extends AbstractTDTrait {
 
-	public TraitHotHead() {
-		super("hothead", TextFormatting.RED);
-	}
+    public TraitHotHead() {
+        super("hothead", TextFormatting.RED);
+    }
 
-	public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
-		e.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.STRENGTH,7,1));
-	}
+    public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
+        e.getEntityLiving().addPotionEffect(new PotionEffect(MobEffects.STRENGTH, 7, 1));
+    }
 }

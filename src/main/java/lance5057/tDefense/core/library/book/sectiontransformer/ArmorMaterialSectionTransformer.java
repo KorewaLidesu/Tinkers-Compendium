@@ -11,21 +11,23 @@ import slimeknights.mantle.client.book.data.content.PageContent;
 import slimeknights.tconstruct.library.book.sectiontransformer.AbstractMaterialSectionTransformer;
 import slimeknights.tconstruct.library.materials.Material;
 
-/** Populates the materials section for tool materials with content */
+/**
+ * Populates the materials section for tool materials with content
+ */
 @SideOnly(Side.CLIENT)
 public class ArmorMaterialSectionTransformer extends AbstractMaterialSectionTransformer {
 
-  public ArmorMaterialSectionTransformer() {
-    super("armormaterials");
-  }
+    public ArmorMaterialSectionTransformer() {
+        super("armormaterials");
+    }
 
-  @Override
-  protected boolean isValidMaterial(Material material) {
-    return material.hasStats(HelmMaterialStats.TYPE) || material.hasStats(ChestMaterialStats.TYPE) || material.hasStats(LegsMaterialStats.TYPE)|| material.hasStats(FeetMaterialStats.TYPE);
-  }
+    @Override
+    protected boolean isValidMaterial(Material material) {
+        return material.hasStats(HelmMaterialStats.TYPE) || material.hasStats(ChestMaterialStats.TYPE) || material.hasStats(LegsMaterialStats.TYPE) || material.hasStats(FeetMaterialStats.TYPE);
+    }
 
-  @Override
-  protected PageContent getPageContent(Material material) {
-    return new ContentArmorMaterial(material);
-  }
+    @Override
+    protected PageContent getPageContent(Material material) {
+        return new ContentArmorMaterial(material);
+    }
 }

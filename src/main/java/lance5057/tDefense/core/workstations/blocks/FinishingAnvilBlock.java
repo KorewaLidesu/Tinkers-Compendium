@@ -1,9 +1,6 @@
 package lance5057.tDefense.core.workstations.blocks;
 
-import javax.annotation.Nonnull;
-
 import com.google.common.collect.ImmutableList;
-
 import lance5057.tDefense.TinkersCompendium;
 import lance5057.tDefense.core.workstations.CompendiumWorkstations;
 import lance5057.tDefense.core.workstations.tileentities.FinishingAnvilTile;
@@ -26,55 +23,57 @@ import slimeknights.mantle.inventory.BaseContainer;
 import slimeknights.tconstruct.shared.block.BlockTable;
 import slimeknights.tconstruct.tools.common.block.ITinkerStationBlock;
 
+import javax.annotation.Nonnull;
+
 public class FinishingAnvilBlock extends BlockTable implements ITinkerStationBlock {
 
-	public FinishingAnvilBlock() {
-		super(Material.IRON);
-		this.setUnlocalizedName("finishinganvil");
-		this.setRegistryName("finishinganvil");
-		this.setCreativeTab(TinkersCompendium.tab);
-		this.setSoundType(SoundType.ANVIL);
-		this.setResistance(5f);
-		this.setHardness(1f);
-		this.setHarvestLevel("pickaxe", 0);
-	}
+    private static final ImmutableList<AxisAlignedBB> BOUNDS_Table = ImmutableList
+            .of(new AxisAlignedBB(0.0, 0.0, 0.0, 1, 1, 1));
 
-	@Nonnull
-	@Override
-	public TileEntity createNewTileEntity(@Nonnull World worldIn, int meta) {
-		return new FinishingAnvilTile();
-	}
+    public FinishingAnvilBlock() {
+        super(Material.IRON);
+        this.setTranslationKey("finishinganvil");
+        this.setRegistryName("finishinganvil");
+        this.setCreativeTab(TinkersCompendium.tab);
+        this.setSoundType(SoundType.ANVIL);
+        this.setResistance(5f);
+        this.setHardness(1f);
+        this.setHarvestLevel("pickaxe", 0);
+    }
 
-	@Nonnull
-	@Override
-	protected BlockStateContainer createBlockState() {
-		return new ExtendedBlockState(this, new IProperty[] {}, new IUnlistedProperty[] { TEXTURE, INVENTORY, FACING });
-	}
+    @Nonnull
+    @Override
+    public TileEntity createNewTileEntity(@Nonnull World worldIn, int meta) {
+        return new FinishingAnvilTile();
+    }
 
-	@Override
-	public boolean openGui(EntityPlayer player, World world, BlockPos pos) {
-		if (!world.isRemote) {
-			player.openGui(TinkersCompendium.instance, CompendiumWorkstations.FinishingAnvilID, world, pos.getX(), pos.getY(), pos.getZ());
-			if (player.openContainer instanceof BaseContainer) {
-				((BaseContainer) player.openContainer).syncOnOpen((EntityPlayerMP) player);
-			}
-		}
-		return true;
-	}
+    @Nonnull
+    @Override
+    protected BlockStateContainer createBlockState() {
+        return new ExtendedBlockState(this, new IProperty[]{}, new IUnlistedProperty[]{TEXTURE, INVENTORY, FACING});
+    }
 
-	@Override
-	public int getGuiNumber(IBlockState state) {
-		return 56;
-	}
+    @Override
+    public boolean openGui(EntityPlayer player, World world, BlockPos pos) {
+        if (!world.isRemote) {
+            player.openGui(TinkersCompendium.instance, CompendiumWorkstations.FinishingAnvilID, world, pos.getX(), pos.getY(), pos.getZ());
+            if (player.openContainer instanceof BaseContainer) {
+                ((BaseContainer) player.openContainer).syncOnOpen((EntityPlayerMP) player);
+            }
+        }
+        return true;
+    }
 
-	private static ImmutableList<AxisAlignedBB> BOUNDS_Table = ImmutableList
-			.of(new AxisAlignedBB(0.0, 0.0, 0.0, 1, 1, 1));
+    @Override
+    public int getGuiNumber(IBlockState state) {
+        return 56;
+    }
 
-	@Override
-	public RayTraceResult collisionRayTrace(IBlockState blockState, @Nonnull World worldIn, @Nonnull BlockPos pos,
-			@Nonnull Vec3d start, @Nonnull Vec3d end) {
-		// basically the same BlockStairs does
-		// Raytrace through all AABBs (plate, legs) and return the nearest one
-		return raytraceMultiAABB(BOUNDS_Table, pos, start, end);
-	}
+    @Override
+    public RayTraceResult collisionRayTrace(IBlockState blockState, @Nonnull World worldIn, @Nonnull BlockPos pos,
+                                            @Nonnull Vec3d start, @Nonnull Vec3d end) {
+        // basically the same BlockStairs does
+        // Raytrace through all AABBs (plate, legs) and return the nearest one
+        return raytraceMultiAABB(BOUNDS_Table, pos, start, end);
+    }
 }

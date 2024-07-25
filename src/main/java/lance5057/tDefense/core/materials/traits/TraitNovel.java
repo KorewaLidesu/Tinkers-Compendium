@@ -7,24 +7,23 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class TraitNovel extends AbstractTDTrait {
 
-	public TraitNovel() {
-		super("novel", TextFormatting.WHITE);
-	}
+    public TraitNovel() {
+        super("novel", TextFormatting.WHITE);
+    }
 
-	public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
+    public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
 
-		if (e.getEntityLiving() instanceof EntityPlayer) {
-			EntityPlayer ent = (EntityPlayer) e.getEntityLiving();
-			float dmg = e.getAmount();
-			
-			if (dmg >= 1) {
-				if(ent.experience >= 5)
-				{
-					dmg--;
-					ent.experience -= 5;
-				}
-			}
-			e.setAmount(dmg);
-		}
-	}
+        if (e.getEntityLiving() instanceof EntityPlayer) {
+            EntityPlayer ent = (EntityPlayer) e.getEntityLiving();
+            float dmg = e.getAmount();
+
+            if (dmg >= 1) {
+                if (ent.experience >= 5) {
+                    dmg--;
+                    ent.experience -= 5;
+                }
+            }
+            e.setAmount(dmg);
+        }
+    }
 }

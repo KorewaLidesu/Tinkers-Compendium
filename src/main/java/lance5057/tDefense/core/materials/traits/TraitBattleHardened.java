@@ -10,28 +10,29 @@ import slimeknights.tconstruct.library.utils.ToolHelper;
 
 public class TraitBattleHardened extends AbstractTDTrait {
 
-	int level = 1;
-	public TraitBattleHardened(String name, TextFormatting color, int level) {
-		super(name, color);
-		this.level = level;
-	}
+    int level = 1;
 
-	@Override
-	public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
-		EntityLivingBase ent = e.getEntityLiving();
+    public TraitBattleHardened(String name, TextFormatting color, int level) {
+        super(name, color);
+        this.level = level;
+    }
 
-		if (ent.isPotionActive(MobEffects.RESISTANCE)) {
-			PotionEffect p = ent.getActivePotionEffect(MobEffects.RESISTANCE);
+    @Override
+    public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
+        EntityLivingBase ent = e.getEntityLiving();
 
-			if (p.getAmplifier() < 3) {
-				ent.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, p.getAmplifier() + 1));
-				ToolHelper.damageTool(tool, p.getAmplifier() * 3 * level, ent);
-			}
-		} else {
-			ent.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 1));
-			ToolHelper.damageTool(tool, 3 * level, ent);
-		}
+        if (ent.isPotionActive(MobEffects.RESISTANCE)) {
+            PotionEffect p = ent.getActivePotionEffect(MobEffects.RESISTANCE);
 
-	}
+            if (p.getAmplifier() < 3) {
+                ent.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, p.getAmplifier() + 1));
+                ToolHelper.damageTool(tool, p.getAmplifier() * 3 * level, ent);
+            }
+        } else {
+            ent.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 20, 1));
+            ToolHelper.damageTool(tool, 3 * level, ent);
+        }
+
+    }
 
 }

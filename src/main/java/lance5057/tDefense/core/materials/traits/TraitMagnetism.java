@@ -17,48 +17,46 @@ import slimeknights.tconstruct.library.utils.TagUtil;
 
 public class TraitMagnetism extends AbstractTDTrait {
 
-	public TraitMagnetism() {
-		super("magnetism", TextFormatting.GRAY);
-	}
+    public TraitMagnetism() {
+        super("magnetism", TextFormatting.GRAY);
+    }
 
-	@Override
-	public void onBlock(ItemStack tool, EntityPlayer player, LivingHurtEvent event) {
-		Magnetism(tool, event);
-	}
+    @Override
+    public void onBlock(ItemStack tool, EntityPlayer player, LivingHurtEvent event) {
+        Magnetism(tool, event);
+    }
 
-	@Override
-	public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
-		Magnetism(tool, e);
-	}
+    @Override
+    public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
+        Magnetism(tool, e);
+    }
 
-	void Magnetism(ItemStack tool, LivingHurtEvent e) {
-		Entity ent = e.getSource().getTrueSource();
-		if (ent instanceof EntityLivingBase) {
-			EntityLivingBase entLiv = (EntityLivingBase) ent;
-			ItemStack i = entLiv.getHeldItemMainhand();
+    void Magnetism(ItemStack tool, LivingHurtEvent e) {
+        Entity ent = e.getSource().getTrueSource();
+        if (ent instanceof EntityLivingBase) {
+            EntityLivingBase entLiv = (EntityLivingBase) ent;
+            ItemStack i = entLiv.getHeldItemMainhand();
 
-			if (i.getItem() instanceof ToolCore || i.getItem() instanceof ArmorCore) {
-				NBTTagList tag = TagUtil.getBaseMaterialsTagList(i);
-				boolean isMagnetic = false;
-				for (NBTBase s : tag) {
-					if (TCConfig.traits.isMetal(((NBTTagString) s).getString()))
-						isMagnetic = true;
-				}
-				if (isMagnetic) {
-					if (i.getItem() instanceof ToolCore) {
-						int chance = entLiv.world.rand.nextInt(100);
-						if (entLiv instanceof EntityPlayer && chance < 5) {
-							entLiv.entityDropItem(i.copy(), 0);
-							entLiv.setHeldItem(entLiv.getActiveHand(), new ItemStack(Items.AIR));
-						}
-						else if(chance < 15)
-						{
-							entLiv.entityDropItem(i.copy(), 0);
-							entLiv.setHeldItem(entLiv.getActiveHand(), new ItemStack(Items.AIR));
-						}
-					}
-				}
-			}
-		}
-	}
+            if (i.getItem() instanceof ToolCore || i.getItem() instanceof ArmorCore) {
+                NBTTagList tag = TagUtil.getBaseMaterialsTagList(i);
+                boolean isMagnetic = false;
+                for (NBTBase s : tag) {
+                    if (TCConfig.traits.isMetal(((NBTTagString) s).getString()))
+                        isMagnetic = true;
+                }
+                if (isMagnetic) {
+                    if (i.getItem() instanceof ToolCore) {
+                        int chance = entLiv.world.rand.nextInt(100);
+                        if (entLiv instanceof EntityPlayer && chance < 5) {
+                            entLiv.entityDropItem(i.copy(), 0);
+                            entLiv.setHeldItem(entLiv.getActiveHand(), new ItemStack(Items.AIR));
+                        } else if (chance < 15) {
+                            entLiv.entityDropItem(i.copy(), 0);
+                            entLiv.setHeldItem(entLiv.getActiveHand(), new ItemStack(Items.AIR));
+                        }
+                    }
+                }
+            }
+        }
+    }
 }

@@ -5,9 +5,9 @@ import net.minecraft.entity.player.EntityPlayer;
 
 public class BaubleRenderer implements LayerRenderer<EntityPlayer> {
 
-	@Override
-	public void doRenderLayer(EntityPlayer entitylivingbaseIn, float limbSwing, float limbSwingAmount,
-			float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
+    @Override
+    public void doRenderLayer(EntityPlayer entitylivingbaseIn, float limbSwing, float limbSwingAmount,
+                              float partialTicks, float ageInTicks, float netHeadYaw, float headPitch, float scale) {
 
 //		ItemStack stack = entitylivingbaseIn.inventory.getStackInSlot(0);
 //		ItemStack stackShield = entitylivingbaseIn.inventory.getStackInSlot(1);
@@ -83,12 +83,12 @@ public class BaubleRenderer implements LayerRenderer<EntityPlayer> {
 //			Minecraft.getMinecraft().getRenderItem().renderItem(stackShield, ItemCameraTransforms.TransformType.NONE);
 //			GlStateManager.popMatrix();
 //		}
-	}
+    }
 
-	@Override
-	public boolean shouldCombineTextures() {
-		// TODO Auto-generated method stub
-		return false;
-	}
+    @Override
+    public boolean shouldCombineTextures() {
+        // TODO Auto-generated method stub
+        return false;
+    }
 
 }

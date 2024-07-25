@@ -17,7 +17,7 @@ public class ModelTinkersShawl extends ArmorRenderer {
     public ModelRenderer ShawlRightTrimLong;
 
     public ModelTinkersShawl(ItemStack stack) {
-    	super(0.25f, 0, 96, 96, stack);
+        super(0.25f, 0, 96, 96, stack);
         this.textureWidth = 96;
         this.textureHeight = 96;
 
@@ -25,14 +25,14 @@ public class ModelTinkersShawl extends ArmorRenderer {
         this.TrimNeck.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.TrimNeck.addBox(-4.5F, -0.4F, -2.5F, 9, 2, 5, -0.3F);
         this.bipedBody.addChild(TrimNeck);
-        
+
         this.ShawlRightTrimLong = new ModelRenderer(this, 62, 40);
         this.ShawlRightTrimLong.mirror = true;
         this.ShawlRightTrimLong.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.ShawlRightTrimLong.addBox(-4.5F, 7.85F, -3.0F, 11, 3, 6, -0.5F);
         this.setRotateAngle(ShawlRightTrimLong, 0.0F, 0.0F, 0.2792526803190927F);
         this.bipedRightArm.addChild(ShawlRightTrimLong);
-        
+
         this.ShawlRightLong = new ModelRenderer(this, 70, 26);
         this.ShawlRightLong.mirror = true;
         this.ShawlRightLong.setRotationPoint(0.0F, 0.0F, 0.0F);

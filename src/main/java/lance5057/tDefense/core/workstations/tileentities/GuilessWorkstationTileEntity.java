@@ -9,66 +9,63 @@ import net.minecraft.util.ITickable;
 
 public abstract class GuilessWorkstationTileEntity extends TileEntity implements ITickable {
 
-	private String tag = "";
-	
-	public ItemStack[] items;
-	public ItemStack output;
-	
-	public int timerMax = -1;
-	public int timer = -1;
+    public ItemStack[] items;
+    public ItemStack output;
+    public int timerMax = -1;
+    public int timer = -1;
+    private String tag = "";
 
-	public GuilessWorkstationTileEntity(int inputs, String tag, int timerMax)
-	{
-		items = new ItemStack[inputs];
-		this.tag = tag;
-		this.timerMax = timerMax;
-	}
-	
-	@Override
-	public NBTTagCompound getUpdateTag() {
-		return writeToNBT(new NBTTagCompound());
-	}
+    public GuilessWorkstationTileEntity(int inputs, String tag, int timerMax) {
+        items = new ItemStack[inputs];
+        this.tag = tag;
+        this.timerMax = timerMax;
+    }
 
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket() {
-		NBTTagCompound nbtTag = new NBTTagCompound();
-		this.writeToNBT(nbtTag);
-		return new SPacketUpdateTileEntity(getPos(), 1, nbtTag);
-	}
+    @Override
+    public NBTTagCompound getUpdateTag() {
+        return writeToNBT(new NBTTagCompound());
+    }
 
-	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
-		this.readFromNBT(packet.getNbtCompound());
-	}
+    @Override
+    public SPacketUpdateTileEntity getUpdatePacket() {
+        NBTTagCompound nbtTag = new NBTTagCompound();
+        this.writeToNBT(nbtTag);
+        return new SPacketUpdateTileEntity(getPos(), 1, nbtTag);
+    }
 
-	@Override
-	public void readFromNBT(NBTTagCompound compound) {
-		super.readFromNBT(compound);
+    @Override
+    public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity packet) {
+        this.readFromNBT(packet.getNbtCompound());
+    }
 
-		NBTTagCompound custom = (NBTTagCompound) compound.getTag(tag);
-		for (int i = 0; i < items.length; i++) {
-			items[i] = new ItemStack(custom.getCompoundTag("inventory_" + i));
-		}
-		
-		timer = custom.getInteger("timer");
-	}
+    @Override
+    public void readFromNBT(NBTTagCompound compound) {
+        super.readFromNBT(compound);
 
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound compound) {
-		super.writeToNBT(compound);
+        NBTTagCompound custom = (NBTTagCompound) compound.getTag(tag);
+        for (int i = 0; i < items.length; i++) {
+            items[i] = new ItemStack(custom.getCompoundTag("inventory_" + i));
+        }
 
-		NBTTagCompound custom = new NBTTagCompound();
-		for (int i = 0; i < items.length; i++) {
-			custom.setTag("inventory_" + i, items[i].serializeNBT());
-		}
+        timer = custom.getInteger("timer");
+    }
 
-		custom.setInteger("timer", timer);
-		compound.setTag(tag, custom);
+    @Override
+    public NBTTagCompound writeToNBT(NBTTagCompound compound) {
+        super.writeToNBT(compound);
 
-		return compound;
-	}
-	
-	@Override
-	public abstract void update();
+        NBTTagCompound custom = new NBTTagCompound();
+        for (int i = 0; i < items.length; i++) {
+            custom.setTag("inventory_" + i, items[i].serializeNBT());
+        }
+
+        custom.setInteger("timer", timer);
+        compound.setTag(tag, custom);
+
+        return compound;
+    }
+
+    @Override
+    public abstract void update();
 
 }

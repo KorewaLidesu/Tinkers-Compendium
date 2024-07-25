@@ -18,73 +18,72 @@ import slimeknights.tconstruct.common.TinkerNetwork;
 
 public class ArmorStationSelectionPacket extends AbstractPacketThreadsafe {
 
-  public ArmorCore armor;
-  public int activeSlots;
+    public ArmorCore armor;
+    public int activeSlots;
 
-  public ArmorStationSelectionPacket() {
-  }
- 
-  public ArmorStationSelectionPacket(ArmorCore tool, int activeSlots) {
-    this.armor = tool;
-    this.activeSlots = activeSlots;
-  }
-
-  @Override
-  public void handleClientSafe(NetHandlerPlayClient netHandler) {
-    Container container = Minecraft.getMinecraft().player.openContainer;
-    if(container instanceof ArmorStationContainer) {
-      ((ArmorStationContainer) container).setToolSelection(armor, activeSlots);
-      if(Minecraft.getMinecraft().currentScreen instanceof ArmorStationGui) {
-        ((ArmorStationGui) Minecraft.getMinecraft().currentScreen).onToolSelectionPacket(this);
-      }
+    public ArmorStationSelectionPacket() {
     }
-  }
 
-  @Override
-  public void handleServerSafe(NetHandlerPlayServer netHandler) {
-    Container container = netHandler.player.openContainer;
-    if(container instanceof ArmorStationContainer) {
-      ((ArmorStationContainer) container).setToolSelection(armor, activeSlots);
+    public ArmorStationSelectionPacket(ArmorCore tool, int activeSlots) {
+        this.armor = tool;
+        this.activeSlots = activeSlots;
+    }
 
-      // find all people who also have the same gui open and update them too
-      WorldServer server = netHandler.player.getServerWorld();
-      for(EntityPlayer player : server.playerEntities) {
-        if(player == netHandler.player) {
-          continue;
+    @Override
+    public void handleClientSafe(NetHandlerPlayClient netHandler) {
+        Container container = Minecraft.getMinecraft().player.openContainer;
+        if (container instanceof ArmorStationContainer) {
+            ((ArmorStationContainer) container).setToolSelection(armor, activeSlots);
+            if (Minecraft.getMinecraft().currentScreen instanceof ArmorStationGui) {
+                ((ArmorStationGui) Minecraft.getMinecraft().currentScreen).onToolSelectionPacket(this);
+            }
         }
-        if(player.openContainer instanceof ArmorStationContainer) {
-          if(((BaseContainer) container).sameGui((BaseContainer) player.openContainer)) {
-            ((ArmorStationContainer) player.openContainer).setToolSelection(armor, activeSlots);
-            // same gui, send him an update
-            TinkerNetwork.sendTo(this, (EntityPlayerMP) player);
-          }
+    }
+
+    @Override
+    public void handleServerSafe(NetHandlerPlayServer netHandler) {
+        Container container = netHandler.player.openContainer;
+        if (container instanceof ArmorStationContainer) {
+            ((ArmorStationContainer) container).setToolSelection(armor, activeSlots);
+
+            // find all people who also have the same gui open and update them too
+            WorldServer server = netHandler.player.getServerWorld();
+            for (EntityPlayer player : server.playerEntities) {
+                if (player == netHandler.player) {
+                    continue;
+                }
+                if (player.openContainer instanceof ArmorStationContainer) {
+                    if (((BaseContainer) container).sameGui((BaseContainer) player.openContainer)) {
+                        ((ArmorStationContainer) player.openContainer).setToolSelection(armor, activeSlots);
+                        // same gui, send him an update
+                        TinkerNetwork.sendTo(this, (EntityPlayerMP) player);
+                    }
+                }
+            }
         }
-      }
-    }
-  }
-
-  @Override
-  public void fromBytes(ByteBuf buf) {
-    int id = buf.readShort();
-    if(id > -1) {
-      Item item = Item.getItemById(id);
-      if(item instanceof ArmorCore) {
-        armor = (ArmorCore) item;
-      }
     }
 
-    activeSlots = buf.readInt();
-  }
+    @Override
+    public void fromBytes(ByteBuf buf) {
+        int id = buf.readShort();
+        if (id > -1) {
+            Item item = Item.getItemById(id);
+            if (item instanceof ArmorCore) {
+                armor = (ArmorCore) item;
+            }
+        }
 
-  @Override
-  public void toBytes(ByteBuf buf) {
-    if(armor == null) {
-      buf.writeShort(-1);
-    }
-    else {
-      buf.writeShort(Item.getIdFromItem(armor));
+        activeSlots = buf.readInt();
     }
 
-    buf.writeInt(activeSlots);
-  }
+    @Override
+    public void toBytes(ByteBuf buf) {
+        if (armor == null) {
+            buf.writeShort(-1);
+        } else {
+            buf.writeShort(Item.getIdFromItem(armor));
+        }
+
+        buf.writeInt(activeSlots);
+    }
 }

@@ -6,12 +6,12 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 
 public class TraitAqualung extends AbstractTDTrait {
 
-	public TraitAqualung() {
-		super("aqualung", TextFormatting.AQUA);
-	}
-	
-	@Override
-	public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
-		e.getEntityLiving().setAir((int) e.getAmount());
-	}
+    public TraitAqualung() {
+        super("aqualung", TextFormatting.AQUA);
+    }
+
+    @Override
+    public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
+        e.getEntityLiving().setAir((int) e.getAmount());
+    }
 }

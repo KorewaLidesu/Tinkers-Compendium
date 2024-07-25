@@ -13,8 +13,8 @@ public class ModelTinkersShoes extends ArmorRenderer {
     public ModelRenderer FootR;
 
     public ModelTinkersShoes(ItemStack stack) {
-    	super(0.25f, 0, 64, 64, stack);
-    	
+        super(0.25f, 0, 64, 64, stack);
+
         this.textureWidth = 64;
         this.textureHeight = 64;
 
@@ -22,12 +22,12 @@ public class ModelTinkersShoes extends ArmorRenderer {
         this.FootL.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.FootL.addBox(-2.0F, 10.0F, -3.0F, 4, 2, 1, 0.25F);
         this.bipedLeftLeg.addChild(FootL);
-        
+
         this.FootR = new ModelRenderer(this, 52, 17);
         this.FootR.setRotationPoint(0.0F, 0.0F, 0.0F);
         this.FootR.addBox(-2.0F, 10.0F, -3.0F, 4, 2, 1, 0.25F);
         this.bipedRightLeg.addChild(FootR);
-       
+
     }
 
     /**
