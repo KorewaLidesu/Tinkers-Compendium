@@ -9,7 +9,7 @@ public class TraitBurnAttacker extends AbstractTDTrait {
     }
 
     public void onDamageTaken(ItemStack tool, LivingHurtEvent e) {
-        if (e.getEntityLiving().world.rand.nextInt(100) <= 75) {
+        if (e.getSource().getTrueSource() != null && e.getEntityLiving().world.rand.nextInt(100) <= 75) {
             e.getSource().getTrueSource().setFire(5);
         }
     }
