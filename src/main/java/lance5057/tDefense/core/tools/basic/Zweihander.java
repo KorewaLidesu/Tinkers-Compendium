@@ -7,7 +7,7 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.MathHelper;
-import slimeknights.tconstruct.library.materials.Material;
+import slimeknights.tconstruct.library.materials.*;
 import slimeknights.tconstruct.library.tinkering.Category;
 import slimeknights.tconstruct.library.tinkering.PartMaterialType;
 import slimeknights.tconstruct.library.tools.SwordCore;
@@ -19,7 +19,7 @@ import java.util.List;
 
 public class Zweihander extends SwordCore {
 
-    public static final float DURABILITY_MODIFIER = 1.1f;
+    public static final float DURABILITY_MODIFIER = 1.5f;
 
     public Zweihander() {
         super(PartMaterialType.head(TinkerTools.largeSwordBlade), PartMaterialType.head(TinkerTools.swordBlade),
@@ -87,10 +87,22 @@ public class Zweihander extends SwordCore {
 
     @Override
     public ToolNBT buildTagData(List<Material> materials) {
-        ToolNBT data = buildDefaultTag(materials);
-        // 2 base damage, like vanilla swords
-        data.attack += 1f;
+        HeadMaterialStats head = materials.get(0).getStatsOrUnknown(MaterialTypes.HEAD);
+        HeadMaterialStats spike = materials.get(1).getStatsOrUnknown(MaterialTypes.HEAD);
+        HandleMaterialStats handle = materials.get(2).getStatsOrUnknown(MaterialTypes.HANDLE);
+        ExtraMaterialStats binding = materials.get(3).getStatsOrUnknown(MaterialTypes.EXTRA);
+
+        ToolNBT data = new ToolNBT();
+        data.head(head, spike);
+        data.handle(handle);
+        data.extra(binding);
+
+        data.attack *= 1.3f;
+        data.attack += 2f;
+
+        // triple durability!
         data.durability *= DURABILITY_MODIFIER;
+
         return data;
     }
 }
