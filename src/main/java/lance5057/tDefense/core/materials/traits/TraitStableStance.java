@@ -17,7 +17,7 @@ public class TraitStableStance extends AbstractTDTrait {
     public void onArmorTick(ItemStack tool, World world, EntityPlayer player) {
         if (player.isSneaking()) {
             player.removePotionEffect(MobEffects.LEVITATION);
-            ToolHelper.damageTool(tool, 50, null);
+            ToolHelper.damageTool(tool, 50, player);
         }
     }
 }
