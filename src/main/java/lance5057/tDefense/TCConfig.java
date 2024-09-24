@@ -218,7 +218,7 @@ public class TCConfig {
 
     public static class Bauble {
 
-        public boolean enableBaubles = true;
+        public boolean enableBaubles = false;
 
         public boolean enableTabard = true;
 
