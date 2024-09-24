@@ -72,10 +72,12 @@ material.ruby.name=Ruby
 material.starsapphire.name=Star Saphire
 material.citrine.name=Citrine
 material.quartz.name=Nether Quartz
+material.quartzblack.name=Black Quartz
 material.starruby.name=Star Ruby
 material.amethyst.name=Amethyst
 material.lapis.name=Lapis
 material.garnet.name=Garnet
+material.topaz.name=Topaz
 material.opal.name=Opal
 material.tanzinite.name=Tanzinite
 material.amber.name=Amber
@@ -93,14 +95,20 @@ item.icesole.name=Frosty Crystal
 item.feathersole.name=Hermes' Feathers
 item.flippers.name=Flippers
 
-item.stoneclump_silver.name=Silver Ore Clump
-item.stoneclump_copper.name=Copper Ore Clump
-item.stoneclump_platinum.name=Platinum Ore Clump
-item.stoneclum_lead.name=Lead Ore Clump
+item.clump_silver.name=Silver Ore Clump
+item.clump_copper.name=Copper Ore Clump
+item.clump_platinum.name=Platinum Ore Clump
+item.clump_lead.name=Lead Ore Clump
+item.clump_citrine.name=Citrine Ore Clump
 
 item.roughspuncord.name=Roughspun Cord
 item.grassfiber.name=Grass Fiber
 
+# Cotton
+item.cotton.name=Cotton
+item.cottonseed.name=Cotton Seed
+
+# Cotton Yarn
 item.cottonyarn.black.name=Black Cotton Yarn
 item.cottonyarn.red.name=Red Cotton Yarn
 item.cottonyarn.green.name=Green Cotton Yarn
@@ -117,6 +125,60 @@ item.cottonyarn.lightBlue.name=Light Blue Cotton Yarn
 item.cottonyarn.magenta.name=Magenta Cotton Yarn
 item.cottonyarn.orange.name=Orange Cotton Yarn
 item.cottonyarn.white.name=White Cotton Yarn
+
+# Cotton Block
+item.cottonblock.black.name=Black Cotton Block
+item.cottonblock.red.name=Red Cotton Block
+item.cottonblock.green.name=Green Cotton Block
+item.cottonblock.blue.name=Blue Cotton Block
+item.cottonblock.brown.name=Brown Cotton Block
+item.cottonblock.purple.name=Purple Cotton Block
+item.cottonblock.silver.name=Light Gray Cotton Block
+item.cottonblock.cyan.name=Cyan Cotton Block
+item.cottonblock.gray.name=Gray Cotton Block
+item.cottonblock.pink.name=Pink Cotton Block
+item.cottonblock.lime.name=Lime Cotton Block
+item.cottonblock.yellow.name=Yellow Cotton Block
+item.cottonblock.lightBlue.name=Light Blue Cotton Block
+item.cottonblock.magenta.name=Magenta Cotton Block
+item.cottonblock.orange.name=Orange Cotton Block
+item.cottonblock.white.name=White Cotton Block
+
+# Silk Yarn
+item.silkyarn.black.name=Black Silk Yarn
+item.silkyarn.red.name=Red Silk Yarn
+item.silkyarn.green.name=Green Silk Yarn
+item.silkyarn.blue.name=Blue Silk Yarn
+item.silkyarn.brown.name=Brown Silk Yarn
+item.silkyarn.purple.name=Purple Silk Yarn
+item.silkyarn.silver.name=Light Gray Silk Yarn
+item.silkyarn.cyan.name=Cyan Silk Yarn
+item.silkyarn.gray.name=Gray Silk Yarn
+item.silkyarn.pink.name=Pink Silk Yarn
+item.silkyarn.lime.name=Lime Silk Yarn
+item.silkyarn.yellow.name=Yellow Silk Yarn
+item.silkyarn.lightBlue.name=Light Blue Silk Yarn
+item.silkyarn.magenta.name=Magenta Silk Yarn
+item.silkyarn.orange.name=Orange Silk Yarn
+item.silkyarn.white.name=White Silk Yarn
+
+# Silk Block
+item.silkblock.black.name=Black Silk Block
+item.silkblock.red.name=Red Silk Block
+item.silkblock.green.name=Green Silk Block
+item.silkblock.blue.name=Blue Silk Block
+item.silkblock.brown.name=Brown Silk Block
+item.silkblock.purple.name=Purple Silk Block
+item.silkblock.silver.name=Light Gray Silk Block
+item.silkblock.cyan.name=Cyan Silk Block
+item.silkblock.gray.name=Gray Silk Block
+item.silkblock.pink.name=Pink Silk Block
+item.silkblock.lime.name=Lime Silk Block
+item.silkblock.yellow.name=Yellow Silk Block
+item.silkblock.lightBlue.name=Light Blue Silk Block
+item.silkblock.magenta.name=Magenta Silk Block
+item.silkblock.orange.name=Orange Silk Block
+item.silkblock.white.name=White Silk Block
 
 item.ingot_aeonsteel.name=Aeonsteel Ingot
 item.ingot_queensgold.name=Queensgold Ingot
@@ -526,6 +588,238 @@ item.rod_ardite.name=Ardite Rod
 item.rod_cobalt.name=Cobalt Rod
 item.rod_Manyullyn.name=Manyullyn Rod
 
+item.coil_aeonsteel.name=Aeonsteel Coil
+item.coil_queensgold.name=Queensgold Coil
+item.coil_dogbearium.name=Dogbearium Coil
+item.coil_froststeel.name=Froststeel Coil
+item.coil_nihilite.name=Nihilite Coil
+item.coil_rosegold.name=Rosegold Coil
+item.coil_sinisterium.name=Sinisterium Coil
+item.coil_valyriansteel.name=Valyriansteel Coil
+item.coil_orichalcum.name=Orichalcum Coil
+item.coil_pandorium.name=Pandorium Coil
+item.coil_platinum.name=Platinum Coil
+item.coil_silver.name=Silver Coil
+item.coil_purifiedgold.name=Pure Gold Coil
+item.coil_purifiedsilver.name=Pure Silver Coil
+item.coil_obsidian.name=Obsidian Coil
+item.coil_endstone.name=Endstone Coil
+item.coil_copper.name=Copper Coil
+item.coil_bronze.name=Bronze Coil
+item.coil_lead.name=Lead Coil
+item.coil_electrum.name=Electrum Coil
+item.coil_steel.name=Steel Coil
+item.coil_ice.name=Ice Coil
+item.coil_stone.name=Stone Coil
+item.coil_sapphire.name=Sapphire Coil
+item.coil_emerald.name=Emerald Coil
+item.coil_ruby.name=Ruby Coil
+item.coil_starsapphire.name=Starsapphire Coil
+item.coil_citrine.name=Citrine Coil
+item.coil_quartz.name=Nether Quartz Coil
+item.coil_starruby.name=Starruby Coil
+item.coil_amethyst.name=Ametyst Coil
+item.coil_lapis.name=Lapis Coil
+item.coil_garnet.name=Garnet Coil
+item.coil_opal.name=Opal Coil
+item.coil_tanzinite.name=Tanzinite Coil
+item.coil_amber.name=Amber Coil
+
+item.coil_gold.name=Gold Coil
+item.coil_diamond.name=Diamond Coil
+item.coil_wood.name=Wood Coil
+item.coil_flint.name=Flint Coil
+item.coil_cactus.name=Cactus Coil
+item.coil_bone.name=Bone Coil
+item.coil_prismarine.name=Prismarine Coil
+item.coil_paper.name=Paper Coil
+item.coil_sponge.name=Sponge Coil
+item.coil_firewood.name=Firewood Coil
+item.coil_knightslime.name=Knightslime Coil
+item.coil_slime.name=Slime Coil
+item.coil_blueslime.name=Blue Slime Coil
+item.coil_magmaslime.name=Magma Slime Coil
+item.coil_iron.name=Iron Coil
+item.coil_pigiron.name=Pigiron Coil
+item.coil_Netherrack.name=Netherrack Coil
+item.coil_ardite.name=Ardite Coil
+item.coil_cobalt.name=Cobalt Coil
+item.coil_Manyullyn.name=Manyullyn Coil
+
+item.spring_aeonsteel.name=Aeonsteel Spring
+item.spring_queensgold.name=Queensgold Spring
+item.spring_dogbearium.name=Dogbearium Spring
+item.spring_froststeel.name=Froststeel Spring
+item.spring_nihilite.name=Nihilite Spring
+item.spring_rosegold.name=Rosegold Spring
+item.spring_sinisterium.name=Sinisterium Spring
+item.spring_valyriansteel.name=Valyriansteel Spring
+item.spring_orichalcum.name=Orichalcum Spring
+item.spring_pandorium.name=Pandorium Spring
+item.spring_platinum.name=Platinum Spring
+item.spring_silver.name=Silver Spring
+item.spring_purifiedgold.name=Pure Gold Spring
+item.spring_purifiedsilver.name=Pure Silver Spring
+item.spring_obsidian.name=Obsidian Spring
+item.spring_endstone.name=Endstone Spring
+item.spring_copper.name=Copper Spring
+item.spring_bronze.name=Bronze Spring
+item.spring_lead.name=Lead Spring
+item.spring_electrum.name=Electrum Spring
+item.spring_steel.name=Steel Spring
+item.spring_ice.name=Ice Spring
+item.spring_stone.name=Stone Spring
+item.spring_sapphire.name=Sapphire Spring
+item.spring_emerald.name=Emerald Spring
+item.spring_ruby.name=Ruby Spring
+item.spring_starsapphire.name=Starsapphire Spring
+item.spring_citrine.name=Citrine Spring
+item.spring_quartz.name=Nether Quartz Spring
+item.spring_starruby.name=Starruby Spring
+item.spring_amethyst.name=Ametyst Spring
+item.spring_lapis.name=Lapis Spring
+item.spring_garnet.name=Garnet Spring
+item.spring_opal.name=Opal Spring
+item.spring_tanzinite.name=Tanzinite Spring
+item.spring_amber.name=Amber Spring
+
+item.spring_gold.name=Gold Spring
+item.spring_diamond.name=Diamond Spring
+item.spring_wood.name=Wood Spring
+item.spring_flint.name=Flint Spring
+item.spring_cactus.name=Cactus Spring
+item.spring_bone.name=Bone Spring
+item.spring_prismarine.name=Prismarine Spring
+item.spring_paper.name=Paper Spring
+item.spring_sponge.name=Sponge Spring
+item.spring_firewood.name=Firewood Spring
+item.spring_knightslime.name=Knightslime Spring
+item.spring_slime.name=Slime Spring
+item.spring_blueslime.name=Blue Slime Spring
+item.spring_magmaslime.name=Magma Slime Spring
+item.spring_iron.name=Iron Spring
+item.spring_pigiron.name=Pigiron Spring
+item.spring_Netherrack.name=Netherrack Spring
+item.spring_ardite.name=Ardite Spring
+item.spring_cobalt.name=Cobalt Spring
+item.spring_Manyullyn.name=Manyullyn Spring
+
+item.casing_aeonsteel.name=Aeonsteel Casing
+item.casing_queensgold.name=Queensgold Casing
+item.casing_dogbearium.name=Dogbearium Casing
+item.casing_froststeel.name=Froststeel Casing
+item.casing_nihilite.name=Nihilite Casing
+item.casing_rosegold.name=Rosegold Casing
+item.casing_sinisterium.name=Sinisterium Casing
+item.casing_valyriansteel.name=Valyriansteel Casing
+item.casing_orichalcum.name=Orichalcum Casing
+item.casing_pandorium.name=Pandorium Casing
+item.casing_platinum.name=Platinum Casing
+item.casing_silver.name=Silver Casing
+item.casing_purifiedgold.name=Pure Gold Casing
+item.casing_purifiedsilver.name=Pure Silver Casing
+item.casing_obsidian.name=Obsidian Casing
+item.casing_endstone.name=Endstone Casing
+item.casing_copper.name=Copper Casing
+item.casing_bronze.name=Bronze Casing
+item.casing_lead.name=Lead Casing
+item.casing_electrum.name=Electrum Casing
+item.casing_steel.name=Steel Casing
+item.casing_ice.name=Ice Casing
+item.casing_stone.name=Stone Casing
+item.casing_sapphire.name=Sapphire Casing
+item.casing_emerald.name=Emerald Casing
+item.casing_ruby.name=Ruby Casing
+item.casing_starsapphire.name=Starsapphire Casing
+item.casing_citrine.name=Citrine Casing
+item.casing_quartz.name=Nether Quartz Casing
+item.casing_starruby.name=Starruby Casing
+item.casing_amethyst.name=Ametyst Casing
+item.casing_lapis.name=Lapis Casing
+item.casing_garnet.name=Garnet Casing
+item.casing_opal.name=Opal Casing
+item.casing_tanzinite.name=Tanzinite Casing
+item.casing_amber.name=Amber Casing
+
+item.casing_gold.name=Gold Casing
+item.casing_diamond.name=Diamond Casing
+item.casing_wood.name=Wood Casing
+item.casing_flint.name=Flint Casing
+item.casing_cactus.name=Cactus Casing
+item.casing_bone.name=Bone Casing
+item.casing_prismarine.name=Prismarine Casing
+item.casing_paper.name=Paper Casing
+item.casing_sponge.name=Sponge Casing
+item.casing_firewood.name=Firewood Casing
+item.casing_knightslime.name=Knightslime Casing
+item.casing_slime.name=Slime Casing
+item.casing_blueslime.name=Blue Slime Casing
+item.casing_magmaslime.name=Magma Slime Casing
+item.casing_iron.name=Iron Casing
+item.casing_pigiron.name=Pigiron Casing
+item.casing_Netherrack.name=Netherrack Casing
+item.casing_ardite.name=Ardite Casing
+item.casing_cobalt.name=Cobalt Casing
+item.casing_Manyullyn.name=Manyullyn Casing
+
+item.wire_aeonsteel.name=Aeonsteel Wire
+item.wire_queensgold.name=Queensgold Wire
+item.wire_dogbearium.name=Dogbearium Wire
+item.wire_froststeel.name=Froststeel Wire
+item.wire_nihilite.name=Nihilite Wire
+item.wire_rosegold.name=Rosegold Wire
+item.wire_sinisterium.name=Sinisterium Wire
+item.wire_valyriansteel.name=Valyriansteel Wire
+item.wire_orichalcum.name=Orichalcum Wire
+item.wire_pandorium.name=Pandorium Wire
+item.wire_platinum.name=Platinum Wire
+item.wire_silver.name=Silver Wire
+item.wire_purifiedgold.name=Pure Gold Wire
+item.wire_purifiedsilver.name=Pure Silver Wire
+item.wire_obsidian.name=Obsidian Wire
+item.wire_endstone.name=Endstone Wire
+item.wire_copper.name=Copper Wire
+item.wire_bronze.name=Bronze Wire
+item.wire_lead.name=Lead Wire
+item.wire_electrum.name=Electrum Wire
+item.wire_steel.name=Steel Wire
+item.wire_ice.name=Ice Wire
+item.wire_stone.name=Stone Wire
+item.wire_sapphire.name=Sapphire Wire
+item.wire_emerald.name=Emerald Wire
+item.wire_ruby.name=Ruby Wire
+item.wire_starsapphire.name=Starsapphire Wire
+item.wire_citrine.name=Citrine Wire
+item.wire_quartz.name=Nether Quartz Wire
+item.wire_starruby.name=Starruby Wire
+item.wire_amethyst.name=Ametyst Wire
+item.wire_lapis.name=Lapis Wire
+item.wire_garnet.name=Garnet Wire
+item.wire_opal.name=Opal Wire
+item.wire_tanzinite.name=Tanzinite Wire
+item.wire_amber.name=Amber Wire
+
+item.wire_gold.name=Gold Wire
+item.wire_diamond.name=Diamond Wire
+item.wire_wood.name=Wood Wire
+item.wire_flint.name=Flint Wire
+item.wire_cactus.name=Cactus Wire
+item.wire_bone.name=Bone Wire
+item.wire_prismarine.name=Prismarine Wire
+item.wire_paper.name=Paper Wire
+item.wire_sponge.name=Sponge Wire
+item.wire_firewood.name=Firewood Wire
+item.wire_knightslime.name=Knightslime Wire
+item.wire_slime.name=Slime Wire
+item.wire_blueslime.name=Blue Slime Wire
+item.wire_magmaslime.name=Magma Slime Wire
+item.wire_iron.name=Iron Wire
+item.wire_pigiron.name=Pigiron Wire
+item.wire_Netherrack.name=Netherrack Wire
+item.wire_ardite.name=Ardite Wire
+item.wire_cobalt.name=Cobalt Wire
+item.wire_Manyullyn.name=Manyullyn Wire
+
 item.plate.name=Plate
 item.dust.name=Dust
 item.gear.name=Gear
@@ -533,6 +827,7 @@ item.grain.name=Grains
 item.coin.name=Coin
 item.wire.name=Wire
 item.foil.name=Foil
+item.coil.name=Coil
 
 # New Blocks
 tile.stone_ore_silver.name=Silver Ore
@@ -540,35 +835,18 @@ tile.stone_ore_copper.name=Copper Ore
 tile.stone_ore_platinum.name=Platinum Ore
 tile.stone_ore_lead.name=Lead Ore
 
-tile.stone_ore_opal.name=Opal Crystal Ore
-tile.stone_ore_amber.name=Amber Crystal Ore
-tile.stone_ore_tanzinite.name=Tanzinite Crystal Ore
-tile.stone_ore_garnet.name=Garnet Crystal Ore
-tile.stone_ore_citrine.name=Citrine Crystal Ore
-tile.stone_ore_amethyst.name=Amethyst Crystal Ore
-tile.stone_ore_sapphire.name=Sapphire Crystal Ore
-tile.stone_ore_ruby.name=Ruby Crystal Ore
+tile.gem_ore_opal.name=Opal Crystal Ore
+tile.gem_ore_amber.name=Amber Crystal Ore
+tile.gem_ore_tanzinite.name=Tanzinite Crystal Ore
+tile.gem_ore_garnet.name=Garnet Crystal Ore
+tile.gem_ore_citrine.name=Citrine Crystal Ore
+tile.gem_ore_amethyst.name=Amethyst Crystal Ore
+tile.gem_ore_sapphire.name=Sapphire Crystal Ore
+tile.gem_ore_ruby.name=Ruby Crystal Ore
 
 tile.crackedobsidian.name=Cracked Obsidian
 
 tile.roughspunblock.name=Roughspun Block
-
-tile.cotton.black.name=Black Cotton Block
-tile.cotton.red.name=Red Cotton Block
-tile.cotton.green.name=Green Cotton Block
-tile.cotton.blue.name=Blue Cotton Block
-tile.cotton.brown.name=Brown Cotton Block
-tile.cotton.purple.name=Purple Cotton Block
-tile.cotton.silver.name=Light Gray Cotton Block
-tile.cotton.cyan.name=Cyan Cotton Block
-tile.cotton.gray.name=Gray Cotton Block
-tile.cotton.pink.name=Pink Cotton Block
-tile.cotton.lime.name=Lime Cotton Block
-tile.cotton.yellow.name=Yellow Cotton Block
-tile.cotton.lightBlue.name=Light Blue Cotton Block
-tile.cotton.magenta.name=Magenta Cotton Block
-tile.cotton.orange.name=Orange Cotton Block
-tile.cotton.white.name=White Cotton Block
 
 tile.block_aeonsteel.name=Aeonsteel Block
 tile.block_queensgold.name=Queensgold Block
@@ -831,31 +1109,41 @@ tile.trapdoor_lead.name=Lead Trapdoor
 tile.trapdoor_steel.name=Steel Trapdoor
 
 # Tools, Armors, & Armorstation Descriptions
-item.fishingrod.desc=Fish big game or little, this modular fishing rod can do nearly everything except get that boot dropped into the water the other day.
+item.td_fishingRod.desc=Fish big game or little, this modular fishing rod can do nearly everything except get that boot dropped into the water the other day.
 
-item.shears.desc=Shears are usefull to any farmer looking to have a steady flow of wool, wool for use in crafting or trade for profit.
+item.td_shears.desc=Shears are usefull to any farmer looking to have a steady flow of wool, wool for use in crafting or trade for profit.
 
-item.saw.name=Saw
-item.saw.desc=Not sure what to do with a your saw? \nGood neither am I . . .
+item.td_saw.name=Saw
+item.td_saw.desc=Not sure what to do with a your saw? \nGood neither am I . . .
 
-item.mallet.name=Mallet
-item.mallet.desc=When used in cunjunction with the hammering table you can process ores for more efficient smelting or alloying.
+item.td_mallet.name=Mallet
+item.td_mallet.desc=When used in cunjunction with the hammering table you can process ores for more efficient smelting or alloying.
 
-item.firedrill.name=Fire Drill
-item.firedrill.desc=The Fire Drill is a useful tool for starting fires without Flint and Steel or other similar items by consuming Sticks in your inventory. The higher the durability, the higher the chance it has to successfully light a block on fire.
+item.td_fireDrill.name=Fire Drill
+item.td_fireDrill.desc=The Fire Drill is a useful tool for starting fires without Flint and Steel or other similar items by consuming Sticks in your inventory. The higher the durability, the higher the chance it has to successfully light a block on fire.
 
-item.roundshield.name=Buckler Shield
-item.roundshield.desc=A small shield with low protection but allows the user to maintain manuverablitly in combat.\n \nAbilities: \nCounter attacks - With a bish bash bosh of the shield, slowing down your oponenets is a breaze.\nSmall Stature - leaves little room for modifiers.
+item.td_roundShield.name=Buckler Shield
+item.td_roundShield.desc=A small shield with low protection but allows the user to maintain manuverablitly in combat.\n \nAbilities: \nCounter attacks - With a bish bash bosh of the shield, slowing down your oponenets is a breaze.\nSmall Stature - leaves little room for modifiers.
 
-item.heatershield.name=Heater Shield
-item.heatershield.desc=A standard shield designed to protect more incoming attacks while still being fairly mobile.\n \n
+item.td_heaterShield.name=Heater Shield
+item.td_heaterShield.desc=A standard shield designed to protect more incoming attacks while still being fairly mobile.\n \n
 
-item.towershield.name=Tower Shield
-item.towershield.desc=An oversized shield that protects from most attacks, however this is a cost for such protection.\n \nAbility: \nEncumbered - Its a heavy shield, next to imposible to wield and defend yourself without two hands.
+item.td_towerShield.name=Tower Shield
+item.td_towerShield.desc=An oversized shield that protects from most attacks, however this is a cost for such protection.\n \nAbility: \nEncumbered - Its a heavy shield, next to imposible to wield and defend yourself without two hands.
 
-item.zweihander.name=Zweihander
-item.zweihander.desc=A great two handed sword designed to take down horse and rider or keep enemies back with its long reach.\n \nAbilies: VS Mounted - Does x2 Damage against mounted enemies \nGreat Swing - \n Hit all enemies close to you with a great arching slash. Leaves you slowed and weakened temporarily.
+item.td_zweihander.name=Zweihander
+item.td_zweihander.desc=A great two handed sword designed to take down horse and rider or keep enemies back with its long reach.\n \nAbilies: VS Mounted - Does x2 Damage against mounted enemies \nGreat Swing - \n Hit all enemies close to you with a great arching slash. Leaves you slowed and weakened temporarily.
 
+item.td_backpack.name=Backpack
+item.td_backpack.desc=Invented by ancient technology, the Backpack is nearly indestructible. However, as it fills, its magic weakens, sealing itself if overloaded. Only those who balance their burden wisely can unlock its true potential.
+
+item.td_tabard.name=Tabard
+item.td_tabard.desc=A type of short coat commonly worn by European men during the late Middle Ages.
+
+item.td_ring.name=Ring
+item.td_ring.desc=Ring of the lord content???!?!?!?
+
+## Cloth
 item.tinkerhood.name=Hood
 item.tinkerhood.desc=Delicately stitched clothing for the head that offers little protection, is quite cozy for cold weather. \n \nAbility: \nEnchantable - is more accepting of magical modifiers.
 
@@ -868,9 +1156,22 @@ item.tinkerrobe.desc=Delicately stitched clothing for the legs that offers littl
 item.tinkershoes.name=Shoes
 item.tinkershoes.desc=Delicately stitched clothing for the head that offers little protection, is quite cozy for cold weather. \n \nAbility: \nEnchantable - is more accepting of magical modifiers.
 
+## Chain
+item.tinkerscoif.name=Coif
+item.tinkerscoif.desc=TODO.
+
+item.tinkershauberk.name=Hauberk
+item.tinkershauberk.desc=TODO.
+
+item.tinkerschausses.name=Chausses
+item.tinkerschausses.desc=TODO.
+
+item.tinkersboots.name=Boots
+item.tinkersboots.desc=TODO.
+
+## Heavy
 item.tinkershelm.name=Helm
 item.tinkershelm.desc=A heavy set of interlocking plates to protect the head from most damage. \n \nAbilities: \nVisor - If protection isn't nessecary it can opened for better visibility. \n The hinge is loose that's all, may stay open ... or maybe not.
-
 
 item.tinkersbreastplate.name=Breastplate
 item.tinkersbreastplate.desc=A heavy set of interlocking plates to protect the chest from most damage.
@@ -1084,7 +1385,8 @@ modifier.td_td_timewarp.name=Timewarp
 modifier.td_td_timewarp.desc=[Desc]
 modifier.ticktock.name=Tick-Tock
 # Queens Gold
-
+modifier.regal.name=Regal
+modifier.regal.desc=Gives the tool bonus stats on crafting. The bonus stats are distributed over time and are more or less random. The stats that will be rewarded are already designated on the first time the tool is crafted.
 # Dogbearium
 modifier.td_ihunger.name=I Hunger
 modifier.td_ihunger.desc=[Desc]
