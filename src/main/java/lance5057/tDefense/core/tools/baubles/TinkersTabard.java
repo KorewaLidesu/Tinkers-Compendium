@@ -43,6 +43,8 @@ public class TinkersTabard extends BaubleTool {
         super(BaubleType.BODY, new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE),
                 new PartMaterialType(TDParts.fabric, FabricMaterialStats.TYPE));
         // TODO Auto-generated constructor stub
+
+        setTranslationKey("td_tabard");
     }
 
     @Override

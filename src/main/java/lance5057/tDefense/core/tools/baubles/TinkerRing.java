@@ -15,6 +15,8 @@ public class TinkerRing extends BaubleTool {
     public TinkerRing() {
         super(BaubleType.RING, PartMaterialType.head(TDParts.ringShank), PartMaterialType.handle(TDParts.filigree),
                 PartMaterialType.extra(TDParts.setting));
+
+        setTranslationKey("td_ring");
     }
 
     @Override
