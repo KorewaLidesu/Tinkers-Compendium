@@ -33,7 +33,7 @@ public class FishingRod extends ToolCore {
         super(PartMaterialType.head(TinkerTools.toughToolRod), PartMaterialType.bowstring(TinkerTools.bowString),
                 PartMaterialType.handle(TDParts.rivets));
 
-        setTranslationKey("fishingRod");
+        setTranslationKey("td_fishingRod");
         this.addPropertyOverride(new ResourceLocation("cast"), new IItemPropertyGetter() {
             @SideOnly(Side.CLIENT)
             public float apply(ItemStack stack, @Nullable World worldIn, @Nullable EntityLivingBase entityIn) {

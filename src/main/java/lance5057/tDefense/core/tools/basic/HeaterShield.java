@@ -14,6 +14,6 @@ public class HeaterShield extends Shield {
                 new PartMaterialType(TDParts.armorPlate, ShieldMaterialStats.TYPE),
                 new PartMaterialType(TDParts.armorPlate, ShieldMaterialStats.TYPE),
                 PartMaterialType.extra(TDParts.rivets));
-        setTranslationKey("heatershield");
+        setTranslationKey("td_heaterShield");
     }
 }

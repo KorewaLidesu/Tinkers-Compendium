@@ -17,7 +17,7 @@ public class Mallet extends ToolCore {
         super(PartMaterialType.head(TinkerTools.toughToolRod), PartMaterialType.extra(TinkerTools.binding),
                 PartMaterialType.handle(TinkerTools.toolRod));
 
-        setTranslationKey("mallet");
+        setTranslationKey("td_mallet");
     }
 
     @Override

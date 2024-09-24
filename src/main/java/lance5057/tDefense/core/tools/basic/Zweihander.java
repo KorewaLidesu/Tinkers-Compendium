@@ -25,7 +25,7 @@ public class Zweihander extends SwordCore {
         super(PartMaterialType.head(TinkerTools.largeSwordBlade), PartMaterialType.head(TinkerTools.swordBlade),
                 PartMaterialType.handle(TinkerTools.toughToolRod), PartMaterialType.extra(TinkerTools.toughBinding));
 
-        setTranslationKey("zweihander");
+        setTranslationKey("td_zweihander");
         addCategory(Category.WEAPON);
     }
 
