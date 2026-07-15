@@ -1,3 +1,6 @@
+## Archived
+Use Tinker Armory/Antique Armory instead.
+
 ## Tinkers' Compendium
 
 An ever growing expansion for Tinkers' Construct.
